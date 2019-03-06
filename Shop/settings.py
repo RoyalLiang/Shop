@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import sys
 import pymysql
+
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -31,7 +32,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*', ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'xadmin',
     'mdeditor',
     'crispy_forms',
-
 
 ]
 
@@ -74,13 +73,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'Shop.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -95,7 +94,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -115,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -129,14 +126,14 @@ USE_L10N = True
 
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'media')
 ]
 
 MEDIA_URL = '/media/'

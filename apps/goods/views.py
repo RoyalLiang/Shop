@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from .models import *
 import markdown
+
+
 # Create your views here.
 
 
@@ -20,4 +22,3 @@ class IndexView(View):
             'all_category': all_category,
             'all_goods': all_goods
         })
-
