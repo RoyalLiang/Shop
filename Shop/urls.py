@@ -16,10 +16,10 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.urls import path, re_path, include
 import xadmin
-from goods.views import IndexView
 from django.views.static import serve
 from Shop.settings import MEDIA_ROOT
 from django.conf import settings
+from goods.views import *
 
 
 urlpatterns = [
@@ -27,7 +27,7 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     # 文件上传处理函数
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
-    path('mdeditor/', include('mdeditor.urls'))
+    path('mdeditor/', include('mdeditor.urls')),
 ]
 
 if settings.DEBUG:
