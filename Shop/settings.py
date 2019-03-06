@@ -142,6 +142,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# 自定义工具栏
 MDEDITOR_CONFIGS = {
     'default': {
         'width': '90% ',  # Custom edit box width

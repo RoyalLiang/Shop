@@ -13,12 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.conf.urls.static import static
+from django.urls import path, re_path, include
 import xadmin
 from goods.views import IndexView
+from django.views.static import serve
+from Shop.settings import MEDIA_ROOT
+from django.conf import settings
+
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
-    path('', IndexView.as_view(), name='index')
+    path('', IndexView.as_view(), name='index'),
+    # 文件上传处理函数
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    path('mdeditor/', include('mdeditor.urls'))
 ]
+
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
