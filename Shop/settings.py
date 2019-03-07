@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'Shop.urls'
 
 TEMPLATES = [
@@ -172,3 +173,10 @@ MDEDITOR_CONFIGS = {
     }
 
 }
+
+# PAGINATION_SETTINGS = {
+#     'PAGE_RANGE_DISPLAYED': 5,
+#     'MARGIN_PAGES_DISPLAYED': 2,
+#
+#     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+# }

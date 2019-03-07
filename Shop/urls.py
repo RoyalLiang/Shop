@@ -28,6 +28,7 @@ urlpatterns = [
     # 文件上传处理函数
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     path('mdeditor/', include('mdeditor.urls')),
+    path('goods_detail/<int:goods_id>', GoodsDetail.as_view(), name='goods-detail')
 ]
 
 if settings.DEBUG:
