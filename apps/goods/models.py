@@ -11,7 +11,7 @@ class GoodsCategory(models.Model):
     """
     name = models.CharField(max_length=16, null=True, blank=True, verbose_name='类别名', help_text='类别名')
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
-    
+
     class Meta:
         verbose_name = '商品分类'
         verbose_name_plural = verbose_name
@@ -73,3 +73,10 @@ class Banner(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class GoodsAttributes(models.Model):
+    '''
+    商品属性
+    '''
+    name = models.CharField(max_length=100, blank=True, verbose_name='属性', help_text='属性')

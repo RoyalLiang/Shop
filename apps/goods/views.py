@@ -11,6 +11,7 @@ class IndexView(View):
     def get(self, request):
         all_category = GoodsCategory.objects.all()
         all_goods = Goods.objects.all()
+        all_banner = Banner.objects.all()
         # goods_list = [markdown.markdown(goods.detail for goods in all_goods)]
         for goods in all_goods:
             goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[
@@ -20,5 +21,6 @@ class IndexView(View):
             ])
         return render(request, 'index.html', {
             'all_category': all_category,
-            'all_goods': all_goods
+            'all_goods': all_goods,
+            'all_banner': all_banner
         })
