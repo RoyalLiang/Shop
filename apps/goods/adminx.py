@@ -18,6 +18,7 @@ class GoodsAdmin:
     list_display = ['name', 'desc', 'goods_sn', 'add_time']
     search_fields = ['name', 'goods_sn']
     list_filter = ['add_time']
+    style_fields = {'attr': 'm2m_transfer'}
 
 
 class GoodsCategoryAdmin:
@@ -38,13 +39,16 @@ class BannerAdmin:
     list_filter = ['add_time']
 
 
+class GoodsAttributesAdmin:
+    list_display = ['name', 'value']
+    search_fields = ['name', 'value']
+    list_filter = ['name', ]
+
+
 xadmin.site.register(GoodsCategory, GoodsCategoryAdmin)
 xadmin.site.register(Goods, GoodsAdmin)
 xadmin.site.register(views.BaseAdminView, BaseSettings)
 xadmin.site.register(views.CommAdminView, GlobalSettings)
 xadmin.site.register(Banner, BannerAdmin)
 xadmin.site.register(GoodsImage, GoodsImageAdmin)
-
-
-
-
+xadmin.site.register(GoodsAttributes, GoodsAttributesAdmin)

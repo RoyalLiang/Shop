@@ -31,6 +31,7 @@ class Goods(models.Model):
     desc = models.TextField(blank=True, verbose_name='商品描述', null=True)
     detail = MDTextField(verbose_name='商品详情', default='', blank=True)
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
+    attr = models.ManyToManyField('GoodsAttributes', related_name='goods', verbose_name='商品属性', blank=True)
 
     class Meta:
         verbose_name = '商品'
@@ -44,7 +45,7 @@ class GoodsImage(models.Model):
     """
     商品轮播图
     """
-    goods = models.ForeignKey(Goods, on_delete=models.CASCADE, verbose_name='商品轮播图', blank=True)
+    goods = models.ForeignKey(Goods, on_delete=models.CASCADE, verbose_name='商品', blank=True)
     image = models.ImageField(upload_to='goods/banner', verbose_name='商品轮播图', blank=True, null=True)
     image_url = models.CharField(max_length=500, null=True, blank=True, verbose_name='图片url')
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
@@ -79,4 +80,13 @@ class GoodsAttributes(models.Model):
     '''
     商品属性
     '''
-    name = models.CharField(max_length=100, blank=True, verbose_name='属性', help_text='属性')
+    name = models.CharField(max_length=100, blank=True, verbose_name='属性名', help_text='属性名')
+    value = models.CharField(max_length=100, blank=True, verbose_name='属性值', help_text='属性值')
+
+    class Meta:
+        verbose_name = '商品属性'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name + ":" + self.value
+
