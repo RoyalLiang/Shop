@@ -51,12 +51,15 @@ class MessageAdmin:
     list_filter = ['inquire', 'name', ]
 
 
-
-
 class VideoAdmin:
     list_display = ['title', 'video', ]
     search_fields = ['title', ]
     list_filter = ['title', ]
+
+
+class GoodsSeriesAdmin:
+    list_display = ['name', ]
+    search_fields = ['name', ]
 
 
 xadmin.site.register(GoodsCategory, GoodsCategoryAdmin)
@@ -68,3 +71,4 @@ xadmin.site.register(GoodsImage, GoodsImageAdmin)
 xadmin.site.register(GoodsAttributes, GoodsAttributesAdmin)
 xadmin.site.register(Message, MessageAdmin)
 xadmin.site.register(Video, VideoAdmin)
+xadmin.site.register(GoodsSeries, GoodsSeriesAdmin)
