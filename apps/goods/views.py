@@ -14,7 +14,6 @@ class IndexView(View):
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
             page = 1
-
         all_goods = Goods.objects.all()
         for goods in all_goods:
             goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[
@@ -23,6 +22,11 @@ class IndexView(View):
                 'markdown.extensions.toc',
             ])
 
+        if request.META.get('HTTP_X_FORWARDED_FOR', None):
+            ip = request.META['HTTP_X_FORWARDED_FOR']
+        else:
+            ip = request.META['REMOTE_ADDR']
+        print(ip)
         p = Paginator(all_goods, request=request, per_page=1)
 
         all_goods = p.page(page)

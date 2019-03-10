@@ -1,1 +1,6 @@
-Hello Django.
+class
+留言
+新闻发布
+视频
+商品系列
+商品分类

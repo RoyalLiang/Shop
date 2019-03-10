@@ -20,7 +20,7 @@ from django.views.static import serve
 from Shop.settings import MEDIA_ROOT
 from django.conf import settings
 from goods.views import *
-
+from backend.views import *
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
@@ -28,7 +28,8 @@ urlpatterns = [
     # 文件上传处理函数
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     path('mdeditor/', include('mdeditor.urls')),
-    path('goods_detail/<int:goods_id>', GoodsDetail.as_view(), name='goods-detail')
+    path('goods_detail/<int:goods_id>', GoodsDetail.as_view(), name='goods-detail'),
+    path('backend/', BackendIndex.as_view(), name='backend')
 ]
 
 if settings.DEBUG:

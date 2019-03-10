@@ -45,6 +45,20 @@ class GoodsAttributesAdmin:
     list_filter = ['name', ]
 
 
+class MessageAdmin:
+    list_display = ['inquire', 'name', 'phone', 'email', 'address', 'message']
+    search_fields = ['name', 'inquire']
+    list_filter = ['inquire', 'name', ]
+
+
+
+
+class VideoAdmin:
+    list_display = ['title', 'video', ]
+    search_fields = ['title', ]
+    list_filter = ['title', ]
+
+
 xadmin.site.register(GoodsCategory, GoodsCategoryAdmin)
 xadmin.site.register(Goods, GoodsAdmin)
 xadmin.site.register(views.BaseAdminView, BaseSettings)
@@ -52,3 +66,5 @@ xadmin.site.register(views.CommAdminView, GlobalSettings)
 xadmin.site.register(Banner, BannerAdmin)
 xadmin.site.register(GoodsImage, GoodsImageAdmin)
 xadmin.site.register(GoodsAttributes, GoodsAttributesAdmin)
+xadmin.site.register(Message, MessageAdmin)
+xadmin.site.register(Video, VideoAdmin)
