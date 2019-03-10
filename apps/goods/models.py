@@ -4,12 +4,27 @@ from mdeditor.fields import MDTextField
 
 
 # Create your models here.
+class GoodsSeries(models.Model):
+    '''
+    商品系列
+    '''
+    name = models.CharField(max_length=16, null=True, blank=True, verbose_name='系列名', help_text='系列名')
+    add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
+
+    class Meta:
+        verbose_name = '商品系列'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
 
 class GoodsCategory(models.Model):
     """
     商品分类
     """
     name = models.CharField(max_length=16, null=True, blank=True, verbose_name='类别名', help_text='类别名')
+    series = models.ForeignKey(GoodsSeries, verbose_name='系列', on_delete=models.CASCADE, blank=True)
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:
@@ -100,9 +115,9 @@ class Message(models.Model):
     inquire = models.CharField(max_length=100, blank=True, verbose_name='商品型号')
     name = models.CharField(max_length=100, blank=True, verbose_name='游客', help_text='游客')
     phone = models.CharField(max_length=15, blank=True, verbose_name='手机号', help_text='手机号')
-    email = models.EmailField(max_length=100, null=False, verbose_name='邮箱')
-    address = models.CharField(max_length=1000, verbose_name='地址', )
-    message = models.TextField(verbose_name='留言', null=False)
+    email = models.EmailField(max_length=100, verbose_name='邮箱', blank=True)
+    address = models.CharField(max_length=1000, verbose_name='地址', blank=True)
+    message = models.TextField(verbose_name='留言', blank=True)
     add_time = models.DateField(default=datetime.now, verbose_name='留言时间')
 
     class Meta:
@@ -117,8 +132,8 @@ class Video(models.Model):
     '''
     视频
     '''
-    title = models.CharField(max_length=1000, null=False, help_text='视频标题', verbose_name='视频标题')
-    video = models.FileField(upload_to='video/', verbose_name='视频', null=False)
+    title = models.CharField(max_length=1000, null=False, help_text='视频标题', verbose_name='视频标题', blank=True)
+    video = models.FileField(upload_to='video/', verbose_name='视频', blank=True)
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:

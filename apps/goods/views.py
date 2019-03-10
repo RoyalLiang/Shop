@@ -22,11 +22,6 @@ class IndexView(View):
                 'markdown.extensions.toc',
             ])
 
-        if request.META.get('HTTP_X_FORWARDED_FOR', None):
-            ip = request.META['HTTP_X_FORWARDED_FOR']
-        else:
-            ip = request.META['REMOTE_ADDR']
-        print(ip)
         p = Paginator(all_goods, request=request, per_page=1)
 
         all_goods = p.page(page)
