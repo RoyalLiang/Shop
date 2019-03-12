@@ -80,7 +80,7 @@ class Banner(models.Model):
     title = models.CharField(default='', max_length=128, blank=True, verbose_name='标题')
     image = models.ImageField(upload_to='banner', max_length=512, verbose_name='轮播图', blank=True, null=True)
     url = models.URLField(max_length=256, verbose_name='访问地址', blank=True)
-    index = models.IntegerField(default=0, verbose_name='轮播顺序', blank=True)
+    index = models.IntegerField(default=0, unique=True, verbose_name='轮播顺序', blank=True)
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:

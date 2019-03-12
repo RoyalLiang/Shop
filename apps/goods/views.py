@@ -27,7 +27,7 @@ class IndexView(View):
         all_goods = p.page(page)
 
         all_category = GoodsCategory.objects.all()
-        all_banner = Banner.objects.all().order_by('-index')[:3]
+        all_banner = Banner.objects.all().order_by('index')
 
         return render(request, 'index.html', {
             'all_category': all_category,
