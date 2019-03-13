@@ -29,7 +29,8 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     path('mdeditor/', include('mdeditor.urls')),
     path('goods_detail/<int:goods_id>', GoodsDetail.as_view(), name='goods-detail'),
-    path('backend/', BackendIndex.as_view(), name='backend')
+    path('backend/', BackendIndex.as_view(), name='backend'),
+    path('backend/goods_list', GoodsGetList.as_view(), name='goods_list'),
 ]
 
 if settings.DEBUG:

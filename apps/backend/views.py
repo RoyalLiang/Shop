@@ -10,4 +10,4 @@ import markdown
 
 class BackendIndex(View):
     def get(self, request):
-        return HttpResponse('backend')
+        return render(request, 'backend/index.html')

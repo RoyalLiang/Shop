@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/CSS/commons.css">
+    <link rel="stylesheet" href="/static/Plugins/Bootstrap/css/bootstrap.min.css">
+    <script src="/static/JS/jquery.min.js"></script>
+    <script src="/static/Plugins/Bootstrap/js/bootstrap.min.js"></script>
+    {% block css %}{% endblock %}
+</head>
+<body>
+<div class="pg-header">
+    <div class="logo left">伊特纳(天津)科技发展有限公司</div>
+    <div class="hl-menu left">
+        <div class="item-set">
+            <a class='item' href="#">菜单一</a>
+            <div class="sets">
+                <a href="#">菜单一-1</a>
+                <a href="#">菜单一-2</a>
+                <a href="#">菜单一-3</a>
+                <a href="#">菜单一-4</a>
+            </div>
+        </div>
+        <div class="item-set">
+            <a class='item' href="#">菜单二</a>
+            <div class="sets">
+                <a href="#">菜单二-1</a>
+                <a href="#">菜单二-2</a>
+                <a href="#">菜单二-3</a>
+                <a href="#">菜单二-4</a>
+            </div>
+        </div>
+        <div class="item-set">
+            <a class='item' href="#">菜单三</a>
+            <div class="sets">
+                <a href="#">菜单三-1</a>
+                <a href="#">菜单三-2</a>
+                <a href="#">菜单三-3</a>
+                <a href="#">菜单三-4</a>
+            </div>
+        </div>
+        <div class="item-set">
+            <a class='item' href="#">菜单四</a>
+            <div class="sets">
+                <a href="#">菜单四-1</a>
+                <a href="#">菜单四-2</a>
+                <a href="#">菜单四-3</a>
+                <a href="#">菜单四-4</a>
+            </div>
+        </div>
+    </div>
+    <div class="hr-menu right">
+        <a class='item' href="#">消息</a>
+        <a class='item' href="#">通知</a>
+        <a class='item' href="#">任务</a>
+        <div class="avatar">
+            <a class='item' href="#">
+                <img src="/{{ current_user.img }}" alt="" class="img-circle">
+            </a>
+            <div class="sets">
+                <a href="#">注销</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pg-body">
+    <div class="menus">
+        <div class="item">
+            <div class="item-title">商品管理</div>
+            <div class="item-content hide">
+                <a href="/backend/goods_list">商品</a>
+                <a href="#">商品系列</a>
+                <a href="#">商品分类</a>
+                <a href="#">商品轮播图</a>
+                <a href="#">商品属性</a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-title">新闻系统</div>
+            <div class="item-content hide">
+                <a href="#">新闻</a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-title">其他</div>
+            <div class="item-content hide">
+                <a href="#">轮播图</a>
+                <a href="#">留言板内容</a>
+                <a href="#">视频</a>
+            </div>
+        </div>
+    </div>
+    <div class="contents">
+        {% block contents %}{% endblock %}
+    </div>
+</div>
+<div class="pg-footer"></div>
+</body>
+<script>
+    $('.item-title').click(function () {
+        if ($(this).siblings().attr('class').length > 12)
+            $(this).siblings().removeClass('hide');
+        else {
+            $(this).siblings().addClass('hide');
+        }
+    });
+    $('.item-content a').click(function () {
+        if ($(this).attr('class'))
+            $(this).removeClass('active');
+        else {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+            $(this).parent().parent().siblings().children('.item-content').children().removeClass('active')
+        }
+        $(this).parent().parent().siblings().children('.item-content').addClass('hide')
+    });
+</script>
+{% block js %}{% endblock %}
+</html>

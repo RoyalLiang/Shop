@@ -42,3 +42,22 @@ class GoodsDetail(View):
         return render(request, 'goods-detail.html', {
             'goods': goods,
         })
+
+
+class GoodsGetList(View):
+    def get(self, request):
+        try:
+            page = request.GET.get('page', 1)
+        except PageNotAnInteger:
+            page = 1
+        all_goods = Goods.objects.all()
+        for goods in all_goods:
+            goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+                'markdown.extensions.toc',
+            ])
+
+        p = Paginator(all_goods, request=request, per_page=1)
+        all_goods = p.page(page)
+        return render(request, 'backend/goods-list.html', {'all_goods': all_goods})
