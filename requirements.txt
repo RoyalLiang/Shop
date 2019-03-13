@@ -13,6 +13,7 @@ jdcal==1.4
 Markdown==3.0.1
 odfpy==1.4.0
 openpyxl==2.6.0
+opencv-python==4.0.0.21
 Pillow==5.4.1
 PyMySQL==0.9.3
 pytz==2018.9
