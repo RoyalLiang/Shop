@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'mdeditor',
     'crispy_forms',
     'backend.apps.BackendConfig',
-    'news.apps.NewsConfig',
+    'other.apps.OtherConfig',
 
 ]
 

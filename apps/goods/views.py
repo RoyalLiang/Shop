@@ -41,7 +41,7 @@ class GoodsDetail(View):
         goods = Goods.objects.filter(id=goods_id).first()
         goods_banners = GoodsImage.objects.filter(goods__id=goods_id).all()
         goods_attrs = GoodsAttributes.objects.filter(goods__id=goods_id)
-        return render(request, 'goods-detail.html', {
+        return render(request, 'goods/goods-detail.html', {
             'goods': goods,
             'goods_banners': goods_banners,
             'goods_attrs': goods_attrs,

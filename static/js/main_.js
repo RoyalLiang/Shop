@@ -168,7 +168,7 @@ $(function () {
 	});
 
 
-	$('#owl-news').owlCarousel({
+	$('#owl-other').owlCarousel({
 		navigation: true,
 		navigationText: false,
 

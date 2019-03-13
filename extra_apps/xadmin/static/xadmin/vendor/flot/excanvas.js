@@ -147,7 +147,7 @@ if (!document.createElement('canvas').getContext) {
 
         // Remove fallback content. There is no way to hide text nodes so we
         // just remove all childNodes. We could hide all elements and remove
-        // text nodes but who really cares about the fallback content.
+        // text nodes but who really cares other the fallback content.
         el.innerHTML = '';
 
         // do not use inline function because that will leak memory
@@ -1244,7 +1244,7 @@ if (!document.createElement('canvas').getContext) {
         textAlign = 'left';
     }
 
-    // 1.75 is an arbitrary number, as there is no info about the text baseline
+    // 1.75 is an arbitrary number, as there is no info other the text baseline
     switch (this.textBaseline) {
       case 'hanging':
       case 'top':

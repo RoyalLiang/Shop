@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Company Introduction {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
+{% endblock %}
+{% block body %}
+    <body class="single is-preload">
+{% endblock %}
+{% block content-index %}
+    <div class="sidebar">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="{% url 'CompanyIntroduction' %}">Company Introduction</a>
+                </li>
+                <li class="active">
+                    <a href="#">Factory</a>
+                </li>
+                <li>
+                    <a href="{% url 'Video' %}">Video</a>
+                </li>
+                <li>
+                    <a href="{% url 'Customer' %}">Customer</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap wrap-factory">
+        <div class="container">
+            <div class="title-in">
+                <h2>Factory</h2>
+                <p>Located in Qingdao city,whose factroy ,cao county yuguang crafts co.,ltd covers an area of 4,000
+                    square meters and is located in the beautiful hometown of peony - Heze City, Shandong Province.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="item">
+                        <a class="img-box"
+                           href="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_800x0.jpg"
+                           rel="fancybox-product" title="Workshop">
+                            <img class="lazy"
+                                 data-src="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_820x560.jpg"
+                                 alt="Workshop"
+                                 src="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_820x560.jpg"
+                                 style="display: block;">
+                        </a>
+                        <p>Workshop</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="item">
+                        <a class="img-box"
+                           href="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_800x0.jpg"
+                           rel="fancybox-product" title="Workshop">
+                            <img class="lazy"
+                                 data-src="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_820x560.jpg"
+                                 alt="Workshop"
+                                 src="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_820x560.jpg"
+                                 style="display: block;">
+                        </a>
+                        <p>Workshop</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <a href="http://www.oradarstorage.com/factory.html" style="background-color: rgb(246, 244, 236);"></a>
+                <a href="http://www.oradarstorage.com/factory.html?pageid=1" class="active">1</a>
+                <a href="http://www.oradarstorage.com/factory.html?pageid=1"
+                   style="background-color: rgb(246, 244, 236);"></a>
+            </div>
+
+
+            <!-- <div class="page">
+                <a href=""></a>
+                <a class="active" href="">1</a>
+                <a href="">2</a>
+                <a href="">3</a>
+                <a href="">4</a>
+                <a class="omit" href="">···</a>
+                <a href="">15</a>
+                <a href=""></a>
+            </div>
+             -->
+        </div>
+    </div>
+{% endblock %}
+{% block left-content %}
+    <section id="footer">
+        <ul class="icons">
+            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
+                href="http://unsplash.com">Unsplash</a>.</p>
+    </section>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="/static/JS/main_.js"></script>
+{% endblock %}

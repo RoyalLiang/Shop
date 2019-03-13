@@ -20,7 +20,7 @@ from django.views.static import serve
 from Shop.settings import MEDIA_ROOT
 from django.conf import settings
 from goods.views import *
-from backend.views import *
+from other.views import *
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
@@ -29,8 +29,11 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     path('mdeditor/', include('mdeditor.urls')),
     path('goods_detail/<int:goods_id>', GoodsDetail.as_view(), name='goods-detail'),
-    path('backend/', BackendIndex.as_view(), name='backend'),
-    # path('backend/goods_list', GoodsGetList.as_view(), name='goods_list'),
+    # path('backend/', BackendIndex.as_view(), name='backend'),
+    path('about.html', CompanyIntroduction.as_view(), name='CompanyIntroduction'),
+    path('video.html', Video.as_view(), name='Video'),
+    path('factory.html', Factory.as_view(), name='Factory'),
+    path('customer.html', Customer.as_view(), name='Customer'),
 ]
 
 if settings.DEBUG:

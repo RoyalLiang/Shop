@@ -1299,7 +1299,7 @@
 
         /**
          * 创建关于Editor.md的对话框
-         * Create about Editor.md dialog
+         * Create other Editor.md dialog
          *
          * @returns {editormd}  返回editormd的实例对象
          */
@@ -1362,7 +1362,7 @@
 
         /**
          * 显示关于Editor.md
-         * Display about Editor.md dialog
+         * Display other Editor.md dialog
          *
          * @returns {editormd}  返回editormd的实例对象
          */
@@ -1397,7 +1397,7 @@
 
         /**
          * 隐藏关于Editor.md
-         * Hide about Editor.md dialog
+         * Hide other Editor.md dialog
          *
          * @returns {editormd}  返回editormd的实例对象
          */

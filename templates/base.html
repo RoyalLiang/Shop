@@ -22,7 +22,7 @@
             <ul>
                 <li><a href="/">HOME</a></li>
                 <li><a href="#">PRODUCTS</a></li>
-                <li><a href="#">ABOUT</a></li>
+                <li><a href="{%  url 'CompanyIntroduction' %}">ABOUT</a></li>
                 <li><a href="#">ENGLISH,click change</a></li>
                 {#                <li><a href="#">Adipiscing</a></li>#}
             </ul>
@@ -165,34 +165,33 @@
                 </article>
             {% endfor %}
             <!-- Pagination -->
-            <ul class="actions pagination">
-                {#            &nbsp;&nbsp;&nbsp;&nbsp;#}
-                {% if all_goods.has_previous %}
-                    <li><a href="?{{ all_goods.previous_page_number.querystring }}" class="button large previous">PREVIOUS
-                        PAGE</a></li>
-                {% else %}
-                    <li><a href="" class="disabled button large previous">PREVIOUS PAGE</a></li>
-                {% endif %}
-                {#                {% for page in all_goods.pages %}#}
-                {#                    {% if page %}#}
-                {#                        {% ifequal page all_goods.number %}#}
-                {#                            <li><span class="current page">{{ page }}</span></li>#}
-                {#                        {% else %}#}
-                {#                            <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>#}
-                {#                        {% endifequal %}#}
-                {#                    {% else %}#}
-                {#                        ...#}
-                {#                    {% endif %}#}
-                {#                {% endfor %}#}
-                {#                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
-                {% if all_goods.has_next %}
-                    <li><a href="?{{ all_goods.next_page_number.querystring }}" class="button large next">NEXT PAGE</a>
-                    </li>
-                {% else %}
-                    <li><a href="" class="disabled button large next">NEXT PAGE</a></li>
-                {% endif %}
-
-            </ul>
+            {#            <ul class="actions pagination">#}
+            {#            &nbsp;&nbsp;&nbsp;&nbsp;#}
+            {#                {% if all_goods.has_previous %}#}
+            {#                    <li><a href="?{{ all_goods.previous_page_number.querystring }}" class="button large previous">PREVIOUS#}
+            {#                        PAGE</a></li>#}
+            {#                {% else %}#}
+            {#                    <li><a href="" class="disabled button large previous">PREVIOUS PAGE</a></li>#}
+            {#                {% endif %}#}
+            {#                {% for page in all_goods.pages %}#}
+            {#                    {% if page %}#}
+            {#                        {% ifequal page all_goods.number %}#}
+            {#                            <li><span class="current page">{{ page }}</span></li>#}
+            {#                        {% else %}#}
+            {#                            <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>#}
+            {#                        {% endifequal %}#}
+            {#                    {% else %}#}
+            {#                        ...#}
+            {#                    {% endif %}#}
+            {#                {% endfor %}#}
+            {#                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
+            {#                {% if all_goods.has_next %}#}
+            {#                    <li><a href="?{{ all_goods.next_page_number.querystring }}" class="button large next">NEXT PAGE</a>#}
+            {#                    </li>#}
+            {#                {% else %}#}
+            {#                    <li><a href="" class="disabled button large next">NEXT PAGE</a></li>#}
+            {#                {% endif %}#}
+            {#            </ul>#}
 
         </div>
     {% endblock %}
@@ -219,41 +218,31 @@
                     <!-- Mini Post -->
                     <article class="mini-post">
                         <header>
-                            <h3><a href="goods-detail.html">Vitae sed condimentum</a></h3>
+                            <h3><a href="goods/goods-detail.html">Vitae sed condimentum</a></h3>
                             <time class="published" datetime="2015-10-20">October 20, 2015</time>
                             <a href="#" class="author"><img src="/static/images/avatar.jpg" alt=""/></a>
                         </header>
-                        <a href="goods-detail.html" class="image"><img src="/static/images/pic04.jpg" alt=""/></a>
+                        <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic04.jpg" alt=""/></a>
                     </article>
 
                     <!-- Mini Post -->
                     <article class="mini-post">
                         <header>
-                            <h3><a href="goods-detail.html">Rutrum neque accumsan</a></h3>
+                            <h3><a href="goods/goods-detail.html">Rutrum neque accumsan</a></h3>
                             <time class="published" datetime="2015-10-19">October 19, 2015</time>
                             <a href="#" class="author"><img src="/static/images/avatar.jpg" alt=""/></a>
                         </header>
-                        <a href="goods-detail.html" class="image"><img src="/static/images/pic05.jpg" alt=""/></a>
+                        <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic05.jpg" alt=""/></a>
                     </article>
 
                     <!-- Mini Post -->
                     <article class="mini-post">
                         <header>
-                            <h3><a href="goods-detail.html">Odio congue mattis</a></h3>
+                            <h3><a href="goods/goods-detail.html">Odio congue mattis</a></h3>
                             <time class="published" datetime="2015-10-18">October 18, 2015</time>
                             <a href="#" class="author"><img src="/static/images/avatar.jpg" alt=""/></a>
                         </header>
-                        <a href="goods-detail.html" class="image"><img src="/static/images/pic06.jpg" alt=""/></a>
-                    </article>
-
-                    <!-- Mini Post -->
-                    <article class="mini-post">
-                        <header>
-                            <h3><a href="goods-detail.html">Enim nisl veroeros</a></h3>
-                            <time class="published" datetime="2015-10-17">October 17, 2015</time>
-                            <a href="#" class="author"><img src="/static/images/avatar.jpg" alt=""/></a>
-                        </header>
-                        <a href="goods-detail.html" class="image"><img src="/static/images/pic07.jpg" alt=""/></a>
+                        <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic06.jpg" alt=""/></a>
                     </article>
 
                 </div>
@@ -265,46 +254,29 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="goods-detail.html">Lorem ipsum fermentum ut nisl vitae</a></h3>
+                                <h3><a href="goods/goods-detail.html">Lorem ipsum fermentum ut nisl vitae</a></h3>
                                 <time class="published" datetime="2015-10-20">October 20, 2015</time>
                             </header>
-                            <a href="goods-detail.html" class="image"><img src="/static/images/pic08.jpg" alt=""/></a>
+                            <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic08.jpg" alt=""/></a>
                         </article>
                     </li>
                     <li>
                         <article>
                             <header>
-                                <h3><a href="goods-detail.html">Convallis maximus nisl mattis nunc id lorem</a></h3>
+                                <h3><a href="goods/goods-detail.html">Convallis maximus nisl mattis nunc id lorem</a>
+                                </h3>
                                 <time class="published" datetime="2015-10-15">October 15, 2015</time>
                             </header>
-                            <a href="goods-detail.html" class="image"><img src="/static/images/pic09.jpg" alt=""/></a>
+                            <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic09.jpg" alt=""/></a>
                         </article>
                     </li>
                     <li>
                         <article>
                             <header>
-                                <h3><a href="goods-detail.html">Euismod amet placerat vivamus porttitor</a></h3>
+                                <h3><a href="goods/goods-detail.html">Euismod amet placerat vivamus porttitor</a></h3>
                                 <time class="published" datetime="2015-10-10">October 10, 2015</time>
                             </header>
-                            <a href="goods-detail.html" class="image"><img src="/static/images/pic10.jpg" alt=""/></a>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="goods-detail.html">Magna enim accumsan tortor cursus ultricies</a></h3>
-                                <time class="published" datetime="2015-10-08">October 8, 2015</time>
-                            </header>
-                            <a href="goods-detail.html" class="image"><img src="/static/images/pic11.jpg" alt=""/></a>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="goods-detail.html">Congue ullam corper lorem ipsum dolor</a></h3>
-                                <time class="published" datetime="2015-10-06">October 7, 2015</time>
-                            </header>
-                            <a href="goods-detail.html" class="image"><img src="/static/images/pic12.jpg" alt=""/></a>
+                            <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic10.jpg" alt=""/></a>
                         </article>
                     </li>
                 </ul>
@@ -341,13 +313,13 @@
 
 <!-- Scripts -->
 <script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'Plugins/Bootstrap/js/bootstrap.min.js' %}"></script>
 {% block js %}
     <script src="{% static 'js/browser.min.js' %}"></script>
     <script src="{% static 'js/breakpoints.min.js' %}"></script>
     <script src="{% static 'js/util.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
+<script src="{% static 'Plugins/Bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 

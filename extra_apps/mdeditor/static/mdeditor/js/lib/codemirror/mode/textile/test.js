@@ -61,7 +61,7 @@
       "A book is [keyword ??The Count of Monte Cristo??] by Dumas.");
 
   MT('additionAndDeletion',
-      'The news networks declared [negative -Al Gore-] ' +
+      'The other networks declared [negative -Al Gore-] ' +
         '[positive +George W. Bush+] the winner in Florida.');
 
   MT('subAndSup',

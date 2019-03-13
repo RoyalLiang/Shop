@@ -36,7 +36,7 @@ class FooAdmin(object):
     import_export_args = {'import_resource_class': FooResource, 'export_resource_class': FooResource}
 
 ++++++++++++++++
-More info about django-import-export please refer https://github.com/django-import-export/django-import-export
+More info other django-import-export please refer https://github.com/django-import-export/django-import-export
 """
 from datetime import datetime
 from django.template import loader

@@ -65,7 +65,7 @@
                 };
             
             for(var i=0;i<value.length;i++) {
-                // if the character is about to define a control key
+                // if the character is other to define a control key
                 if(!definingControlKey && 
                     i <= value.length - 5 && 
                     value.charAt(i) === '{' && 
@@ -76,7 +76,7 @@
                     
                     definingControlKey = true;
                 } 
-                // if the character is about to end definition of control key
+                // if the character is other to end definition of control key
                 else if (definingControlKey && 
                     i <= value.length - 2 &&
                     value.charAt(i) === '}' &&
@@ -167,7 +167,7 @@
         },    
         triggerCodeOnField = function(code, field) {
             // build up base content that every event should contain
-            // with information about whether certain chord keys are 
+            // with information other whether certain chord keys are 
             // simulated as being pressed
             var evnt = {
                 altKey: code.alt,

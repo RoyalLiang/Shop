@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Company Introduction {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
+{% endblock %}
+{% block body %}
+    <body class="single is-preload">
+{% endblock %}
+{% block content-index %}
+    <div class="sidebar">
+        <div class="container">
+            <ul>
+                <li class="active">
+                    <a href="#">Company Introduction</a>
+                </li>
+                <li>
+                    <a href="{% url 'Factory' %}">Factory</a>
+                </li>
+                <li>
+                    <a href="{% url 'Video' %}">Video</a>
+                </li>
+                <li>
+                    <a href="{% url 'Customer' %}">Customer</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap wrap-about">
+        <div class="container">
+            <div class="title-in">
+                <h2>Company Introduction</h2>
+                <p></p>
+            </div>
+
+            <div class="text">
+                <p>Qingdao Oradar crafts co.,ltd ,is a new trading company,located in Qingdao city,whose factroy ,cao
+                    county yuguang crafts co.,ltd covers an area of 4,000 square meters and is located in the beautiful
+                    hometown of peony - Heze City, Shandong Province.</p>
+                <p><br></p>
+                <p>Our factory founded in 1997,who has its own office building , show rooms, production workshops,
+                    coating and drying rooms and other facilities. With over 120 working staff members, our turnover is
+                    around RMB 5million.</p>
+                <p><br></p>
+                <p>All products are exported to America, mid-east countries and European countries. We are a
+                    professional manufacturer of handmade arts and crafts. Our main products are home storage
+                    items,including plastic weaving storage baskets,laundry baskets, fabric storage baskets and wooden
+                    decor items and other accessoryhome decro goods.&nbsp;</p>
+                <p><br></p>
+                <p>We have the ability to meet the requirements of different customers to make the products according to
+                    the customers' designs . At present, we invest more in the R&amp;D to develop all kinds of new
+                    products and they are very popular among old and new customers. With strong technical advantage,
+                    rich resources, fast delivery, reliable quality control and competitive prices, we gain a high
+                    reputation among our customers. We would like to build long-term and stable relationship with our
+                    customer and achieve great success in the arts and crafts industry.</p>
+                <p><br></p>
+                <p><img src="http://www.oradarstorage.com/tpl/en_oradarstorage/assets/images/img/about-01.jpg"
+                        alt=""><img
+                        src="http://www.oradarstorage.com/tpl/en_oradarstorage/assets/images/img/about-02.jpg" alt="">
+                </p></div>
+        </div>
+    </div>
+{% endblock %}
+{% block left-content %}
+    <section id="footer">
+        <ul class="icons">
+            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
+                href="http://unsplash.com">Unsplash</a>.</p>
+    </section>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="/static/JS/main_.js"></script>
+{% endblock %}

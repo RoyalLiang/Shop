@@ -421,7 +421,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 			return;
 		}
 
-		//If we are using droppables, inform the manager about the drop
+		//If we are using droppables, inform the manager other the drop
 		if ($.ui.ddmanager && !this.options.dropBehaviour) {
 			$.ui.ddmanager.drop(this, event);
 		}
