@@ -63,6 +63,7 @@ class GoodsImage(models.Model):
     goods = models.ForeignKey(Goods, on_delete=models.CASCADE, verbose_name='商品', blank=True)
     image = models.ImageField(upload_to='goods/banner', verbose_name='商品轮播图', blank=True, null=True)
     image_url = models.URLField(max_length=500, null=True, blank=True, verbose_name='访问地址')
+    index = models.IntegerField(unique=True, verbose_name='轮播顺序', blank=True)
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:

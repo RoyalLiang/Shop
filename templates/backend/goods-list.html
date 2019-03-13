@@ -22,9 +22,9 @@
     <div class="pagination">
         {% if all_goods.has_previous %}
             <a href="?{{ all_goods.previous_page_number.querystring }}"
-               class="prev">&lsaquo;&lsaquo;  "previous"</a>
+               class="prev">&lsaquo;&lsaquo;  previous</a>
         {% else %}
-            <span class="disabled prev">&lsaquo;&lsaquo; "previous" </span>
+            <span class="disabled prev">&lsaquo;&lsaquo; previous </span>
         {% endif %}
         {% for page in all_goods.pages %}
             {% if page %}
@@ -38,9 +38,9 @@
             {% endif %}
         {% endfor %}
         {% if all_goods.has_next %}
-            <a href="?{{ all_goods.next_page_number.querystring }}" class="next">"next"  &rsaquo;&rsaquo;</a>
+            <a href="?{{ all_goods.next_page_number.querystring }}" class="next">next  &rsaquo;&rsaquo;</a>
         {% else %}
-            <span class="disabled next"> "next"  &rsaquo;&rsaquo;</span>
+            <span class="disabled next"> next  &rsaquo;&rsaquo;</span>
         {% endif %}
     </div>
 {% endblock %}

@@ -38,9 +38,13 @@ class IndexView(View):
 
 class GoodsDetail(View):
     def get(self, request, goods_id):
-        goods = Goods.objects.get(pk=goods_id)
+        goods = Goods.objects.filter(id=goods_id).first()
+        goods_banners = GoodsImage.objects.filter(goods__id=goods_id).all()
+        goods_attrs = GoodsAttributes.objects.filter(goods__id=goods_id)
         return render(request, 'goods-detail.html', {
             'goods': goods,
+            'goods_banners': goods_banners,
+            'goods_attrs': goods_attrs,
         })
 
 
