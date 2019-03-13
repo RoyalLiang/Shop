@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views import View
+from goods.views import Video as V
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 import markdown
 
@@ -14,7 +15,9 @@ class CompanyIntroduction(View):
 
 class Video(View):
     def get(self, request):
-        return render(request, 'other/Video.html')
+        videos = V.objects.all()
+        return render(request, 'other/Video.html',
+                      {'videos': videos})
 
 
 class Factory(View):

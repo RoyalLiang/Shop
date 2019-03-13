@@ -133,8 +133,9 @@ class Video(models.Model):
     '''
     视频
     '''
-    title = models.CharField(max_length=1000, null=False, help_text='视频标题', verbose_name='视频标题', blank=True)
+    title = models.CharField(max_length=1000, help_text='视频标题', verbose_name='视频标题', blank=True)
     video = models.FileField(upload_to='video/', verbose_name='视频', blank=True)
+    image = models.CharField(default='none', max_length=512, null=True, verbose_name='封面', blank=True)
     add_time = models.DateField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:

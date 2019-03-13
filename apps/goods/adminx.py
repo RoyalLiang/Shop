@@ -1,6 +1,9 @@
 import xadmin
 from .models import *
 from xadmin import views
+import os
+from Shop import settings
+from utils import auth
 
 
 class BaseSettings:
@@ -55,6 +58,13 @@ class VideoAdmin:
     list_display = ['title', 'video', ]
     search_fields = ['title', ]
     list_filter = ['title', ]
+
+    def save_models(self):
+        obj = self.new_obj
+        obj.save()
+        video_url = os.path.join(settings.MEDIA_ROOT, str(obj.video))
+        obj.image = 'video_image/%s' % auth.get_video_pic(video_url)
+        obj.save()
 
 
 class GoodsSeriesAdmin:
