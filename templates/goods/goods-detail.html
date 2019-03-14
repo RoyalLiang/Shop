@@ -9,28 +9,7 @@
 {% endblock %}
 
 {% block content-index %}
-    <div class="sidebar">
-        <div class="container">
-            <ul>
-                <li>
-                    <a href="#">All</a>
-                </li>
-                <li class="active">
-                    <a href="#">Wooden Series</a>
-                </li>
-                <li>
-                    <a href="#">Plastic Weaving
-                        Series</a>
-                </li>
-                <li>
-                    <a href="#">Fabric Series</a>
-                </li>
-                <li>
-                    <a href="#">Natrual material</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+
     <div class="wrap wrap-product-show">
         <div class="container">
             <div class="location">
@@ -197,16 +176,17 @@
                         you back as soon as possible.</p>
                     <p>* Required field.</p>
                     <form class="row feedback-form" onsubmit="return false;" method="post">
+                        {% csrf_token %}
                         <div class="col-xs-12 read">
-                            <input type="text" value="Inquire: {{ goods.goods_sn }}" readonly="" name="title"
+                            <input type="text" value="{{ goods.goods_sn }}" readonly="" name="inquire"
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12 col-md-6 text">
-                            <input type="text" placeholder="name" name="fullname"
+                            <input type="text" placeholder="name" name="name"
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12 col-md-6 text">
-                            <input type="text" placeholder="phone" name="tel"
+                            <input type="text" placeholder="phone" name="phone"
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12 col-md-6 text">
@@ -218,12 +198,11 @@
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12">
-                            <textarea name="content" rows="6" placeholder="message＊"
+                            <textarea name="message" rows="6" placeholder="message＊"
                                       style="background-color: rgb(246, 244, 236);"></textarea>
                         </div>
                         <div class="col-xs-12">
-                            <input type="hidden" name="id" value="book" style="background-color: rgb(246, 244, 236);">
-                            <input type="hidden" name="_spam" value="" style="background-color: rgb(246, 244, 236);">
+                            <input type="hidden" name="id" value="{{ goods.id }}" style="background-color: rgb(246, 244, 236);">
                             <button class="send submit"><span>SUBMIT</span></button>
                         </div>
                     </form>

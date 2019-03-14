@@ -456,8 +456,8 @@ $(function () {
 		var reg_email = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 		var data = {
 			email: $('input[name="email"]', jForm).val().trim(),
-			title: $('input[name="title"]', jForm).val().trim(),
-			content: $('textarea[name="content"]', jForm).val().trim()
+			title: $('input[name="inquire"]', jForm).val().trim(),
+			content: $('textarea[name="message"]', jForm).val().trim()
 		};
 
 		if (!data.email || !reg_email.test(data.email)) {
@@ -468,12 +468,12 @@ $(function () {
 		} else if (!data.title) {
 			alert('The title cannot be empty');
 			// alert('请输入留言主题');
-			$('input[name="title"]', jForm).focus();
+			$('input[name="inquire"]', jForm).focus();
 			return false;
 		} else if (!data.content) {
 			alert('The message cannot be empty');
 			// alert('请输入留言内容');
-			$('textarea[name="content"]', jForm).focus();
+			$('textarea[name="message"]', jForm).focus();
 			return false;
 		}
 
@@ -488,11 +488,7 @@ $(function () {
 		//  /*optional stuff to do after success */
 		// }, 'json');
 
-		if (jForm.hasClass('feedback-form-inquire')) {
-			var url = '/index.php?c=cart&f=sendMessage&t=' + new Date().getTime();
-		} else {
-			var url = '/api.php?c=post&f=save&_t=' + (new Date().getTime());
-		}
+		var url = '/message.html?c=cart&f=sendMessage&t=' + new Date().getTime();
 
 		$.ajax({
 			'url': url,
@@ -503,11 +499,11 @@ $(function () {
 				jThis.text(jThis.data('text')).css({
 					opacity: '1'
 				}).removeClass('disabled');
-				if (rs.status == 'ok') {
+				if (rs.status === 'ok') {
 					alert('Your message has been posted, please wait patiently administrator audit, thank you for your submission');
 					// alert('您的留言已提交,请耐心等候管理员回复');
 					if (jForm.hasClass('feedback-form-inquire')) {
-						location.href = '/product.html';
+						location.href = '/goods_detail/'+$('input[name=id]').val();
 					} else {
 						jForm.get(0).reset();
 					}

@@ -35,6 +35,8 @@ urlpatterns = [
     path('factory.html', Factory.as_view(), name='Factory'),
     path('customer.html', Customer.as_view(), name='Customer'),
     path('products.html', ProductsList.as_view(), name='ProductsList'),
+    path('search.html', Search.as_view(), name='Search'),
+    path('message.html', AddMessage.as_view(), name='AddMessage'),
 ]
 
 if settings.DEBUG:
