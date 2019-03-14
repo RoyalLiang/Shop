@@ -41,7 +41,7 @@ class Goods(models.Model):
     """
     category = models.ForeignKey(GoodsCategory, on_delete=models.CASCADE, verbose_name='商品类别', blank=True)
     name = models.CharField(max_length=100, blank=True, verbose_name='商品名', help_text='商品名')
-    goods_sn = models.CharField(max_length=128, null=True, blank=True, verbose_name='商品编码')
+    goods_sn = models.CharField(max_length=128, unique=True, blank=True, verbose_name='商品编码')
     goods_front_img = models.ImageField(upload_to='goods/images', verbose_name='商品封面', blank=True)
     desc = models.TextField(blank=True, verbose_name='商品描述', null=True)
     detail = MDTextField(verbose_name='商品详情', default='', blank=True)

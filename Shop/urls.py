@@ -34,6 +34,7 @@ urlpatterns = [
     path('video.html', Video.as_view(), name='Video'),
     path('factory.html', Factory.as_view(), name='Factory'),
     path('customer.html', Customer.as_view(), name='Customer'),
+    path('products.html', ProductsList.as_view(), name='ProductsList'),
 ]
 
 if settings.DEBUG:

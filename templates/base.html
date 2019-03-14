@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
-    <link rel="stylesheet" href="{% static 'Plugins/Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Plugins/Bootstrap/css/bootstrap.css' %}">
     {% block css %}{% endblock %}
 </head>
 {% block body %}
@@ -21,7 +21,7 @@
         <nav class="links">
             <ul>
                 <li><a href="/">HOME</a></li>
-                <li><a href="#">PRODUCTS</a></li>
+                <li><a href="{% url 'ProductsList' %}">PRODUCTS</a></li>
                 <li><a href="{%  url 'CompanyIntroduction' %}">ABOUT</a></li>
                 <li><a href="#">ENGLISH,click change</a></li>
                 {#                <li><a href="#">Adipiscing</a></li>#}

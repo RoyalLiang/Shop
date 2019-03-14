@@ -35,8 +35,8 @@
         <div class="container">
             <div class="location">
                 <a href="/">HOME</a>
-                <a href="#">PRODUCTS</a>
-                <a href="#">WOODEN SERIES</a>
+                <a href="{% url 'ProductsList' %}">PRODUCTS</a>
+                <a href="{% url 'ProductsList' %}?sid={{ sid }}&cid={{ cid }}">{{ sname }}&nbsp;{{ cname }}</a>
             </div>
 
             <div class="pro-show">

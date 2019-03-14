@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    Products
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
+{% endblock %}
+{% block body %}
+    <body class="single is-preload">
+{% endblock %}
+{% block content-index %}
+    <div class="sidebar">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="#">Series</a>
+                </li>
+                {% if sid %}
+                    <li>
+                        <a href="/products.html">All</a>
+                    </li>
+                    {% for s in series %}
+                        {% if sid == s.id %}
+                            <li class="active">
+                                <a href="/products.html?sid={{ s.id }}">{{ s.name }}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="/products.html?sid={{ s.id }}">{{ s.name }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <li class="active">
+                        <a href="/products.html">All</a>
+                    </li>
+                    {% for s in series %}
+                        <li>
+                            <a href="/products.html?sid={{ s.id }}">{{ s.name }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="#">Category</a>
+                </li>
+                {% if cid %}
+                    <li>
+                        <a href="/products.html?sid={{ sid }}">All</a>
+                    </li>
+                    {% for c in categorys %}
+                        {% if cid == c.id %}
+                            <li class="active">
+                                <a href="/products.html?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="/products.html?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <li class="active">
+                        <a href="/products.html?sid={{ sid }}">All</a>
+                    </li>
+                    {% for c in categorys %}
+                        <li>
+                            <a href="/products.html?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="wrap wrap-product">
+    <div class="container">
+        <div class="title-in">
+            <h2>Products</h2>
+            <p>The use of natural wood, fine technology, to create the customer needs of various types of products
+                and accessories. Natural environmental protection, durable, and strive to respect the natural
+                premise of the pursuit of perfect quality.</p>
+        </div>
+
+        <div class="row">
+            {% for goods in goods_list %}
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="item" style="background-color: rgb(246, 244, 236);">
+                        <div class="p-title">
+                            <h3>{{ goods.goods_sn }}</h3>
+                            <p>{{ goods.name }}</p>
+                        </div>
+                        <div class="flexslider">
+                            <div id="{{ goods.goods_sn }}" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    {% for image in goods.goodsimage %}
+                                        {% if image.index == 0 %}
+                                            <li data-target="#{{ goods.goods_sn }}"
+                                                data-slide-to="{{ image.index }}" class="active"></li>
+                                        {% else %}
+                                            <li data-target="#{{ goods.goods_sn }}"
+                                                data-slide-to="{{ image.index }}"></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ol>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    {% for image in goods.goodsimage %}
+                                        {% if image.index == 0 %}
+                                            <div class="item active">
+                                                <a href="goods_detail/{{ goods.id }}">
+                                                    <img src="{{ MEDIA_URL }}{{ image.image }}" alt="" width="100%">
+                                                </a>
+                                            </div>
+                                        {% else %}
+                                            <div class="item">
+                                                <a href="goods_detail/{{ goods.id }}">
+                                                    <img src="{{ MEDIA_URL }}{{ image.image }}" alt="" width="100%">
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block left-content %}
+{% endblock %}
+{% block js %}
+    <script src="/static/JS/main_.js"></script>
+{% endblock %}

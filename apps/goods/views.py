@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.views import View
 from .models import *
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
@@ -45,6 +45,10 @@ class GoodsDetail(View):
             'goods': goods,
             'goods_banners': goods_banners,
             'goods_attrs': goods_attrs,
+            'sid': goods.category.series.id,
+            'cid': goods.category.id,
+            'sname': goods.category.series.name,
+            'cname': goods.category.name,
         })
 
 
@@ -65,3 +69,41 @@ class GoodsGetList(View):
         p = Paginator(all_goods, request=request, per_page=1)
         all_goods = p.page(page)
         return render(request, 'backend/goods-list.html', {'all_goods': all_goods})
+
+
+class ProductsList(View):
+    def get(self, request):
+        sid = request.GET.get('sid', None)
+        cid = request.GET.get('cid', None)
+        series = GoodsSeries.objects.all()
+        if cid and cid.isdigit():
+            cid = int(cid)
+            sid = GoodsSeries.objects.filter(goodscategory__id=cid)[0].id
+            categorys = GoodsCategory.objects.filter(series__id=sid)
+            goods_list = list(Goods.objects.filter(category__id=cid).prefetch_related('goodsimage_set'))
+        elif sid and sid.isdigit():
+            sid = int(sid)
+            categorys = GoodsCategory.objects.filter(series__id=sid)
+            goods_list = []
+            for category in categorys:
+                goods_list.extend(
+                    list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set')))
+        else:
+            categorys = GoodsCategory.objects.all()
+            goods_list = []
+            for category in categorys:
+                goods_list.extend(
+                    list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set')))
+            categorys = None
+            sid = None
+            cid = None
+        for goods in goods_list:
+            goods.goodsimage = list(goods.goodsimage_set.all())
+        return render(request, 'goods/products.html',
+                      {
+                          'sid': sid,
+                          'cid': cid,
+                          'categorys': categorys,
+                          'series': series,
+                          'goods_list': goods_list,
+                      })
