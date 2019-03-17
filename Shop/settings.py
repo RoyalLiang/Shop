@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'backend.apps.BackendConfig',
     'other.apps.OtherConfig',
+    'viewsCount.apps.viewsCountConfig',
 
 ]
 
@@ -176,3 +177,15 @@ PAGINATION_SETTINGS = {
 
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 1000}
+            # "PASSWORD": "123",
+        }
+    }
+}
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/1'

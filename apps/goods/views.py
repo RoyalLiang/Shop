@@ -6,13 +6,14 @@ from .models import *
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 import markdown
 import json
-
+from viewsCount.tasks import views_count_save
 
 # Create your views here.
 
 
 class IndexView(View):
     def get(self, request):
+        views_count_save(request)
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -160,3 +161,5 @@ class AddMessage(View):
                                message=message).save()
         dic = {'status': 'ok'}
         return HttpResponse(json.dumps(dic))
+
+

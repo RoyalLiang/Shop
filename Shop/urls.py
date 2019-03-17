@@ -21,6 +21,7 @@ from Shop.settings import MEDIA_ROOT
 from django.conf import settings
 from goods.views import *
 from other.views import *
+from viewsCount.views import *
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
@@ -37,6 +38,7 @@ urlpatterns = [
     path('products.html', ProductsList.as_view(), name='ProductsList'),
     path('search.html', Search.as_view(), name='Search'),
     path('message.html', AddMessage.as_view(), name='AddMessage'),
+    path('viewscount.html', ViewsCount.as_view(), name='ViewsCount'),
 ]
 
 if settings.DEBUG:
