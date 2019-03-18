@@ -13,7 +13,6 @@ from viewsCount.tasks import views_count_save
 
 class IndexView(View):
     def get(self, request):
-        views_count_save(request)
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
