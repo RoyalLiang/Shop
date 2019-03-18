@@ -6,6 +6,7 @@ from .models import *
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 import markdown
 import json
+from utils.send_email import send_goods_email
 from viewsCount.tasks import views_count_save
 
 # Create your views here.
@@ -156,6 +157,8 @@ class AddMessage(View):
         email = request.POST.get('email', None)
         address = request.POST.get('address', None)
         message = request.POST.get('message', None)
+        admin_email = '1302982067@qq.com'
+        send_goods_email(admin_email, name, email, inquire, message)
         Message.objects.create(inquire=inquire, name=name, phone=phone, email=email, address=address,
                                message=message).save()
         dic = {'status': 'ok'}

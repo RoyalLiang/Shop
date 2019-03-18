@@ -489,7 +489,8 @@ $(function () {
         //  /*optional stuff to do after success */
         // }, 'json');
 
-        var url = '/message.html?c=cart&f=sendMessage&t=' + new Date().getTime();
+
+        var url = "/goods/message.html?c=cart&f=sendMessage&t=" + new Date().getTime();
 
         $.ajax({
             'url': url,

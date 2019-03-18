@@ -189,3 +189,10 @@ CACHES = {
     }
 }
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/1'
+
+EMAIL_HOST = "smtp.qq.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '1302982067@qq.com'
+EMAIL_HOST_PASSWORD = "pqcuradnebmxhief"
+EMAIL_USE_TLS = True
+EMAIL_FROM = '1302982067@qq.com'
