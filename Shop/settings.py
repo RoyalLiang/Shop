@@ -188,4 +188,7 @@ CACHES = {
         }
     }
 }
+NEVER_REDIS_TIMEOUT = 365 * 24 * 60 * 60  # 一年
+REDIS_TIMEOUT = 7 * 24 * 60 * 60  # 一周
+CUBES_REDIS_TIMEOUT = 60 * 60  # 一小时
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/1'
