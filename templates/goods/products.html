@@ -18,26 +18,26 @@
                 </li>
                 {% if sid %}
                     <li>
-                        <a href="/products.html">All</a>
+                        <a href="{% url 'goods:ProductsList' %}">All</a>
                     </li>
                     {% for s in series %}
                         {% if sid == s.id %}
                             <li class="active">
-                                <a href="/products.html?sid={{ s.id }}">{{ s.name }}</a>
+                                <a href="{% url 'goods:ProductsList' %}?sid={{ s.id }}">{{ s.name }}</a>
                             </li>
                         {% else %}
                             <li>
-                                <a href="/products.html?sid={{ s.id }}">{{ s.name }}</a>
+                                <a href="{% url 'goods:ProductsList' %}?sid={{ s.id }}">{{ s.name }}</a>
                             </li>
                         {% endif %}
                     {% endfor %}
                 {% else %}
                     <li class="active">
-                        <a href="/products.html">All</a>
+                        <a href="{% url 'goods:ProductsList' %}">All</a>
                     </li>
                     {% for s in series %}
                         <li>
-                            <a href="/products.html?sid={{ s.id }}">{{ s.name }}</a>
+                            <a href="{% url 'goods:ProductsList' %}?sid={{ s.id }}">{{ s.name }}</a>
                         </li>
                     {% endfor %}
                 {% endif %}
@@ -50,26 +50,26 @@
                 </li>
                 {% if cid %}
                     <li>
-                        <a href="/products.html?sid={{ sid }}">All</a>
+                        <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}">All</a>
                     </li>
                     {% for c in categorys %}
                         {% if cid == c.id %}
                             <li class="active">
-                                <a href="/products.html?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
+                                <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
                             </li>
                         {% else %}
                             <li>
-                                <a href="/products.html?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
+                                <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
                             </li>
                         {% endif %}
                     {% endfor %}
                 {% else %}
                     <li class="active">
-                        <a href="/products.html?sid={{ sid }}">All</a>
+                        <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}">All</a>
                     </li>
                     {% for c in categorys %}
                         <li>
-                            <a href="/products.html?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
+                            <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}&cid={{ c.id }}">{{ c.name }}</a>
                         </li>
                     {% endfor %}
                 {% endif %}
@@ -115,13 +115,13 @@
                                     {% for image in goods.goodsimage %}
                                         {% if image.index == 0 %}
                                             <div class="item active">
-                                                <a href="goods_detail/{{ goods.id }}">
+                                                <a href="{% url 'goods:goods-detail' goods.id %}">
                                                     <img src="{{ MEDIA_URL }}{{ image.image }}" alt="" width="100%">
                                                 </a>
                                             </div>
                                         {% else %}
                                             <div class="item">
-                                                <a href="goods_detail/{{ goods.id }}">
+                                                <a href="{% url 'goods:goods-detail' goods.id %}">
                                                     <img src="{{ MEDIA_URL }}{{ image.image }}" alt="" width="100%">
                                                 </a>
                                             </div>

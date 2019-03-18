@@ -1,6 +1,9 @@
 from Shop.celery import app
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import Visitor
 import json
+from goods.models import Message
 
 
 @app.task
@@ -42,3 +45,14 @@ def views_count_save(request):
         Visitor(**obj).save()
         return True
     return False
+
+
+@app.task
+def send_goods_email(message_data):
+    Message.objects.create(**message_data).save()
+    email_title = 'Test'
+    email_body = '用户名：{}，邮箱：{},对货号{}发送了一个请求,内容:{}，请在第一时间处理。'.format(message_data['name'], message_data['email'],
+                                                                    message_data['inquire'], message_data['message'])
+    send_status = send_mail(email_title, email_body, settings.EMAIL_FROM, [settings.ADMIN_EMAIL])
+    if send_status:
+        pass

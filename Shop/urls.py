@@ -26,17 +26,12 @@ from viewsCount.views import *
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('', IndexView.as_view(), name='index'),
-
     # 文件上传处理函数
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     path('mdeditor/', include('mdeditor.urls')),
-
     path('goods/', include('goods.urls', namespace='goods')),
     # path('backend/', BackendIndex.as_view(), name='backend'),
-
     path('other/', include('other.urls', namespace='other')),
-
-
     path('viewscount.html', ViewsCount.as_view(), name='ViewsCount'),
 ]
 
