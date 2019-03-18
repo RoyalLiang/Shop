@@ -21,8 +21,8 @@
         <nav class="links">
             <ul>
                 <li><a href="/">HOME</a></li>
-                <li><a href="{% url 'ProductsList' %}">PRODUCTS</a></li>
-                <li><a href="{% url 'CompanyIntroduction' %}">ABOUT</a></li>
+                <li><a href="{% url 'goods:ProductsList' %}">PRODUCTS</a></li>
+                <li><a href="{% url 'other:CompanyIntroduction' %}">ABOUT</a></li>
                 <li><a href="#">ENGLISH,click change</a></li>
                 {#                <li><a href="#">Adipiscing</a></li>#}
             </ul>
@@ -31,7 +31,7 @@
             <ul>
                 <li class="search">
                     <a class="fa-search" href="#search">Search</a>
-                    <form id="search" method="get" action="{% url 'Search' %}">
+                    <form id="search" method="get" action="{% url 'goods:Search' %}">
                         <input type="text" name="query" placeholder="Search"/>
                     </form>
                 </li>
@@ -134,7 +134,7 @@
                 <article class="post">
                     <header>
                         <div class="title">
-                            <h2><a href="{% url 'goods-detail' goods.id %}">{{ goods.name }}</a></h2>
+                            <h2><a href="{% url 'goods:goods-detail' goods.id %}">{{ goods.name }}</a></h2>
                             <p>{{ goods.desc }}</p>
                         </div>
                         <div class="meta">
@@ -143,7 +143,7 @@
                                 <img alt='' src={% static 'images/com-logo.png' %}/></a>
                         </div>
                     </header>
-                    <a href="{% url 'goods-detail' goods.id %}" class="image featured">
+                    <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured">
                         <img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"/>
                     </a>
                     <p>
@@ -153,7 +153,7 @@
                     </p>
                     <footer>
                         <ul class="actions">
-                            <li><a href="{% url 'goods-detail' goods.id %}" class="button large">Continue Reading</a>
+                            <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">Continue Reading</a>
                             </li>
                         </ul>
                         <ul class="stats">
