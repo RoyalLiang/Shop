@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} News {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
+{% endblock %}
+{% block body %}
+    <body class="single is-preload">
+{% endblock %}
+{% block content-index %}
+    <div class="sidebar">
+        <div class="container">
+            <ul>
+                <li class="active">
+                    <a href="#">公司新闻</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap wrap-news">
+    <div class="container">
+        <div class="title-in">
+            <h2>新闻</h2>
+            <p>采用天然木材，精细工艺，创造客户需求的各类产品和配件。</p>
+            <p>自然环保，经久耐用，力求尊重追求完美品质的自然前提。</p>
+        </div>
+
+        <div class="row waterfall">
+
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 padding">
+                {% for news in all_news.object_list %}
+                    <div class="item">
+                        <div class="pic">
+                            <a href="{% url 'other:NewsDetail' news.id %}">
+                                <img src="{{ MEDIA_URL }}{{ news.image }}"
+                                     style="display: inline;">
+                            </a>
+                            <a class="date" href="#">
+                                {{ news.add_time }}
+                            </a>
+                        </div>
+                        <div class="note">
+                            <h3><a href="{% url 'other:NewsDetail' news.id %}"
+                                   title="{{ news.title }}">{{ news.title }}</a>
+                            </h3>
+                            <p><a href="{% url 'other:NewsDetail' news.id %}"></a></p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+        <ul class="pager">
+            {% if all_news.has_previous %}
+                <li><a href="?{{ all_news.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+            {% else %}
+                <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% if all_news.has_next %}
+                <li><a href="?{{ all_news.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+            {% else %}
+                <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+{% block left-content %}
+    <section id="footer">
+        <ul class="icons">
+            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
+                href="http://unsplash.com">Unsplash</a>.</p>
+    </section>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="/static/JS/main_.js"></script>
+{% endblock %}

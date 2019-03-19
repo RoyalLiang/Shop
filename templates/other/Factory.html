@@ -35,44 +35,36 @@
             </div>
 
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="item">
-                        <a class="img-box"
-                           href="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_800x0.jpg"
-                           rel="fancybox-product" title="Workshop">
-                            <img class="lazy"
-                                 data-src="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_820x560.jpg"
-                                 alt="Workshop"
-                                 src="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_820x560.jpg"
-                                 style="display: block;">
-                        </a>
-                        <p>Workshop</p>
+                {% for factory in all_factory.object_list %}
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="item">
+                            <a class="img-box"
+                               href="{{ MEDIA_URL }}{{ factory.image }}"
+                               rel="fancybox-product" title="Workshop">
+                                <img
+                                        alt="Workshop"
+                                        src="{{ MEDIA_URL }}{{ factory.image }}"
+                                        style="display: block;">
+                            </a>
+                            <p>{{ factory.title }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="item">
-                        <a class="img-box"
-                           href="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_800x0.jpg"
-                           rel="fancybox-product" title="Workshop">
-                            <img class="lazy"
-                                 data-src="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_820x560.jpg"
-                                 alt="Workshop"
-                                 src="http://www.oradarstorage.com/data/thumb/res/en/20170814/457017224d6fb203.jpg_20170814010355_820x560.jpg"
-                                 style="display: block;">
-                        </a>
-                        <p>Workshop</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-
-            <div class="page">
-                <a href="http://www.oradarstorage.com/factory.html" style="background-color: rgb(246, 244, 236);"></a>
-                <a href="http://www.oradarstorage.com/factory.html?pageid=1" class="active">1</a>
-                <a href="http://www.oradarstorage.com/factory.html?pageid=1"
-                   style="background-color: rgb(246, 244, 236);"></a>
-            </div>
-
         </div>
+        <ul class="pager">
+            {% if all_factory.has_previous %}
+                <li><a href="?{{ all_factory.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+            {% else %}
+                <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% if all_factory.has_next %}
+                <li><a href="?{{ all_factory.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+            {% else %}
+                <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+            {% endif %}
+        </ul>
     </div>
 {% endblock %}
 {% block left-content %}

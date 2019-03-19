@@ -89,7 +89,7 @@
             {% if not goods_list %}
                 <h2>No Products</h2>
             {% endif %}
-            {% for goods in goods_list %}
+            {% for goods in goods_list.object_list %}
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="item" style="background-color: rgb(246, 244, 236);">
                         <div class="p-title">
@@ -134,6 +134,18 @@
                 </div>
             {% endfor %}
         </div>
+        <ul class="pager">
+            {% if goods_list.has_previous %}
+                <li><a href="?{{ goods_list.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+            {% else %}
+                <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+            {% endif %}
+            {% if goods_list.has_next %}
+                <li><a href="?{{ goods_list.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+            {% else %}
+                <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+            {% endif %}
+        </ul>
     </div>
 {% endblock %}
 {% block left-content %}

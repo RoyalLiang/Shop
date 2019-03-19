@@ -38,7 +38,7 @@
 
             <div class="row info">
                 <div class="col-xs-12 col-sm-6 item">
-                    {% for video in videos %}
+                    {% for video in videos.object_list %}
                         <div class="video">
                             <a class="img-box" data-toggle="modal" data-target=".{{ video.title }}">
                                 <img alt="{{ video.title }}"
@@ -62,6 +62,18 @@
                     {% endfor %}
                 </div>
             </div>
+            <ul class="pager">
+                {% if videos.has_previous %}
+                    <li><a href="?{{ videos.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+                {% else %}
+                    <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+                {% endif %}
+                {% if videos.has_next %}
+                    <li><a href="?{{ videos.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+                {% else %}
+                    <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+                {% endif %}
+            </ul>
 
         </div>
     </div>

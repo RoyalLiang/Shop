@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %} Company Introduction {% endblock %}
+{% block title %} News {% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
 {% endblock %}
@@ -12,29 +12,34 @@
         <div class="container">
             <ul>
                 <li class="active">
-                    <a href="#">Company Introduction</a>
-                </li>
-                <li>
-                    <a href="{% url 'other:Factory' %}">Factory</a>
-                </li>
-                <li>
-                    <a href="{% url 'other:Video' %}">Video</a>
-                </li>
-                <li>
-                    <a href="{% url 'other:Customer' %}">Customer</a>
+                    <a href="#">公司新闻</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="wrap wrap-about">
-    <div class="container">
-        <div class="title-in">
-            <h2>{{ company_info.name }}</h2>
-            <p></p>
-        </div>
+    <div class="wrap wrap-news-show">
+        <div class="container">
+            <div class="news-title">
+                <h3>
+                    {{ news.title }}
+                </h3>
+                <span>
+                    {{ news.add_time }}
+                </span>
+            </div>
 
-        <div class="text">
-            {{ company_info.detail|safe }}
+            <div class="text">
+                {{ news.detail|safe }}
+            </div>
+
+            <ul class="pager">
+                {% if pnews %}
+                    <li class="previous"><a href="{% url 'other:NewsDetail' pnews.id %}">&laquo;{{ pnews.title }}</a></li>
+                {% endif %}
+                {% if nnews %}
+                    <li class="next"><a href="{% url 'other:NewsDetail' nnews.id %}">{{ nnews.title }}&raquo;</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 {% endblock %}

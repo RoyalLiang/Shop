@@ -26,77 +26,45 @@
             </ul>
         </div>
     </div>
-    <div class="wrap wrap-video">
+    <div class="wrap wrap-factory">
         <div class="container">
             <div class="title-in">
                 <h2>Customer</h2>
-                <p>Located in Qingdao city,whose factroy ,cao county yuguang crafts co.,ltd covers an area of 4,000
-                    square meters and is located in the beautiful hometown of peony - Heze City, Shandong Province.</p>
+                <p>We have the ability to meet the requirements of different customers to make the products according to
+                    the customers' designs.</p>
             </div>
 
-            <div class="row info">
-                <div class="col-xs-12 col-sm-6 item">
-                    <div class="video">
-                        <a class="img-box">
-                            <img class="lazy"
-                                 data-src="http://www.oradarstorage.com/data/thumb/res/en/20170814/d57389d7e365474e.jpg_20170814010436_620x360.jpg"
-                                 alt="Factory Video"
-                                 src="http://www.oradarstorage.com/data/thumb/res/en/20170814/d57389d7e365474e.jpg_20170814010436_620x360.jpg"
-                                 style="display: block;">
-                        </a>
-                        <div class="video-box">
-                            <a class="play" href="javascript:;"></a>
-                            <iframe class="iframe"
-                                    data-src="https://www.youtube.com/embed/YQ-UBLWu1BY?rel=0&amp;showinfo=0"
-                                    frameborder="0" allowfullscreen=""></iframe>
+            <div class="row">
+                {% for customer in all_customer.object_list %}
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="item">
+                            <a class="img-box"
+                               href="{{ MEDIA_URL }}{{ customer.image }}"
+                               rel="fancybox-product" title="Canton Fair">
+                                <img class="lazy"
+                                     data-src="{{ MEDIA_URL }}{{ customer.image }}"
+                                     alt="Canton Fair"
+                                     src="{{ MEDIA_URL }}{{ customer.image }}"
+                                     style="display: block;">
+                            </a>
+                            <p>{{ customer.title }}</p>
                         </div>
                     </div>
-                    <h3>Factory Video</h3>
-                </div>
-                <div class="col-xs-12 col-sm-6 item">
-                    <div class="video">
-                        <a class="img-box">
-                            <img class="lazy"
-                                 data-src="http://www.oradarstorage.com/data/thumb/res/en/20170915/663dcd7683e7ed54.jpg_20170915104643_620x360.jpg"
-                                 alt="Factory Video"
-                                 src="http://www.oradarstorage.com/data/thumb/res/en/20170915/663dcd7683e7ed54.jpg_20170915104643_620x360.jpg"
-                                 style="display: block;">
-                        </a>
-                        <div class="video-box">
-                            <a class="play" href="javascript:;"></a>
-                            <iframe class="iframe"
-                                    data-src="https://www.youtube.com/embed/uccLgNMwDXk?rel=0&amp;showinfo=0"
-                                    frameborder="0" allowfullscreen=""></iframe>
-                        </div>
-                    </div>
-                    <h3>Factory Video</h3>
-                </div>
-                <div class="col-xs-12 col-sm-6 item">
-                    <div class="video">
-                        <a class="img-box">
-                            <img class="lazy"
-                                 data-src="http://www.oradarstorage.com/data/thumb/res/en/20170915/1bab3136c05e299c.jpg_20170915104933_620x360.jpg"
-                                 alt="Factory Video"
-                                 src="http://www.oradarstorage.com/data/thumb/res/en/20170915/1bab3136c05e299c.jpg_20170915104933_620x360.jpg"
-                                 style="display: block;">
-                        </a>
-                        <div class="video-box">
-                            <a class="play" href="javascript:;"></a>
-                            <iframe class="iframe"
-                                    data-src="https://www.youtube.com/embed/K9gaSjNjj68?rel=0&amp;showinfo=0"
-                                    frameborder="0" allowfullscreen=""></iframe>
-                        </div>
-                    </div>
-                    <h3>Factory Video</h3>
-                </div>
+                {% endfor %}
             </div>
-
-            <div class="page">
-                <a href="http://www.oradarstorage.com/video.html" style="background-color: rgb(246, 244, 236);"></a>
-                <a href="http://www.oradarstorage.com/video.html?pageid=1" class="active">1</a>
-                <a href="http://www.oradarstorage.com/video.html?pageid=1"
-                   style="background-color: rgb(246, 244, 236);"></a>
-            </div>
+            <ul class="pager">
+                {% if all_customer.has_previous %}
+                    <li><a href="?{{ all_customer.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+                {% else %}
+                    <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+                {% endif %}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if all_customer.has_next %}
+                    <li><a href="?{{ all_customer.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+                {% else %}
+                    <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 {% endblock %}

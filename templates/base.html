@@ -23,6 +23,8 @@
                 <li><a href="/">HOME</a></li>
                 <li><a href="{% url 'goods:ProductsList' %}">PRODUCTS</a></li>
                 <li><a href="{% url 'other:CompanyIntroduction' %}">ABOUT</a></li>
+                <li><a href="{% url 'other:News' %}">NEWS</a></li>
+                <li><a href="#">CONTACT</a></li>
                 <li><a href="#">ENGLISH,click change</a></li>
                 {#                <li><a href="#">Adipiscing</a></li>#}
             </ul>
@@ -153,7 +155,8 @@
                     </p>
                     <footer>
                         <ul class="actions">
-                            <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">Continue Reading</a>
+                            <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">Continue
+                                Reading</a>
                             </li>
                         </ul>
                         <ul class="stats">
@@ -165,33 +168,20 @@
                 </article>
             {% endfor %}
             <!-- Pagination -->
-            {#            <ul class="actions pagination">#}
-            {#            &nbsp;&nbsp;&nbsp;&nbsp;#}
-            {#                {% if all_goods.has_previous %}#}
-            {#                    <li><a href="?{{ all_goods.previous_page_number.querystring }}" class="button large previous">PREVIOUS#}
-            {#                        PAGE</a></li>#}
-            {#                {% else %}#}
-            {#                    <li><a href="" class="disabled button large previous">PREVIOUS PAGE</a></li>#}
-            {#                {% endif %}#}
-            {#                {% for page in all_goods.pages %}#}
-            {#                    {% if page %}#}
-            {#                        {% ifequal page all_goods.number %}#}
-            {#                            <li><span class="current page">{{ page }}</span></li>#}
-            {#                        {% else %}#}
-            {#                            <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>#}
-            {#                        {% endifequal %}#}
-            {#                    {% else %}#}
-            {#                        ...#}
-            {#                    {% endif %}#}
-            {#                {% endfor %}#}
-            {#                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#}
-            {#                {% if all_goods.has_next %}#}
-            {#                    <li><a href="?{{ all_goods.next_page_number.querystring }}" class="button large next">NEXT PAGE</a>#}
-            {#                    </li>#}
-            {#                {% else %}#}
-            {#                    <li><a href="" class="disabled button large next">NEXT PAGE</a></li>#}
-            {#                {% endif %}#}
-            {#            </ul>#}
+            <ul class="pager">
+                {% if all_goods.has_previous %}
+                    <li><a href="?{{ all_goods.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+                {% else %}
+                    <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+                {% endif %}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if all_goods.has_next %}
+                    <li><a href="?{{ all_goods.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+                {% else %}
+                    <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+                {% endif %}
+            </ul>
+
 
         </div>
     {% endblock %}

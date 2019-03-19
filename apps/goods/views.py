@@ -21,7 +21,6 @@ class IndexView(View):
         except PageNotAnInteger:
             page = 1
         all_goods = cache.get('all_goods')
-        print(all_goods)
         if not all_goods:
             all_goods = Goods.objects.all()
             cache.set('all_goods', all_goods, settings.CUBES_REDIS_TIMEOUT)
@@ -31,7 +30,7 @@ class IndexView(View):
                 'markdown.extensions.codehilite',
                 'markdown.extensions.toc',
             ])
-        p = Paginator(all_goods, request=request, per_page=1)
+        p = Paginator(all_goods, request=request, per_page=5)
         all_goods = p.page(page)
         all_category = cache.get('all_category')
         if not all_category:
@@ -107,6 +106,10 @@ class GoodsDetail(View):
 
 class ProductsList(View):
     def get(self, request):
+        try:
+            page = request.GET.get('page', 1)
+        except PageNotAnInteger:
+            page = 1
         sid = request.GET.get('sid', None)
         cid = request.GET.get('cid', None)
         series = cache.get('all_series')
@@ -149,6 +152,8 @@ class ProductsList(View):
             cid = None
         for goods in goods_list:
             goods.goodsimage = list(goods.goodsimage_set.all())
+        p = Paginator(goods_list, request=request, per_page=5)
+        goods_list = p.page(page)
         return render(request, 'goods/products.html',
                       {
                           'sid': sid,
@@ -162,6 +167,10 @@ class ProductsList(View):
 
 class Search(View):
     def get(self, request):
+        try:
+            page = request.GET.get('page', 1)
+        except PageNotAnInteger:
+            page = 1
         query = request.GET.get('query', None)
         goods_list = []
         series = GoodsSeries.objects.filter(name__icontains=query).all()
@@ -178,6 +187,8 @@ class Search(View):
         goods_list = list(set(goods_list))
         for goods in goods_list:
             goods.goodsimage = list(goods.goodsimage_set.all())
+        p = Paginator(goods_list, request=request, per_page=5)
+        goods_list = p.page(page)
         return render(request, 'goods/products.html',
                       {
                           'sid': None,
