@@ -4,6 +4,8 @@ from xadmin import views
 import os
 from Shop import settings
 from utils import auth
+from django.core.cache import cache
+from django.conf import settings
 
 
 class BaseSettings:
@@ -22,6 +24,13 @@ class GoodsAdmin:
     search_fields = ['name', 'goods_sn']
     list_filter = ['add_time']
     style_fields = {'attr': 'm2m_transfer'}
+
+    def save_models(self):
+        obj = self.new_obj
+        all_goods = cache.get('all_goods')
+        if all_goods:
+            cache.set('all_goods', list(all_goods).append(obj), settings.CUBES_REDIS_TIMEOUT)
+        obj.save()
 
 
 class GoodsCategoryAdmin:

@@ -1,7 +1,6 @@
 from django.urls import path
 
-from .views import GoodsDetail, IndexView, ProductsList, Search, AddMessage
-from .models import Video
+from .views import GoodsDetail, ProductsList, Search, AddMessage
 
 app_name = 'goods'
 urlpatterns = [

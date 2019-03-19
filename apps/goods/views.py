@@ -4,7 +4,7 @@ from django.views import View
 from django.db.models import Q
 from django.core.cache import cache
 from .models import *
-from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
+from pure_pagination import Paginator, PageNotAnInteger
 import markdown
 import json
 from viewsCount.tasks import send_goods_email
@@ -21,29 +21,26 @@ class IndexView(View):
         except PageNotAnInteger:
             page = 1
         all_goods = cache.get('all_goods')
+        print(all_goods)
         if not all_goods:
-            all_goods = Goods.objects.values('id', 'category', 'name', 'goods_front_img', 'goods_sn', 'desc',
-                                             'detail', ).all()
+            all_goods = Goods.objects.all()
             cache.set('all_goods', all_goods, settings.CUBES_REDIS_TIMEOUT)
         for goods in all_goods:
-            goods['detail'] = markdown.markdown(goods['detail'].replace("\r\n", '  \n'), extensions=[
+            goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[
                 'markdown.extensions.extra',
                 'markdown.extensions.codehilite',
                 'markdown.extensions.toc',
             ])
-
         p = Paginator(all_goods, request=request, per_page=1)
-
         all_goods = p.page(page)
         all_category = cache.get('all_category')
         if not all_category:
-            all_category = GoodsCategory.objects.values('id', 'name', 'series').all()
-            cache.set('all_category', all_category)
+            all_category = GoodsCategory.objects.all()
+            cache.set('all_category', all_category, settings.CUBES_REDIS_TIMEOUT)
         all_banner = cache.get('all_banner')
         if not all_banner:
-            all_banner = Banner.objects.values('id', 'title', 'image', 'url', 'index', ).order_by('index')
-            cache.set('all_banner', all_banner)
-
+            all_banner = Banner.objects.order_by('index')
+            cache.set('all_banner', all_banner, settings.CUBES_REDIS_TIMEOUT)
         return render(request, 'index.html', {
             'all_category': all_category,
             'all_goods': all_goods,
@@ -55,43 +52,37 @@ class GoodsDetail(View):
     def get(self, request, goods_id):
         goods = cache.get('goods_%s' % goods_id)
         if not goods:
-            goods = Goods.objects.filter(id=goods_id).values('id', 'category', 'name', 'goods_front_img', 'goods_sn',
-                                                             'desc',
-                                                             'detail', ).first()
-            cache.set('goods_%s' % goods_id, goods)
-        goods['detail'] = markdown.markdown(goods['detail'].replace("\r\n", '  \n'), extensions=[
+            goods = Goods.objects.filter(id=goods_id).first()
+            cache.set('goods_%s' % goods_id, goods, settings.CUBES_REDIS_TIMEOUT)
+        goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
             'markdown.extensions.toc',
         ])
-        current_category = cache.get('category_%s' % goods['category'])
+        current_category = cache.get('category_by_g%s' % goods_id)
         if not current_category:
-            current_category = GoodsCategory.objects.filter(id=goods['category']).values('id', 'name', 'series').first()
-            cache.set('category_%s' % goods['category'], current_category)
-
-        current_series = cache.get('series_%s' % current_category['series'])
+            current_category = goods.category
+            cache.set('category_by_g%s' % goods_id, current_category, settings.CUBES_REDIS_TIMEOUT)
+        current_series = cache.get('series_by_c%s' % current_category.id)
         if not current_series:
-            current_series = GoodsSeries.objects.filter(id=current_category['series']).values('id', 'name', ).first()
-            cache.set('series_%s' % current_category['series'], current_series)
-
+            current_series = current_category.series
+            cache.set('series_by_c%s' % current_category.id, current_series, settings.CUBES_REDIS_TIMEOUT)
         goods_banners = cache.get('goods_banners_%s' % goods_id)
         if not goods_banners:
-            goods_banners = GoodsImage.objects.filter(goods__id=goods_id).values('id', 'image', 'image_url',
-                                                                                 'index', ).all()
-            cache.set('goods_banners_%s' % goods_id, goods_banners)
-
+            goods_banners = goods.goodsimage_set.all()
+            cache.set('goods_banners_%s' % goods_id, goods_banners, settings.CUBES_REDIS_TIMEOUT)
         goods_attrs = cache.get('goods_attrs_%s' % goods_id)
         if not goods_attrs:
-            goods_attrs = GoodsAttributes.objects.filter(goods__id=goods_id).values('id', 'name', 'value').all()
-            cache.set('goods_attrs_%s' % goods_id, goods_attrs)
+            goods_attrs = GoodsAttributes.objects.filter(goods__id=goods_id).all()
+            cache.set('goods_attrs_%s' % goods_id, goods_attrs, settings.CUBES_REDIS_TIMEOUT)
         return render(request, 'goods/goods-detail.html', {
             'goods': goods,
             'goods_banners': goods_banners,
             'goods_attrs': goods_attrs,
-            'sid': current_series['id'],
-            'cid': current_category['id'],
-            'sname': current_series['name'],
-            'cname': current_category['name'],
+            'sid': current_series.id,
+            'cid': current_category.id,
+            'sname': current_series.name,
+            'cname': current_category.name,
         })
 
 
@@ -120,39 +111,39 @@ class ProductsList(View):
         cid = request.GET.get('cid', None)
         series = cache.get('all_series')
         if not series:
-            series = GoodsSeries.objects.values('id', 'name', ).all()
-            cache.set('all_series', series)
+            series = GoodsSeries.objects.all()
+            cache.set('all_series', series, settings.CUBES_REDIS_TIMEOUT)
         if cid and cid.isdigit():
             cid = int(cid)
             current_category = cache.get('category_%s' % cid)
             if not current_category:
-                current_category = GoodsCategory.objects.filter(id=cid).values('id', 'name', 'series').first()
-                cache.set('category_%s' % cid, current_category)
-            sid = current_category['series']
+                current_category = GoodsCategory.objects.filter(id=cid).first()
+                cache.set('category_%s' % cid, current_category, settings.CUBES_REDIS_TIMEOUT)
+            sid = current_category.series.id
             categorys = cache.get('categorys_by_s%s' % sid)
             if not categorys:
-                categorys = GoodsCategory.objects.filter(series__id=sid).values('id', 'name', 'series').all()
+                categorys = GoodsCategory.objects.filter(series__id=int(sid)).all()
                 cache.set('categorys_by_s%s' % sid, categorys)
-            goods_list = list(Goods.objects.filter(category__id=cid).prefetch_related('goodsimage_set'))
+            goods_list = list(Goods.objects.filter(category__id=int(cid)).prefetch_related('goodsimage_set'))
         elif sid and sid.isdigit():
             sid = int(sid)
             categorys = cache.get('categorys_by_s%s' % sid)
             if not categorys:
-                categorys = GoodsCategory.objects.filter(series__id=sid).values('id', 'name', 'series').all()
-                cache.set('categorys_by_s%s' % sid, categorys)
+                categorys = GoodsCategory.objects.filter(series__id=int(sid)).all()
+                cache.set('categorys_by_s%s' % sid, categorys, settings.CUBES_REDIS_TIMEOUT)
             goods_list = []
             for category in categorys:
                 goods_list.extend(
-                    list(Goods.objects.filter(category__id=category['id']).prefetch_related('goodsimage_set')))
+                    list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set')))
         else:
             categorys = cache.get('all_category')
             if not categorys:
-                categorys = GoodsCategory.objects.values('id', 'name', 'series').all()
-                cache.set('all_category', categorys)
+                categorys = GoodsCategory.objects.all()
+                cache.set('all_category', categorys, settings.CUBES_REDIS_TIMEOUT)
             goods_list = []
             for category in categorys:
                 goods_list.extend(
-                    list(Goods.objects.filter(category__id=category['id']).prefetch_related('goodsimage_set')))
+                    list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set')))
             categorys = None
             sid = None
             cid = None
@@ -204,12 +195,5 @@ class AddMessage(View):
 
     @csrf_exempt
     def post(self, request):
-        message_data = dict()
-        message_data['inquire'] = request.POST.get('inquire', None)
-        message_data['name'] = request.POST.get('name', None)
-        message_data['phone'] = request.POST.get('phone', None)
-        message_data['email'] = request.POST.get('email', None)
-        message_data['address'] = request.POST.get('address', None)
-        message_data['message'] = request.POST.get('message', None)
-        send_goods_email(message_data)
+        send_goods_email(request)
         return HttpResponse(json.dumps({'status': 'ok'}))

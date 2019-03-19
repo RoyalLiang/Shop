@@ -48,11 +48,18 @@ def views_count_save(request):
 
 
 @app.task
-def send_goods_email(message_data):
-    Message.objects.create(**message_data).save()
+def send_goods_email(request):
+    inquire = request.POST.get('inquire', None)
+    name = request.POST.get('name', None)
+    phone = request.POST.get('phone', None)
+    email = request.POST.get('email', None)
+    address = request.POST.get('address', None)
+    message = request.POST.get('message', None)
+    Message.objects.create(inquire=inquire, name=name, phone=phone, email=email, address=address,
+                           message=message ).save()
     email_title = 'Test'
-    email_body = '用户名：{}，邮箱：{},对货号{}发送了一个请求,内容:{}，请在第一时间处理。'.format(message_data['name'], message_data['email'],
-                                                                    message_data['inquire'], message_data['message'])
+    email_body = '用户名：{}，邮箱：{},对货号{}发送了一个请求,内容:{}，请在第一时间处理。'.format(name, email,
+                                                                    inquire, message)
     send_status = send_mail(email_title, email_body, settings.EMAIL_FROM, [settings.ADMIN_EMAIL])
     if send_status:
         pass
