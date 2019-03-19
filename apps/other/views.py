@@ -1,10 +1,8 @@
 from django.shortcuts import render, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 from goods.views import Video as V
-import json
-from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
-import markdown
+from django.core.cache import cache
+from django.conf import settings
 
 
 # Create your views here.
@@ -17,7 +15,10 @@ class CompanyIntroduction(View):
 
 class Video(View):
     def get(self, request):
-        videos = V.objects.all()
+        videos = cache.get('all_videos')
+        if not videos:
+            videos = V.objects.all()
+            cache.set('all_videos', videos, settings.CUBES_REDIS_TIMEOUT)
         return render(request, 'other/Video.html',
                       {'videos': videos})
 
