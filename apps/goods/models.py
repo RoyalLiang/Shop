@@ -47,6 +47,10 @@ class Goods(models.Model):
     detail = MDTextField(verbose_name='商品详情', default='', blank=True)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
     attr = models.ManyToManyField('GoodsAttributes', related_name='goods', verbose_name='商品属性', blank=True)
+    title = models.CharField(max_length=100, blank=True, verbose_name='title', default='')
+    keywords = models.CharField(max_length=100, blank=True, verbose_name='keywords', default='')
+    description = models.CharField(max_length=100, blank=True, verbose_name='description', default='')
+    leval = models.IntegerField(verbose_name='权重', default=0, blank=True)
 
     class Meta:
         verbose_name = '商品'

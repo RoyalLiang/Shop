@@ -22,8 +22,15 @@ class CompanyIntroduction_view(View):
             'markdown.extensions.codehilite',
             'markdown.extensions.toc',
         ])
+        index_info = cache.get('index_info')
+        if not index_info:
+            index_info = Index.objects.last()
+            cache.set('index_info', index_info)
+        index_info = {'title': 'CompanyIntroduction', 'description': index_info.description,
+                      'keywords': index_info.keywords}
         return render(request, 'other/CompanyIntroduction.html', {
-            'company_info': company_info
+            'company_info': company_info,
+            'index_info': index_info
         })
 
 
@@ -39,8 +46,14 @@ class Video_view(View):
             cache.set('all_videos', videos, settings.CUBES_REDIS_TIMEOUT)
         p = Paginator(videos, request=request, per_page=3)
         videos = p.page(page)
+        index_info = cache.get('index_info')
+        if not index_info:
+            index_info = Index.objects.last()
+            cache.set('index_info', index_info)
+        index_info = {'title': 'Video', 'description': index_info.description,
+                      'keywords': index_info.keywords}
         return render(request, 'other/Video.html',
-                      {'videos': videos})
+                      {'videos': videos, 'index_info': index_info})
 
 
 class Factory_view(View):
@@ -55,8 +68,15 @@ class Factory_view(View):
             cache.set('all_factory', all_factory, settings.CUBES_REDIS_TIMEOUT)
         p = Paginator(all_factory, request=request, per_page=3)
         all_factory = p.page(page)
+        index_info = cache.get('index_info')
+        if not index_info:
+            index_info = Index.objects.last()
+            cache.set('index_info', index_info)
+        index_info = {'title': 'Factory', 'description': index_info.description,
+                      'keywords': index_info.keywords}
         return render(request, 'other/Factory.html', {
-            'all_factory': all_factory
+            'all_factory': all_factory,
+            'index_info': index_info
         })
 
 
@@ -72,8 +92,15 @@ class Customer_view(View):
             cache.set('all_customer', all_customer, settings.CUBES_REDIS_TIMEOUT)
         p = Paginator(all_customer, request=request, per_page=3)
         all_customer = p.page(page)
+        index_info = cache.get('index_info')
+        if not index_info:
+            index_info = Index.objects.last()
+            cache.set('index_info', index_info)
+        index_info = {'title': 'Customer', 'description': index_info.description,
+                      'keywords': index_info.keywords}
         return render(request, 'other/Customer.html', {
-            'all_customer': all_customer
+            'all_customer': all_customer,
+            'index_info': index_info
         })
 
 
@@ -89,8 +116,15 @@ class News_view(View):
             cache.set('all_news', all_news, settings.CUBES_REDIS_TIMEOUT)
         p = Paginator(all_news, request=request, per_page=3)
         all_news = p.page(page)
+        index_info = cache.get('index_info')
+        if not index_info:
+            index_info = Index.objects.last()
+            cache.set('index_info', index_info)
+        index_info = {'title': 'News', 'description': index_info.description,
+                      'keywords': index_info.keywords}
         return render(request, 'other/NEWS.html', {
-            'all_news': all_news
+            'all_news': all_news,
+            'index_info': index_info
         })
 
 
@@ -113,8 +147,15 @@ class News_detail(View):
             'markdown.extensions.codehilite',
             'markdown.extensions.toc',
         ])
+        index_info = cache.get('index_info')
+        if not index_info:
+            index_info = Index.objects.last()
+            cache.set('index_info', index_info)
+        index_info = {'title': 'News:%s' % news.title, 'description': index_info.description,
+                      'keywords': index_info.keywords}
         return render(request, 'other/NEWS_detail.html', {
             'pnews': pnews,
             'news': news,
             'nnews': nnews,
+            'index_info': index_info
         })

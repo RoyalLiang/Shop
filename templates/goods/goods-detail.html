@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %} DETAIL-GOODS {% endblock %}
+{% block title %}{{ goods.title }}{% endblock %}
+{% block description %}{{ goods.description }}{% endblock %}
+{% block keywords %}{{ goods.keywords }}{% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
 {% endblock %}
@@ -14,7 +16,8 @@
             <div class="location">
                 <a style="text-decoration : none;" href="{% url 'index' %}">HOME</a>
                 <a style="text-decoration : none;" href="{% url 'goods:ProductsList' %}">PRODUCTS</a>
-                <a style="text-decoration : none;" href="{% url 'goods:ProductsList' %}?sid={{ sid }}&cid={{ cid }}">{{ sname }}&nbsp;{{ cname }}</a>
+                <a style="text-decoration : none;"
+                   href="{% url 'goods:ProductsList' %}?sid={{ sid }}&cid={{ cid }}">{{ sname }}&nbsp;{{ cname }}</a>
             </div>
 
             <div class="pro-show">
@@ -87,11 +90,15 @@
                                          class="at-resp-share-element at-style-responsive addthis-smartlayers addthis-animated at4-show"
                                          aria-labelledby="at-e512b857-762e-488d-8c11-f32148e4075b" role="region">
                                         <ul class="icons">
-                                            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-                                            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-                                            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                                            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a>
+                                            </li>
+                                            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a>
+                                            </li>
+                                            <li><a href="#" class="fa-instagram"><span
+                                                    class="label">Instagram</span></a></li>
                                             <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-                                            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                                            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a>
+                                            </li>
                                         </ul>
 
                                     </div>
@@ -151,7 +158,8 @@
                                       style="background-color: rgb(246, 244, 236);"></textarea>
                         </div>
                         <div class="col-xs-12">
-                            <input type="hidden" name="id" value="{{ goods.id }}" style="background-color: rgb(246, 244, 236);">
+                            <input type="hidden" name="id" value="{{ goods.id }}"
+                                   style="background-color: rgb(246, 244, 236);">
                             <button class="send submit"><span>SUBMIT</span></button>
                         </div>
                     </form>

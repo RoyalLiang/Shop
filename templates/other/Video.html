@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %} Company Introduction {% endblock %}
+{% block title %}{{ index_info.title }}{% endblock %}
+{% block description %}{{ index_info.description }}{% endblock %}
+{% block keywords %}{{ index_info.keywords }}{% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
     <link href="/static/CSS/video-js.min.css" rel="stylesheet">

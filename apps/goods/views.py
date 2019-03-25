@@ -23,7 +23,7 @@ class IndexView(View):
             page = 1
         all_goods = cache.get('all_goods')
         if not all_goods:
-            all_goods = Goods.objects.all()
+            all_goods = Goods.objects.all().order_by('-leval')
             cache.set('all_goods', all_goods, settings.CUBES_REDIS_TIMEOUT)
         for goods in all_goods:
             goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[
@@ -88,25 +88,6 @@ class GoodsDetail(View):
         })
 
 
-# class GoodsGetList(View):
-#     def get(self, request):
-#         try:
-#             page = request.GET.get('page', 1)
-#         except PageNotAnInteger:
-#             page = 1
-#         all_goods = Goods.objects.all()
-#         for goods in all_goods:
-#             goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[
-#                 'markdown.extensions.extra',
-#                 'markdown.extensions.codehilite',
-#                 'markdown.extensions.toc',
-#             ])
-#
-#         p = Paginator(all_goods, request=request, per_page=1)
-#         all_goods = p.page(page)
-#         return render(request, 'backend/goods-list.html', {'all_goods': all_goods})
-
-
 class ProductsList(View):
     def get(self, request):
         try:
@@ -126,6 +107,7 @@ class ProductsList(View):
                 current_category = GoodsCategory.objects.filter(id=cid).first()
                 cache.set('category_%s' % cid, current_category, settings.CUBES_REDIS_TIMEOUT)
             sid = current_category.series.id
+            query = '%s-%s' % (current_category.series.name, current_category.name)
             categorys = cache.get('categorys_by_s%s' % sid)
             if not categorys:
                 categorys = GoodsCategory.objects.filter(series__id=int(sid)).all()
@@ -141,6 +123,7 @@ class ProductsList(View):
             for category in categorys:
                 goods_list.extend(
                     list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set')))
+            query = GoodsSeries.objects.filter(id=sid).first().name
         else:
             categorys = cache.get('all_category')
             if not categorys:
@@ -153,10 +136,17 @@ class ProductsList(View):
             categorys = None
             sid = None
             cid = None
+            query = 'All'
         for goods in goods_list:
             goods.goodsimage = list(goods.goodsimage_set.all())
         p = Paginator(goods_list, request=request, per_page=5)
         goods_list = p.page(page)
+        index_info = cache.get('index_info')
+        if not index_info:
+            index_info = Index.objects.last()
+            cache.set('index_info', index_info)
+        index_info = {'title': 'Products-%s' % query, 'description': index_info.description,
+                      'keywords': index_info.keywords}
         return render(request, 'goods/products.html',
                       {
                           'sid': sid,
@@ -164,7 +154,7 @@ class ProductsList(View):
                           'categorys': categorys,
                           'series': series,
                           'goods_list': goods_list,
-                          'title': 'Products',
+                          'index_info': index_info,
                       })
 
 
@@ -192,6 +182,12 @@ class Search(View):
             goods.goodsimage = list(goods.goodsimage_set.all())
         p = Paginator(goods_list, request=request, per_page=5)
         goods_list = p.page(page)
+        index_info = cache.get('index_info')
+        if not index_info:
+            index_info = Index.objects.last()
+            cache.set('index_info', index_info)
+        index_info = {'title': 'Search:%s' % query, 'description': index_info.description,
+                      'keywords': index_info.keywords}
         return render(request, 'goods/products.html',
                       {
                           'sid': None,
@@ -199,7 +195,7 @@ class Search(View):
                           'categorys': None,
                           'series': None,
                           'goods_list': goods_list,
-                          'title': 'Search',
+                          'index_info': index_info,
                       })
 
 
