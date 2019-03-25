@@ -9,6 +9,7 @@ import markdown
 import json
 from viewsCount.tasks import send_goods_email
 from django.conf import settings
+from other.models import Index
 
 
 # Create your views here.
@@ -40,10 +41,12 @@ class IndexView(View):
         if not all_banner:
             all_banner = Banner.objects.order_by('index')
             cache.set('all_banner', all_banner, settings.CUBES_REDIS_TIMEOUT)
+        index_info = Index.objects.last()
         return render(request, 'index.html', {
             'all_category': all_category,
             'all_goods': all_goods,
-            'all_banner': all_banner
+            'all_banner': all_banner,
+            'index_info': index_info
         })
 
 

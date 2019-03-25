@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'xadmin',
     'mdeditor',
     'crispy_forms',
-    'backend.apps.BackendConfig',
     'other.apps.OtherConfig',
     'viewsCount.apps.viewsCountConfig',
 

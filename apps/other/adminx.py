@@ -20,7 +20,12 @@ class CustomerAdmin:
     list_display = ['title', 'image', ]
 
 
+class IndexAdmin:
+    list_display = ['title', 'keywords', 'description']
+
+
 xadmin.site.register(News, NewsAdmin)
 xadmin.site.register(CompanyIntroduction, CompanyIntroductionAdmin)
 xadmin.site.register(Factory, FactoryAdmin)
 xadmin.site.register(Customer, CustomerAdmin)
+xadmin.site.register(Index, IndexAdmin)
