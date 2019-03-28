@@ -22,6 +22,7 @@ class IndexView(View):
         except PageNotAnInteger:
             page = 1
         all_goods = cache.get('all_goods')
+        hot_goods = Goods.objects.all().order_by('-leval')[:3]
         if not all_goods:
             all_goods = Goods.objects.all().order_by('-leval')
             cache.set('all_goods', all_goods, settings.CUBES_REDIS_TIMEOUT)
@@ -31,7 +32,7 @@ class IndexView(View):
                 'markdown.extensions.codehilite',
                 'markdown.extensions.toc',
             ])
-        p = Paginator(all_goods, request=request, per_page=5)
+        p = Paginator(all_goods, request=request, per_page=3)
         all_goods = p.page(page)
         all_category = cache.get('all_category')
         if not all_category:
@@ -46,7 +47,8 @@ class IndexView(View):
             'all_category': all_category,
             'all_goods': all_goods,
             'all_banner': all_banner,
-            'index_info': index_info
+            'index_info': index_info,
+            'hot_goods': hot_goods,
         })
 
 

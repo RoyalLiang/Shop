@@ -29,6 +29,7 @@
                 <li><a href="{% url 'other:News' %}">NEWS</a></li>
                 <li><a href="#">CONTACT</a></li>
                 <li><a href="#">ENGLISH,click change</a></li>
+                {#                <li><a href="#">Adipiscing</a></li>#}
             </ul>
         </nav>
         <nav class="main">
@@ -115,15 +116,13 @@
                         {% if banner.index == 0 %}
                             <div class="item active">
                                 <a href="{{ banner.url }}">
-                                    <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="{{ banner.alt }}"
-                                         title="{{ banner.title }}" width="100%">
+                                    <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="" width="100%">
                                 </a>
                             </div>
                         {% else %}
                             <div class="item">
                                 <a href="{{ banner.url }}">
-                                    <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="{{ banner.alt }}"
-                                         title="{{ banner.title }}" width="100%">
+                                    <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="" width="100%">
                                 </a>
                             </div>
                         {% endif %}
@@ -150,8 +149,7 @@
                         </div>
                     </header>
                     <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured">
-                        <img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}" alt="{{ goods.desc }}"
-                             title="{{ banner.name }}"/>
+                        <img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"/>
                     </a>
                     <p>
                         {#                                    {% autoescape off %}#}
@@ -159,17 +157,17 @@
                         {#                                    {% endautoescape %}#}
                     </p>
                     <footer>
-                        <ul class=" actions">
-                        <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">Continue
-                            Reading</a>
-                        </li>
+                        <ul class="actions">
+                            <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">Continue
+                                Reading</a>
+                            </li>
                         </ul>
                         <ul class="stats">
                             <li><a href="#">General</a></li>
                             <li><a href="#" class="icon fa-heart">28</a></li>
                             <li><a href="#" class="icon fa-comment">128</a></li>
                         </ul>
-                        </footer>
+                    </footer>
                 </article>
             {% endfor %}
             <!-- Pagination -->

@@ -1,9 +1,12 @@
 from django.shortcuts import render, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from pure_pagination import Paginator, PageNotAnInteger
 from django.views import View
 from goods.views import Video
 from django.core.cache import cache
 from django.conf import settings
+
+from viewsCount.tasks import send_contact_email
 from .models import *
 import markdown
 
@@ -159,3 +162,19 @@ class News_detail(View):
             'nnews': nnews,
             'index_info': index_info
         })
+
+
+class ContactView(View):
+    """
+    联系我们
+    """
+    def get(self, request):
+        com_message = CompanyIntroduction.objects.get(pk=1)
+        return render(request, 'contact.html', {
+            'com_message': com_message,
+        })
+
+    @csrf_exempt
+    def post(self, request):
+        send_contact_email(request)
+        return HttpResponse('{"status": "success"}', content_type='application/json')

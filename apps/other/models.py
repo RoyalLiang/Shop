@@ -28,6 +28,10 @@ class CompanyIntroduction(models.Model):
     '''
     name = models.CharField(max_length=100, verbose_name='公司名称', blank=True)
     detail = MDTextField(verbose_name='详细信息')
+    addr = models.CharField(max_length=200, default='', verbose_name='公司地址', blank=True, null=True)
+    tel = models.CharField(max_length=20, default='', verbose_name='公司电话', blank=True, null=True)
+    email = models.EmailField(default='', verbose_name='公司邮箱', blank=True, null=True)
+    web = models.CharField(max_length=50, default='', verbose_name='公司网站', blank=True, null=True)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='发布时间')
 
     class Meta:
@@ -72,9 +76,9 @@ class Index(models.Model):
     '''
     首页关键词
     '''
-    title = models.CharField(max_length=100, blank=True, verbose_name='title')
-    keywords = models.CharField(max_length=100, blank=True, verbose_name='keywords')
-    description = models.CharField(max_length=100, blank=True, verbose_name='description')
+    title = models.CharField(max_length=100, blank=True, verbose_name='title', default='', null=True)
+    keywords = models.CharField(max_length=100, blank=True, verbose_name='keywords', default='', null=True)
+    description = models.CharField(max_length=100, blank=True, verbose_name='description', default='', null=True)
 
     class Meta:
         verbose_name = '首页关键词'
@@ -82,3 +86,23 @@ class Index(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UserContactInfo(models.Model):
+    """
+    用户联系信息
+    """
+    name = models.CharField(max_length=100, blank=True, verbose_name='昵称', default='')
+    phone = models.CharField(max_length=100, blank=True, null=True, verbose_name='联系电话', default='')
+    email = models.EmailField(max_length=100, blank=True, verbose_name='邮箱', default='')
+    country = models.CharField(max_length=100, blank=True, verbose_name='国家', default='')
+    message = models.TextField(verbose_name='联系内容', blank=True, default='', )
+    add_time = models.DateTimeField(default=datetime.now, verbose_name='联系时间')
+
+    class Meta:
+        verbose_name = '联系我们'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name + self.country + '，发起了联系'
+
