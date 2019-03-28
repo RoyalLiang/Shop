@@ -51,11 +51,11 @@
     <section id="menu">
 
         <!-- Search -->
-        {#        <section>#}
-        {#            <form class="search" method="get" action="#">#}
-        {#                <input type="text" name="query" placeholder="Search"/>#}
-        {#            </form>#}
-        {#        </section>#}
+        <section>
+            <form class="search" method="get" action="{% url 'goods:Search' %}">
+                <input type="text" name="query" placeholder="Search"/>
+            </form>
+        </section>
 
         <!-- Links -->
         <section>

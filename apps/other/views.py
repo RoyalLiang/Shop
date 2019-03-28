@@ -168,6 +168,7 @@ class ContactView(View):
     """
     联系我们
     """
+
     def get(self, request):
         com_message = CompanyIntroduction.objects.get(pk=1)
         return render(request, 'contact.html', {
@@ -176,5 +177,11 @@ class ContactView(View):
 
     @csrf_exempt
     def post(self, request):
-        send_contact_email(request)
+        data = {}
+        data['name'] = request.POST.get('name', None)
+        data['phone'] = request.POST.get('phone', None)
+        data['email'] = request.POST.get('email', None)
+        data['country'] = request.POST.get('country', None)
+        data['message'] = request.POST.get('message', None)
+        send_contact_email.delay(data)
         return HttpResponse('{"status": "success"}', content_type='application/json')

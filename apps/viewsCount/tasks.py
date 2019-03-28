@@ -56,20 +56,13 @@ def send_goods_email(message):
     if send_status:
         pass
 
+
 @app.task
-def send_contact_email(request):
-    # inquire = request.POST.get('inquire', None)
-    name = request.POST.get('name', None)
-    phone = request.POST.get('phone', None)
-    email = request.POST.get('email', None)
-    country = request.POST.get('country', None)
-    message = request.POST.get('message', None)
-    UserContactInfo.objects.create(name=name, phone=phone, email=email, country=country,
-                                   message=message).save()
+def send_contact_email(data):
+    UserContactInfo.objects.create(**data).save()
     email_title = 'Test'
-    email_body = '用户名：{}，邮箱：{},联系我们了,所属国家{},内容:{}，请在第一时间处理。'.format(name, email, country,
-                                                                    message)
+    email_body = '用户名：{}，邮箱：{},联系我们了,所属国家{},内容:{}，请在第一时间处理。'.format(data['name'], data['email'], data['country'],
+                                                                    data['message'])
     send_status = send_mail(email_title, email_body, settings.EMAIL_FROM, [settings.ADMIN_EMAIL])
     if send_status:
         pass
-
