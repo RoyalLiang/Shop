@@ -42,14 +42,14 @@
                                             {% if banner.index == 0 %}
                                                 <div class="item active">
                                                     <a href="{{ banner.url }}">
-                                                        <img src="{{ MEDIA_URL }}{{ banner.image }}" alt=""
+                                                        <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="{{ banner.alt }}" title="{{ banner.title }}"
                                                              width="100%">
                                                     </a>
                                                 </div>
                                             {% else %}
                                                 <div class="item">
                                                     <a href="{{ banner.url }}">
-                                                        <img src="{{ MEDIA_URL }}{{ banner.image }}" alt=""
+                                                        <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="{{ banner.alt }}" title="{{ banner.title }}"
                                                              width="100%">
                                                     </a>
                                                 </div>
@@ -132,7 +132,6 @@
                         you back as soon as possible.</p>
                     <p>* Required field.</p>
                     <form class="row feedback-form" onsubmit="return false;" method="post">
-                        {% csrf_token %}
                         <div class="col-xs-12 read">
                             <input type="text" value="{{ goods.goods_sn }}" readonly="" name="inquire"
                                    style="background-color: rgb(246, 244, 236);">

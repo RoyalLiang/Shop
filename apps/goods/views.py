@@ -200,10 +200,15 @@ class Search(View):
 
 
 class AddMessage(View):
-    def get(self, request):
-        return HttpResponse()
 
     @csrf_exempt
     def post(self, request):
-        send_goods_email(request)
+        message = {}
+        message['inquire'] = request.POST.get('inquire', None)
+        message['name'] = request.POST.get('name', None)
+        message['phone'] = request.POST.get('phone', None)
+        message['email'] = request.POST.get('email', None)
+        message['address'] = request.POST.get('address', None)
+        message['message'] = request.POST.get('message', None)
+        send_goods_email.delay(message)
         return HttpResponse(json.dumps({'status': 'ok'}))

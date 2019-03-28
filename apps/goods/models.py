@@ -69,6 +69,8 @@ class GoodsImage(models.Model):
     image_url = models.URLField(max_length=500, null=True, blank=True, verbose_name='访问地址')
     index = models.IntegerField(default=0, verbose_name='轮播顺序', blank=True)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+    alt = models.CharField(max_length=100, verbose_name='图片alt', blank=True)
+    title = models.CharField(max_length=100, verbose_name='图片title', blank=True)
 
     class Meta:
         verbose_name = '商品轮播图'
@@ -88,6 +90,7 @@ class Banner(models.Model):
     url = models.URLField(max_length=256, verbose_name='访问地址', blank=True)
     index = models.IntegerField(default=0, unique=True, verbose_name='轮播顺序', blank=True)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+    alt = models.CharField(max_length=100, verbose_name='图片alt', blank=True)
 
     class Meta:
         verbose_name = '轮播图'

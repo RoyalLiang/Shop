@@ -1,3 +1,4 @@
-from django.test import TestCase
+from datetime import datetime
 
-# Create your tests here.
+t = datetime.now
+print(t)

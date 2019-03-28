@@ -491,7 +491,7 @@ $(function () {
 
 
         var url = "/goods/message.html?c=cart&f=sendMessage&t=" + new Date().getTime();
-
+        $('.feedback-form .col-xs-12 .send span').text('submit.....');
         $.ajax({
             'url': url,
             'data': jForm.serializeArray(),
@@ -504,6 +504,7 @@ $(function () {
                 if (rs.status === 'ok') {
                     alert('Your message has been posted, please wait patiently administrator audit, thank you for your submission');
                     // alert('您的留言已提交,请耐心等候管理员回复');
+                    $('.feedback-form .col-xs-12 .send span').text('submit');
                     if (jForm.hasClass('feedback-form-inquire')) {
                         location.href = '/goods_detail/' + $('input[name=id]').val();
                     } else {
