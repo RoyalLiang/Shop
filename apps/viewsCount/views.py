@@ -4,7 +4,6 @@ from django.views import View
 import json
 from .tasks import views_count_save
 
-
 # Create your views here.
 
 
@@ -22,8 +21,3 @@ class ViewsCount(View):
         }
         views_count_save.delay(data)
         return HttpResponse(json.dumps({'status': 'ok'}))
-
-
-class TestView(View):
-    def get(self, request):
-        return render(request, 'test.html')

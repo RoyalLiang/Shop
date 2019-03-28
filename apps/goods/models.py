@@ -8,7 +8,7 @@ class GoodsSeries(models.Model):
     '''
     商品系列
     '''
-    name = models.CharField(max_length=16, unique=True, blank=True, verbose_name='系列名', help_text='系列名')
+    name = models.CharField(max_length=50, unique=True, blank=True, verbose_name='系列名', help_text='系列名')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
     class Meta:
@@ -23,7 +23,7 @@ class GoodsCategory(models.Model):
     """
     商品分类
     """
-    name = models.CharField(max_length=16, unique=True, blank=True, verbose_name='类别名', help_text='类别名')
+    name = models.CharField(max_length=50, unique=True, blank=True, verbose_name='类别名', help_text='类别名')
     series = models.ForeignKey(GoodsSeries, verbose_name='系列', on_delete=models.CASCADE, blank=True)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 

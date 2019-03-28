@@ -114,7 +114,7 @@ class ProductsList(View):
             if not categorys:
                 categorys = GoodsCategory.objects.filter(series__id=int(sid)).all()
                 cache.set('categorys_by_s%s' % sid, categorys)
-            goods_list = list(Goods.objects.filter(category__id=int(cid)).prefetch_related('goodsimage_set'))
+            goods_list = list(Goods.objects.filter(category__id=int(cid)).prefetch_related('goodsimage_set').order_by('-leval'))
         elif sid and sid.isdigit():
             sid = int(sid)
             categorys = cache.get('categorys_by_s%s' % sid)
@@ -124,7 +124,7 @@ class ProductsList(View):
             goods_list = []
             for category in categorys:
                 goods_list.extend(
-                    list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set')))
+                    list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set').order_by('-leval')))
             query = GoodsSeries.objects.filter(id=sid).first().name
         else:
             categorys = cache.get('all_category')
@@ -134,7 +134,7 @@ class ProductsList(View):
             goods_list = []
             for category in categorys:
                 goods_list.extend(
-                    list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set')))
+                    list(Goods.objects.filter(category__id=category.id).prefetch_related('goodsimage_set').order_by('-leval')))
             categorys = None
             sid = None
             cid = None
