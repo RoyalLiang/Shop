@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
 from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 import json
@@ -22,3 +22,8 @@ class ViewsCount(View):
         }
         views_count_save.delay(data)
         return HttpResponse(json.dumps({'status': 'ok'}))
+
+
+class TestView(View):
+    def get(self, request):
+        return render(request, 'test.html')

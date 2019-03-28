@@ -1,6 +1,6 @@
 from django.urls import path
 
-from other.views import CompanyIntroduction_view, Factory_view, Customer_view, Video_view, News_view, News_detail
+from .views import CompanyIntroduction_view, Factory_view, Customer_view, Video_view, News_view, News_detail, ContactView
 
 app_name = 'other'
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('customer.html', Customer_view.as_view(), name='Customer'),
     path('news.html', News_view.as_view(), name='News'),
     path('news<int:news_id>.html', News_detail.as_view(), name='NewsDetail'),
+    path('contact.html', ContactView.as_view(), name='contact')
 ]

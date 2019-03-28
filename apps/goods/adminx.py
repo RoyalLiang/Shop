@@ -1,4 +1,5 @@
 import xadmin
+from xadmin.views import CommAdminView
 from .models import *
 from xadmin import views
 import os
@@ -6,6 +7,7 @@ from Shop import settings
 from utils import auth
 from django.core.cache import cache
 from django.conf import settings
+from viewsCount.models import Visitor
 
 
 class BaseSettings:
@@ -17,6 +19,53 @@ class GlobalSettings:
     site_title = '伊特纳(天津)科技发展有限公司后台管理'
     site_footer = '伊特纳(天津)科技发展有限公司'
     menu_style = 'accordion'
+
+    # def get_site_menu(self):
+    #     return [
+    #         {
+    #             'title': '近期数据统计',
+    #             'perm': self.get_model_perm(Visitor, 'change'),
+    #             'icon': 'fa fa-bars',
+    #             'menus': (
+    #                 {
+    #                     'title': '浏览器信息',
+    #                     'icon': 'fa fa-bars',
+    #                     'url': self.get_model_url(Visitor, 'changelist').replace('xadmin/viewsCount/', 'ViewsCount/testview/'),
+    #                     # 'perm': self.get_model_perm(Visitor, 'view'),
+    #                 },
+    #                 # {
+    #                 #     'title': '存放位置',
+    #                 #     'icon': 'fa fa-archive',
+    #                 #     'url': self.get_model_url(Visitor, 'changelist')
+    #                 # }
+    #             )
+    #         },
+    #     ]
+    # 菜单
+    # def get_site_menu(self):
+    #     return [
+    #         {
+    #             'title': '近期数据统计和分析',
+    #             'perm': self.get_model_perm(Visitor, 'view'),
+    #             'icon': 'fa fa-bar-chart-o',
+    #             'menus': (
+    #                 {
+    #                     'title': '网站浏览情况',
+    #                     # 写死的url进行替换
+    #                     'url': self.get_model_url(Visitor, 'changelist'),
+    #                     # .replace('xadmin/viewsCount/', 'ViewsCount/testview/'),
+    #                     # 'url': 'http://10.17.20.86:8004/sms/data_analysis/msgsend_recent_24hours/',
+    #                     'perm': self.get_model_perm(Visitor, 'view'),
+    #                     'icon': 'fa fa-smile-o'
+    #                 },
+    #             )
+    #         }
+    #     ]
+
+    # def get_nav_menu(self):
+    #     # 直接返回新增的菜单栏，源码中还有很大一部分的合并功能
+    #     site_menu = list(self.get_site_menu() or [])
+    #     return site_menu
 
 
 class GoodsAdmin:

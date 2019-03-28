@@ -27,8 +27,9 @@
                 <li><a href="{% url 'goods:ProductsList' %}">PRODUCTS</a></li>
                 <li><a href="{% url 'other:CompanyIntroduction' %}">ABOUT</a></li>
                 <li><a href="{% url 'other:News' %}">NEWS</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="#">ENGLISH,click change</a></li>
+                <li><a href="{% url 'other:contact' %}">CONTACT</a></li>
+{#                <li><a href="#">ENGLISH,click change</a></li>#}
+                {#                <li><a href="#">Adipiscing</a></li>#}
             </ul>
         </nav>
         <nav class="main">
@@ -60,27 +61,27 @@
         <section>
             <ul class="links">
                 <li>
-                    <a href="#">
-                        <h3>Lorem ipsum</h3>
-                        <p>Feugiat tempus veroeros dolor</p>
+                    <a href="{% url 'index' %}">
+                        <h3>HOME</h3>
+{#                        <p>Feugiat tempus veroeros dolor</p>#}
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <h3>Dolor sit amet</h3>
-                        <p>Sed vitae justo condimentum</p>
+                    <a href="{% url 'goods:ProductsList' %}">
+                        <h3>PRODUCTS</h3>
+{#                        <p>Sed vitae justo condimentum</p>#}
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <h3>Feugiat veroeros</h3>
-                        <p>Phasellus sed ultricies mi congue</p>
+                    <a href="{% url 'other:News' %}">
+                        <h3>NEWS</h3>
+{#                        <p>Phasellus sed ultricies mi congue</p>#}
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <h3>Etiam sed consequat</h3>
-                        <p>Porta lectus amet ultricies</p>
+                    <a href="{% url 'other:contact' %}">
+                        <h3>CONTACT</h3>
+{#                        <p>Porta lectus amet ultricies</p>#}
                     </a>
                 </li>
             </ul>
@@ -115,15 +116,13 @@
                         {% if banner.index == 0 %}
                             <div class="item active">
                                 <a href="{{ banner.url }}">
-                                    <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="{{ banner.alt }}"
-                                         title="{{ banner.title }}" width="100%">
+                                    <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="" width="100%">
                                 </a>
                             </div>
                         {% else %}
                             <div class="item">
                                 <a href="{{ banner.url }}">
-                                    <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="{{ banner.alt }}"
-                                         title="{{ banner.title }}" width="100%">
+                                    <img src="{{ MEDIA_URL }}{{ banner.image }}" alt="" width="100%">
                                 </a>
                             </div>
                         {% endif %}
@@ -150,8 +149,7 @@
                         </div>
                     </header>
                     <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured">
-                        <img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}" alt="{{ goods.desc }}"
-                             title="{{ banner.name }}"/>
+                        <img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"/>
                     </a>
                     <p>
                         {#                                    {% autoescape off %}#}
@@ -159,17 +157,17 @@
                         {#                                    {% endautoescape %}#}
                     </p>
                     <footer>
-                        <ul class=" actions">
-                        <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">Continue
-                            Reading</a>
-                        </li>
+                        <ul class="actions">
+                            <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">More
+                                Info</a>
+                            </li>
                         </ul>
-                        <ul class="stats">
-                            <li><a href="#">General</a></li>
-                            <li><a href="#" class="icon fa-heart">28</a></li>
-                            <li><a href="#" class="icon fa-comment">128</a></li>
-                        </ul>
-                        </footer>
+{#                        <ul class="stats">#}
+{#                            <li><a href="#">General</a></li>#}
+{#                            <li><a href="#" class="icon fa-heart">28</a></li>#}
+{#                            <li><a href="#" class="icon fa-comment">128</a></li>#}
+{#                        </ul>#}
+                    </footer>
                 </article>
             {% endfor %}
             <!-- Pagination -->
@@ -201,8 +199,8 @@
             <section id="intro">
                 <a href="#" class="logo"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
                 <header>
-                    <h2>Future Imperfect</h2>
-                    <p>Another fine responsive site template by <a href="http://html5up.net">None</a></p>
+                    <h2>SEE HOT PRODUCTS?</h2>
+                    <p>We have listed some hot items, let’s take a look</p>
                 </header>
             </section>
 
@@ -211,69 +209,37 @@
                 <div class="mini-posts">
 
                     <!-- Mini Post -->
+                    {% for hot in hot_goods %}
                     <article class="mini-post">
                         <header>
-                            <h3><a href="goods/goods-detail.html">Vitae sed condimentum</a></h3>
-                            <time class="published" datetime="2015-10-20">October 20, 2015</time>
-                            <a href="#" class="author"><img src="/static/images/avatar.jpg" alt=""/></a>
+                            <h3><p>{{ hot.name }}</p></h3>
+                            <time class="published" datetime="2015-10-20">{{ hot.add_time }}</time>
+                            <a href="{% url 'goods:goods-detail' hot.id %}" class="author"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
                         </header>
-                        <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic04.jpg" alt=""/></a>
+                        <a href="{% url 'goods:goods-detail' hot.id %}" class="image"><img src="{{ MEDIA_URL }}{{ hot.goods_front_img }}" alt=""/></a>
                     </article>
+                    {% endfor %}
 
-                    <!-- Mini Post -->
-                    <article class="mini-post">
-                        <header>
-                            <h3><a href="goods/goods-detail.html">Rutrum neque accumsan</a></h3>
-                            <time class="published" datetime="2015-10-19">October 19, 2015</time>
-                            <a href="#" class="author"><img src="/static/images/avatar.jpg" alt=""/></a>
-                        </header>
-                        <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic05.jpg" alt=""/></a>
-                    </article>
-
-                    <!-- Mini Post -->
-                    <article class="mini-post">
-                        <header>
-                            <h3><a href="goods/goods-detail.html">Odio congue mattis</a></h3>
-                            <time class="published" datetime="2015-10-18">October 18, 2015</time>
-                            <a href="#" class="author"><img src="/static/images/avatar.jpg" alt=""/></a>
-                        </header>
-                        <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic06.jpg" alt=""/></a>
-                    </article>
 
                 </div>
             </section>
-
+            <section>
+                <p><h3>More Products</h3></p>
+            </section>
             <!-- Posts List -->
             <section>
                 <ul class="posts">
+                {% for goods in all_goods.object_list %}
                     <li>
                         <article>
                             <header>
-                                <h3><a href="goods/goods-detail.html">Lorem ipsum fermentum ut nisl vitae</a></h3>
-                                <time class="published" datetime="2015-10-20">October 20, 2015</time>
+                                <h3><p>{{ goods.name }}</p></h3>
+                                <time class="published" datetime="2015-10-20">{{ goods.add_time }}</time>
                             </header>
-                            <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic08.jpg" alt=""/></a>
+                            <a href="{% url 'goods:goods-detail' goods.id %}" class="image"><img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}" alt=""/></a>
                         </article>
                     </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="goods/goods-detail.html">Convallis maximus nisl mattis nunc id lorem</a>
-                                </h3>
-                                <time class="published" datetime="2015-10-15">October 15, 2015</time>
-                            </header>
-                            <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic09.jpg" alt=""/></a>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="goods/goods-detail.html">Euismod amet placerat vivamus porttitor</a></h3>
-                                <time class="published" datetime="2015-10-10">October 10, 2015</time>
-                            </header>
-                            <a href="goods/goods-detail.html" class="image"><img src="/static/images/pic10.jpg" alt=""/></a>
-                        </article>
-                    </li>
+                {% endfor %}
                 </ul>
             </section>
 

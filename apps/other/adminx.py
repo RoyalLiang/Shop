@@ -24,8 +24,14 @@ class IndexAdmin:
     list_display = ['title', 'keywords', 'description']
 
 
+class UserContactMessageAdmin:
+    list_display = ['name', 'email', 'country', 'message']
+
+
 xadmin.site.register(News, NewsAdmin)
 xadmin.site.register(CompanyIntroduction, CompanyIntroductionAdmin)
 xadmin.site.register(Factory, FactoryAdmin)
 xadmin.site.register(Customer, CustomerAdmin)
 xadmin.site.register(Index, IndexAdmin)
+xadmin.site.register(UserContactInfo, UserContactMessageAdmin)
+
