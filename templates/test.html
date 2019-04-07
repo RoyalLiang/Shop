@@ -1,7 +1,208 @@
-{% extends "xadmin/base_site.html" %}
-{% block title %}Test-Test{% endblock %}
-{#{% block blockbots %}hahaha{% endblock %}#}
-{#{% block breadcrumbs %}hahaha{% endblock %}#}
+{% extends 'xadmin/base_site.html' %}
+{#{% extends 'base.html' %}#}
+{% load staticfiles %}
 {% block content-nav %}
-    <p>090808</p>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="lineMain" style="height:400px"></div>
+    哈哈哈哈哈
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        var target = {{ data|safe }};
+        let names = {{ name|safe }};
+    // 路径配置
+    require.config({
+    　　paths: {
+    　　　　echarts: 'http://echarts.baidu.com/build/dist'
+    　　}
+    });
+    // 使用
+    require(
+    　　　　　　[
+    　　　　　　　　'echarts',
+    　　　　　　　　'echarts/chart/bar',
+    　　　　　　　　'echarts/chart/line'
+    　　　　　　],
+    　　　　　　drawEcharts
+    );
+
+    function drawEcharts(ec){
+    　　drawLine(ec);
+    }
+
+    function drawLine(ec){
+    　　var myLineChart = ec.init(document.getElementById('lineMain'));
+        var date_li = {{ all_time|safe }};
+        var name = {{ name|safe }};
+        var sub = window.location.href.match('(.*)/(.*)/')[1];
+        var sublink = sub + '/msgsend_recent_12months_channel/';
+        // 动态push数据到series
+        var series = [];
+        for (var k = 0; k< target.length;k++){
+            var item = {
+                name:target[k],
+                type:'line',
+                data:name[k],
+            };
+            series.push(item);
+        };
+    　　var option2 = {
+    　　　　title : {
+    　　　　text: '近30天渠道短信情况',
+            subtext: '近12个月渠道短信情况',
+            sublink: sublink,
+    　　},
+    　　tooltip : {
+    　　　　trigger: 'axis'
+    　　},
+        grid:{
+            y2: 80
+        },
+    　　legend: {
+            orient: 'horizontal',
+            y:  'bottom',
+            data:target,
+    　　},
+    　　toolbox: {
+    　　　　show : true,
+    　　　　feature : {
+    　　　　　　mark : {show: true},
+    　　　　　　dataView : {show: true, readOnly: false},
+    　　　　　　magicType : {show: true, type: ['line', 'bar']},
+    　　　　　　restore : {show: true},
+    　　　　　　saveAsImage : {show: true}
+    　　　　}
+    　　},
+    　　calculable : true,
+    　　xAxis : [
+    　　　　{
+    　　　　　　type : 'category',
+    　　　　　　boundaryGap : false,
+    　　　　　　data : target
+    　　　　}
+    　　],
+    　　yAxis : [
+    　　　　{
+    　　　　　　type : 'value',
+    　　　　}
+    　　],
+    　　series : series,
+    };
+    myLineChart.setOption(option2,true);
+    }
+    </script>
+
+{#        <script type="text/javascript">#}
+{#            let data1 = {{ data|safe }};#}
+{#            let name1 = {{ name| safe }};#}
+{#            let myChart = echarts.init(document.getElementById('test'));#}
+{#            myChart.setOption({#}
+{#                series : [#}
+{#                    {#}
+{#                        name: '访问来源',#}
+                        {#roseType: 'angle',#}
+{#                        type: 'pie',#}
+{#                        radius: '55%',#}
+{#                        data:[#}
+                            {#{value:235, name:name1[0]},#}
+                            {#{value:274, name:name1[1]},#}
+{#                            {value:310, name:'邮件营销'},#}
+{#                            {value:335, name:'直接访问'},#}
+{#                            {value:400, name:'搜索引擎'}#}
+{#                        ]#}
+{#                    }#}
+{#                ]#}
+{#            });#}
+            {#myChart.setOption({#}
+            {#    title: {#}
+            {#        text: '异步数据加载示例'#}
+            {#    },#}
+            {#    tooltip: {},#}
+            {#    legend: {#}
+            {#        data:['销量']#}
+            {#    },#}
+            {#    xAxis: {#}
+            {#        data: []#}
+            {#    },#}
+            {#    yAxis: {},#}
+            {#    series: [{#}
+            {#        name: '销量',#}
+            {#        type: 'bar',#}
+            {#        data: []#}
+            {#    }]#}
+            {#$.get('data.json').done(function (data) {#}
+            {#    // 填入数据#}
+            {#    myChart.setOption({#}
+            {#        xAxis: {#}
+            {#            data: data1#}
+            {#        },#}
+            {#        series: [{#}
+            {#            // 根据名字对应到相应的系列#}
+            {#            name: '销量',#}
+            {#            data: data1#}
+            {#        }]#}
+            {#    });#}
+        {#</script>#}
 {% endblock %}
+
+{#{% extends 'base.html' %}#}
+{#{% load staticfiles %}#}
+{#<div id="main" style="width: 600px;height:400px;">#}
+{#    <p>测试</p>#}
+{#</div>#}
+{##}
+{##}
+{##}
+{##}
+{#{% block js %}#}
+{#    <script src="{% static 'js/echarts.min.js' %}"></script>#}
+{#    <script type="text/javascript">#}
+{#        let data1 = {{ data|safe }};#}
+{#        let name1 = {{ name| safe }};#}
+{#        console.log(name1);#}
+        {#let jstr = JSON.stringify(data1);#}
+        {#let obj = JSON.parse(jstr);#}
+{##}
+{#        let myChart = echarts.init(document.getElementById('main'));#}
+        {#let option = {#}
+        {#    title: {#}
+        {#        text: 'ECharts 入门示例'#}
+        {#    },#}
+        {#    tooltip: {},#}
+        {#    legend: {#}
+        {#        data:['访问方式']#}
+        {#    },#}
+        {#    xAxis: {#}
+        {#        data: data1#}
+        {#    },#}
+        {#    yAxis: {},#}
+        {#    series: [{#}
+        {#        name: '销量',#}
+        {#        type: 'bar',#}
+        {#        data: [5, 20, 50, 100, 1000]#}
+        {#    }]#}
+{##}
+{#        // 使用刚指定的配置项和数据显示图表。#}
+        {#myChart.setOption(option);#}
+{#        myChart.setOption({#}
+{#            series : [#}
+{#                {#}
+{#                    name: '访问来源',#}
+                    {#roseType: 'angle',#}
+{#                    type: 'pie',#}
+{#                    radius: '55%',#}
+{#                    data:[#}
+{#                        {value:235, name:name1[0]},#}
+{#                        {value:274, name:name1[1]},#}
+                        {#{value:310, name:'邮件营销'},#}
+                        {#{value:335, name:'直接访问'},#}
+                        {#{value:400, name:'搜索引擎'}#}
+{#                    ]#}
+{#                }#}
+{#            ]#}
+{#        })#}
+{#    </script>#}
+{#{% endblock %}#}
+{#{% block extrastyle %}#}
+{#    <script src="{% static 'js/echarts.min.js' %}"></script>#}
+{#{% endblock %}#}

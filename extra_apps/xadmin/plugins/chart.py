@@ -156,5 +156,6 @@ class ChartsView(ListAdminView):
 
         return HttpResponse(result)
 
+
 site.register_plugin(ChartsPlugin, ListAdminView)
 site.register_modelview(r'^chart/(.+)/$', ChartsView, name='%s_%s_chart')

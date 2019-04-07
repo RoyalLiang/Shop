@@ -1,5 +1,4 @@
 import xadmin
-from xadmin.views import CommAdminView
 from .models import *
 from xadmin import views
 import os
@@ -7,7 +6,7 @@ from Shop import settings
 from utils import auth
 from django.core.cache import cache
 from django.conf import settings
-from viewsCount.models import Visitor
+# from viewsCount.models import Visitor
 
 
 class BaseSettings:
@@ -41,7 +40,7 @@ class GlobalSettings:
     #             )
     #         },
     #     ]
-    # 菜单
+    # # 菜单
     # def get_site_menu(self):
     #     return [
     #         {
@@ -52,8 +51,8 @@ class GlobalSettings:
     #                 {
     #                     'title': '网站浏览情况',
     #                     # 写死的url进行替换
-    #                     'url': self.get_model_url(Visitor, 'changelist'),
-    #                     # .replace('xadmin/viewsCount/', 'ViewsCount/testview/'),
+    #                     'url': self.get_model_url(Visitor, 'changelist').replace('xadmin/viewsCount/visitor/',
+    #                                                                              'viewsCount/testview/'),
     #                     # 'url': 'http://10.17.20.86:8004/sms/data_analysis/msgsend_recent_24hours/',
     #                     'perm': self.get_model_perm(Visitor, 'view'),
     #                     'icon': 'fa fa-smile-o'
@@ -130,13 +129,13 @@ class GoodsSeriesAdmin:
     search_fields = ['name', ]
 
 
+xadmin.site.register(views.BaseAdminView, BaseSettings)
+# xadmin.site.register(views.CommAdminView, GlobalSettings)
+xadmin.site.register(GoodsSeries, GoodsSeriesAdmin)
 xadmin.site.register(GoodsCategory, GoodsCategoryAdmin)
 xadmin.site.register(Goods, GoodsAdmin)
-xadmin.site.register(views.BaseAdminView, BaseSettings)
-xadmin.site.register(views.CommAdminView, GlobalSettings)
 xadmin.site.register(Banner, BannerAdmin)
 xadmin.site.register(GoodsImage, GoodsImageAdmin)
 xadmin.site.register(GoodsAttributes, GoodsAttributesAdmin)
 xadmin.site.register(Message, MessageAdmin)
 xadmin.site.register(Video, VideoAdmin)
-xadmin.site.register(GoodsSeries, GoodsSeriesAdmin)

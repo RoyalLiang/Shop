@@ -23,11 +23,18 @@
       {% for sitem in item.menus %}
       <a href="{{ sitem.url|default_if_none:'#' }}" class="list-group-item{% if sitem.selected %} active{% endif %}">
         {% if sitem.icon %}<i class="fa-fw {{sitem.icon}}"></i>{%else%}<i class="fa-fw fa fa-circle-o"></i>{% endif %}
-        {{ sitem.title }}</span>
+        <span>{{ sitem.title }}</span>
       </a>
       {% endfor %}
     </div>
   </div>
   {% endfor %}
 </div>
+    <script>
+        var anchors = document.getElementById("nav-panel-1").getElementsByTagName("a");
+        for(i=0;i<anchors.length;i++){
+            var anchor_item = anchors[i];
+            anchor_item.setAttribute("target","_blank");
+        }
+    </script>
 {% endblock navbar_md %}

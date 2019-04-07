@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -21,6 +23,13 @@ class Visitor(models.Model):
 
     def __str__(self):
         return '%s/%s' % (self.pub_ip, self.in_ip)
+
+    def get_time(self):
+        import time
+        times = '%Y-%m-%d %H:%M:%S'
+        return time.strftime(times, time.localtime(float(self.timeIn)/1000))
+    get_time.short_description = '点击时间'
+    all_time = property(get_time)
 
 
 class ViewsByDay(models.Model):
