@@ -15,13 +15,13 @@ var $win = $(window),
 /**
  * 图片加载
  */
-$(function () {
-    if (!$.fn.lazyload) return;
-    $("img.lazy", $body).lazyload({
-        effect: "fadeIn",
-        threshold: 200
-    });
-});
+// $(function () {
+//     if (!$.fn.lazyload) return;
+//     $("img.lazy", $body).lazyload({
+//         effect: "fadeIn",
+//         threshold: 200
+//     });
+// });
 
 $(function () {
     $(".nav").on("mouseenter", ".item", function (event) {
@@ -233,51 +233,51 @@ $(function () {
 });
 
 
-$(function () {
-    $('.flexslider').flexslider({
-        // pauseOnAction: false,
-        pauseOnHover: true,
-        // multipleKeyboard: true,
-        // mousewheel: true,
-        //reverse :true
-        slideshow: false,
-        directionNav: false,
-        touch: true,
-        //smoothHeight: true
-        //randomize: true
-    });
-});
+// $(function () {
+//     $('.flexslider').flexslider({
+//         // pauseOnAction: false,
+//         pauseOnHover: true,
+//         // multipleKeyboard: true,
+//         // mousewheel: true,
+//         //reverse :true
+//         slideshow: false,
+//         directionNav: false,
+//         touch: true,
+//         //smoothHeight: true
+//         //randomize: true
+//     });
+// });
 
 $(function () {
 
     var sync1 = $("#sync1");
     var sync2 = $("#sync2");
 
-    sync1.owlCarousel({
-        autoPlay: true,
-        singleItem: true,
-        slideSpeed: 1000,
-        navigation: true,
-        pagination: false,
-        lazyLoad: true,
-        afterAction: syncPosition,
-        responsiveRefreshRate: 200,
-    });
+    // sync1.owlCarousel({
+    //     autoPlay: true,
+    //     singleItem: true,
+    //     slideSpeed: 1000,
+    //     navigation: true,
+    //     pagination: false,
+    //     lazyLoad: true,
+    //     afterAction: syncPosition,
+    //     responsiveRefreshRate: 200,
+    // });
 
-    sync2.owlCarousel({
-        autoPlay: true,
-        items: 5,
-        itemsDesktop: [1200, 5],
-        itemsDesktopSmall: [991, 5],
-        itemsTablet: [767, 5],
-        itemsMobile: [480, 5],
-        pagination: false,
-        lazyLoad: true,
-        responsiveRefreshRate: 100,
-        afterInit: function (el) {
-            el.find(".owl-item").eq(0).addClass("synced");
-        }
-    });
+    // sync2.owlCarousel({
+    //     autoPlay: true,
+    //     items: 5,
+    //     itemsDesktop: [1200, 5],
+    //     itemsDesktopSmall: [991, 5],
+    //     itemsTablet: [767, 5],
+    //     itemsMobile: [480, 5],
+    //     pagination: false,
+    //     lazyLoad: true,
+    //     responsiveRefreshRate: 100,
+    //     afterInit: function (el) {
+    //         el.find(".owl-item").eq(0).addClass("synced");
+    //     }
+    // });
 
     function syncPosition(el) {
         var current = this.currentItem;
@@ -330,77 +330,77 @@ $(function () {
 
 // 浮动客服弹出二维码and缓冲回到顶部
 
-$(function () {
-    $('.online > .online-tel').hover(function () {
-        $('.online-tel p').stop(true, true).fadeIn();
-    }, function () {
-        $('.online-tel p').stop(true, true).fadeOut();
-    });
-    $('.online > .online-wechat').hover(function () {
-        $('.online-wechat img').stop(true, true).fadeIn();
-    }, function () {
-        $('.online-wechat img').stop(true, true).fadeOut();
-    });
-    $('#backtop,.backtop').click(function () {
-        $("html, body").animate({
-            scrollTop: 0
-        }, 400);
-    });
-});
+// $(function () {
+//     $('.online > .online-tel').hover(function () {
+//         $('.online-tel p').stop(true, true).fadeIn();
+//     }, function () {
+//         $('.online-tel p').stop(true, true).fadeOut();
+//     });
+//     $('.online > .online-wechat').hover(function () {
+//         $('.online-wechat img').stop(true, true).fadeIn();
+//     }, function () {
+//         $('.online-wechat img').stop(true, true).fadeOut();
+//     });
+//     $('#backtop,.backtop').click(function () {
+//         $("html, body").animate({
+//             scrollTop: 0
+//         }, 400);
+//     });
+// });
+//
+// $(function () {
+//     $('.icon-online').click(function () {
+//         $('.online').toggleClass('active');
+//         $('.icon-online').toggleClass('icon');
+//     });
+// });
+//
+//
+// // 放大
+// $(function () {
+//     $("a[rel=fancybox-product]").fancybox({
+//         'overlayShow': true,
+//         'overlayColor': '#000',
+//         'overlayOpacity': 0.9,
+//         'opacity': 0.5,
+//         'transitionIn': 'elastic',
+//         'transitionOut': 'none',
+//         'titlePosition': 'over',
+//         'showCloseButton': false,
+//         'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+//             return '<span id="fancybox-title-over">' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + ' </span>';
+//         }
+//     });
+// });
 
-$(function () {
-    $('.icon-online').click(function () {
-        $('.online').toggleClass('active');
-        $('.icon-online').toggleClass('icon');
-    });
-});
 
-
-// 放大
-$(function () {
-    $("a[rel=fancybox-product]").fancybox({
-        'overlayShow': true,
-        'overlayColor': '#000',
-        'overlayOpacity': 0.9,
-        'opacity': 0.5,
-        'transitionIn': 'elastic',
-        'transitionOut': 'none',
-        'titlePosition': 'over',
-        'showCloseButton': false,
-        'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
-            return '<span id="fancybox-title-over">' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + ' </span>';
-        }
-    });
-});
-
-
-// 视频
-$(function () {
-    var $box = $(".video", $body);
-    if (!$box.length) return;
-
-    $box.on('click', '.video-box .play', function (event) {
-        event.preventDefault();
-        var me = $(this);
-
-        var $iframe = me.next('.iframe'),
-            url = $iframe.data('src');
-
-        if ($win.width() > 1200) {
-            $.fancybox.open([url], {
-                type: 'iframe',
-                padding: 10,
-            });
-        } else {
-            var height = me.find('.img-responsive').length ? me.height() : $box.height();
-            height = Math.max(height, 170);
-            if (!$iframe.attr('src')) $iframe.attr('src', url);
-            $iframe.height(height);
-            $iframe.css('display', 'block');
-            me.hide();
-        }
-    });
-});
+// // 视频
+// $(function () {
+//     var $box = $(".video", $body);
+//     if (!$box.length) return;
+//
+//     $box.on('click', '.video-box .play', function (event) {
+//         event.preventDefault();
+//         var me = $(this);
+//
+//         var $iframe = me.next('.iframe'),
+//             url = $iframe.data('src');
+//
+//         if ($win.width() > 1200) {
+//             $.fancybox.open([url], {
+//                 type: 'iframe',
+//                 padding: 10,
+//             });
+//         } else {
+//             var height = me.find('.img-responsive').length ? me.height() : $box.height();
+//             height = Math.max(height, 170);
+//             if (!$iframe.attr('src')) $iframe.attr('src', url);
+//             $iframe.height(height);
+//             $iframe.css('display', 'block');
+//             me.hide();
+//         }
+//     });
+// });
 
 
 // 产品详情tab选项卡
@@ -413,33 +413,33 @@ $(function () {
 });
 
 // 数字滚动
-$(function () {
-    $('.counter').countUp();
-
-});
+// $(function () {
+//     $('.counter').countUp();
+//
+// });
 
 // 瀑布流
-jQuery(document).ready(function ($) {
-    $(".waterfall").mpmansory({
-        childrenClass: 'item', // default is a div
-        columnClasses: 'padding', //add classes to items
-        breakpoints: {
-            lg: 4,
-            md: 4,
-            sm: 6,
-            xs: 12
-        },
-        distributeBy: {
-            order: false,
-            height: false,
-            attr: 'data-order',
-            attrOrder: 'asc'
-        }, //default distribute by order, options => order: true/false, height: true/false, attr => 'data-order', attrOrder=> 'asc'/'desc'
-        onload: function (items) {
-            //make somthing with items
-        }
-    });
-});
+// jQuery(document).ready(function ($) {
+//     $(".waterfall").mpmansory({
+//         childrenClass: 'item', // default is a div
+//         columnClasses: 'padding', //add classes to items
+//         breakpoints: {
+//             lg: 4,
+//             md: 4,
+//             sm: 6,
+//             xs: 12
+//         },
+//         distributeBy: {
+//             order: false,
+//             height: false,
+//             attr: 'data-order',
+//             attrOrder: 'asc'
+//         }, //default distribute by order, options => order: true/false, height: true/false, attr => 'data-order', attrOrder=> 'asc'/'desc'
+//         onload: function (items) {
+//             //make somthing with items
+//         }
+//     });
+// });
 
 
 
