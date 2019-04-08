@@ -34,4 +34,3 @@ xadmin.site.register(Factory, FactoryAdmin)
 xadmin.site.register(Customer, CustomerAdmin)
 xadmin.site.register(Index, IndexAdmin)
 xadmin.site.register(UserContactInfo, UserContactMessageAdmin)
-

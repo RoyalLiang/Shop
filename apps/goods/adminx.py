@@ -6,7 +6,6 @@ from Shop import settings
 from utils import auth
 from django.core.cache import cache
 from django.conf import settings
-# from viewsCount.models import Visitor
 
 
 class BaseSettings:
@@ -81,10 +80,16 @@ class GoodsAdmin:
         obj.save()
 
 
+
+
+
 class GoodsCategoryAdmin:
     list_display = ['name', 'add_time']
     search_fields = ['name']
     list_filter = ['add_time']
+
+
+
 
 
 class GoodsImageAdmin:
@@ -93,16 +98,24 @@ class GoodsImageAdmin:
     list_filter = ['add_time']
 
 
+
+
+
 class BannerAdmin:
     list_display = ['title', 'index', 'add_time']
     search_fields = ['title', ]
     list_filter = ['add_time']
 
 
+
+
 class GoodsAttributesAdmin:
     list_display = ['name', 'value']
     search_fields = ['name', 'value']
     list_filter = ['name', ]
+
+
+
 
 
 class MessageAdmin:
@@ -124,9 +137,14 @@ class VideoAdmin:
         obj.save()
 
 
+
+
+
 class GoodsSeriesAdmin:
     list_display = ['name', ]
     search_fields = ['name', ]
+
+
 
 
 xadmin.site.register(views.BaseAdminView, BaseSettings)

@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE HTML>
 {% load staticfiles %}
 <html>
@@ -267,7 +268,17 @@
             </section>
         </section>
     {% endblock %}
-
+<form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}"/>
+    <select name="language">
+        {% for language in LANGUAGES %}
+            <option value="{{ language.0 }}"{% if language.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>
+            {{ language.1 }}
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go"/>
+</form>
 </div>
 
 <!-- Scripts -->
