@@ -80,13 +80,7 @@ a:link
     opacity: 0;
     border: 0;
 }
-@font-face
-{
-    font-family: 'iconfont';
 
-    src: url('../fonts/iconfont.eot?t=1481266234445');
-    src: url('../fonts/iconfont.eot?t=1481266234445#iefix') format('embedded-opentype'), url('../fonts/iconfont.woff?t=1481266234445') format('woff'), url('../fonts/iconfont.ttf?t=1481266234445') format('truetype'), url('../fonts/iconfont.svg?t=1481266234445#iconfont') format('svg');
-}
 @font-face
 {
     font-family: 'avenirnext';

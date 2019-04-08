@@ -1,0 +1,131 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="lineMain" style="height:400px"></div>
+<div id="mains" style="height:400px"></div>
+
+<!-- ECharts单文件引入 -->
+<script src="{% static 'js/echarts.min.js' %}"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
+
+<script type="text/javascript">
+    var target = {{ data|safe }};
+    let names = {{ name|safe }};
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+    // 使用
+    require(
+        [
+            'echarts',
+            'echarts/chart/bar',
+            'echarts/chart/line'
+        ],
+        drawEcharts
+    );
+
+    function drawEcharts(ec) {
+        drawLine(ec);
+    }
+
+    function drawLine(ec) {
+        let myLineChart = ec.init(document.getElementById('lineMain'));
+        let date_li = {{ date_li|safe }};
+        let name = {{ name|safe }};
+        let data1 = {{ data1|safe }};
+
+        let myChart = echarts.init(document.getElementById('mains'));
+        let data = {{ day_data|safe }};
+        let day = {{ day|safe }};
+        console.log(day);
+        myChart.setOption({
+            title: {
+                text: '网站每日浏览次数'
+            },
+            tooltip: {},
+            legend: {
+                data: ['数量']
+            },
+            xAxis: {
+                data: day
+            },
+            yAxis: {},
+            series: [{
+                name: '每日浏览次数',
+                type: 'bar',
+                data: data
+            }]
+        });
+
+        console.log(data1);
+        console.log(date_li);
+
+        // 动态push数据到series
+        var series = [];
+        for (var k = 0; k < data1.length; k++) {
+            console.log(data1[k]);
+            var item = {
+                name: data1[k][0],
+                type: 'line',
+                data: data1[k],
+            };
+            series.push(item);
+        }
+        ;
+        var option2 = {
+            title: {
+                text: '网站浏览情况',
+                {#subtext: '近12个月渠道短信情况',#}
+                {#sublink: sublink,#}
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                y2: 80
+            },
+            legend: {
+                orient: 'horizontal',
+                y: 'bottom',
+                data: data1,
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    mark: {show: true},
+                    dataView: {show: true, readOnly: false},
+                    magicType: {show: true, type: ['line', 'bar']},
+                    restore: {show: true},
+                    saveAsImage: {show: true}
+                }
+            },
+            calculable: true,
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: date_li
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                }
+            ],
+            series: series,
+        };
+        myLineChart.setOption(option2, true);
+    }
+</script>
+</body>
+</html>

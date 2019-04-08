@@ -23,7 +23,7 @@
         <h1><a href="/">AGAPASS</a></h1>
         <nav class="links">
             <ul>
-                <li><a href="/">HOME</a></li>
+                <li><a href="{% url 'index' %}">HOME</a></li>
                 <li><a href="{% url 'goods:ProductsList' %}">PRODUCTS</a></li>
                 <li><a href="{% url 'other:CompanyIntroduction' %}">ABOUT</a></li>
                 <li><a href="{% url 'other:News' %}">NEWS</a></li>
@@ -144,7 +144,7 @@
                         </div>
                         <div class="meta">
                             <time class="published" datetime="2015-11-01">{{ goods.add_time }}</time>
-                            <a href="#" class="author"><span class="name">Jane Doe</span>
+                            <a href="#" class="author"><span class="name"></span>
                                 <img alt='' src={% static 'images/com-logo.png' %}/></a>
                         </div>
                     </header>
@@ -199,8 +199,8 @@
             <section id="intro">
                 <a href="#" class="logo"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
                 <header>
-                    <h2>SEE HOT PRODUCTS?</h2>
-                    <p>We have listed some hot items, let’s take a look</p>
+                    <h2>SEE HOT PRODUCTS?</h2><br>
+                    <span style="font-size: 18px;">We have listed some hot items, let’s take a look.</span>
                 </header>
             </section>
 
@@ -214,7 +214,7 @@
                         <header>
                             <h3><p>{{ hot.name }}</p></h3>
                             <time class="published" datetime="2015-10-20">{{ hot.add_time }}</time>
-                            <a href="{% url 'goods:goods-detail' hot.id %}" class="author"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
+                            <a href="" class="author"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
                         </header>
                         <a href="{% url 'goods:goods-detail' hot.id %}" class="image"><img src="{{ MEDIA_URL }}{{ hot.goods_front_img }}" alt=""/></a>
                     </article>
@@ -224,7 +224,7 @@
                 </div>
             </section>
             <section>
-                <p><h3>More Products</h3></p>
+                <h3>More Products</h3>
             </section>
             <!-- Posts List -->
             <section>
@@ -246,11 +246,10 @@
             <!-- About -->
             <section class="blurb">
                 <h2>About</h2>
-                <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod
-                    amet
-                    placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+                <span style="font-size: 16px;">Like our website?
+                    just share it.</span>
                 <ul class="actions">
-                    <li><a href="#" class="button">Learn More</a></li>
+{#                    <li><a href="#" class="button">Learn More</a></li>#}
                 </ul>
             </section>
 
