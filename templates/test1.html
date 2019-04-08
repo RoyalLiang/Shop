@@ -9,6 +9,8 @@
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="lineMain" style="height:400px"></div>
 <div id="mains" style="height:400px"></div>
+<div id="echartsPie" style="height:400px;"></div>
+
 
 <!-- ECharts单文件引入 -->
 <script src="{% static 'js/echarts.min.js' %}"></script>
@@ -47,7 +49,6 @@
         let myChart = echarts.init(document.getElementById('mains'));
         let data = {{ day_data|safe }};
         let day = {{ day|safe }};
-        console.log(day);
         myChart.setOption({
             title: {
                 text: '网站每日浏览次数'
@@ -67,13 +68,10 @@
             }]
         });
 
-        console.log(data1);
-        console.log(date_li);
 
         // 动态push数据到series
         var series = [];
         for (var k = 0; k < data1.length; k++) {
-            console.log(data1[k]);
             var item = {
                 name: data1[k][0],
                 type: 'line',
@@ -126,6 +124,66 @@
         };
         myLineChart.setOption(option2, true);
     }
+
 </script>
+
+<script type="text/javascript">
+    let myChart = echarts.init(document.getElementById('echartsPie'));
+    var option = {
+        title: {
+            text: '网站访问设备',
+            subtext: 'Test',
+            x: 'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: {show: true},
+                dataView: {show: true, readOnly: false},
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            x: '25%',
+                            width: '50%',
+                            funnelAlign: 'left',
+                            max: 1548
+                        }
+                    }
+                },
+                restore: {show: true},
+                saveAsImage: {show: true}
+            }
+        },
+        calculable: true,
+        series: [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    {value: 335, name: '直接访问'},
+                    {value: 310, name: '邮件营销'},
+                    {value: 234, name: '联盟广告'},
+                    {value: 135, name: '视频广告'},
+                    {value: 1548, name: '搜索引擎'}
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option, true);
+</script>
+
 </body>
 </html>

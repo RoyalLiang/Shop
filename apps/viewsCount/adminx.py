@@ -53,6 +53,7 @@ class ViewsByDayAdmin:
 
 class DeviceByDayAdmin:
     # object_list_template = "test.html"
+    list_display = ['date', 'pc_count', 'mobile_count']
     data_charts = {
         "test": {'title': "每日访问设备统计", "x-field": "date", "y-field": ("pc_count", 'mobile_count')},
         # "avg_count": {'title': u"Avg Report", "x-field": "date", "y-field": ('avg_count',), "order": ('date',)}
@@ -61,7 +62,7 @@ class DeviceByDayAdmin:
 
 class RegionByDayAdmin:
     data_charts = {
-        "test": {'title': "每日访问地区统计", "x-field": "date", "y-field": ('views_count', 'region')},
+        "test": {'title': "每日访问地区统计", "x-field": "date", "y-field": ('views_count',)},
         # "avg_count": {'title': u"Avg Report", "x-field": "date", "y-field": ('avg_count',), "order": ('date',)}
     }
 

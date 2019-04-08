@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['*', ]
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -129,6 +131,11 @@ USE_L10N = True
 
 USE_TZ = False
 
+LANGUAGES = (
+    ('en', 'English'),
+    ('es', 'Spanish'),
+)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
@@ -200,3 +207,7 @@ EMAIL_FROM = '1302982067@qq.com'
 ADMIN_EMAIL = '1302982067@qq.com'
 
 HOST_NAME = "127.0.0.1"
+
+LOCALE_PATH = [
+    os.path.join(BASE_DIR, 'locale')
+]
