@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['*', ]
 # Application definition
 
 INSTALLED_APPS = [
-    'modeltranslation',
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,7 +79,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # 上下文管理器
                 'django.template.context_processors.media',
-                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -122,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -134,14 +133,9 @@ USE_TZ = False
 
 LANGUAGES = (
     ('en', 'English'),
-    ('es', '西班牙'),
-    ('pt', '葡萄牙'),
-    ('ja', '日语'),
-    ('ko', '韩国'),
+    ('es', 'Spanish'),
 )
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
-)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
@@ -213,3 +207,7 @@ EMAIL_FROM = '1302982067@qq.com'
 ADMIN_EMAIL = '1302982067@qq.com'
 
 HOST_NAME = "127.0.0.1"
+
+LOCALE_PATH = [
+    os.path.join(BASE_DIR, 'locale')
+]

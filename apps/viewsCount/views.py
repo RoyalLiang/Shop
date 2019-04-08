@@ -29,6 +29,7 @@ class ViewsCount(View):
 class TestView(View):
     def get(self, request):
         all_data = Visitor.objects.all()
+
         data = [i.user_agent for i in all_data]
         conn = pymysql.connect('47.100.164.154', 'admin', 'Lzy96800..', 'shop', charset='utf8')
         cursor = conn.cursor()
@@ -37,6 +38,7 @@ class TestView(View):
         data1 = cursor.fetchall()
         cursor.execute("SELECT FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d') from viewsCount_visitor group by FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
         date_li = cursor.fetchall()
+        my_data = {}.fromkeys([date for date in date_li], [])
 
         cursor.execute("SELECT FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d'),user_agent from viewsCount_visitor group by user_agent,FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d') order by FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
         # cursor.execute("select FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d'),user_agent,count(*) from viewsCount_visitor where DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')) group by user_agent,FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
@@ -51,7 +53,7 @@ class TestView(View):
         #     my_data['ie'].append(data1[i][0])
         #     my_data['count'].append(data1[0][i])
         # print(my_data)
-        print(test)
+        # print(test)
         cursor.close()
         conn.close()
 
@@ -61,6 +63,7 @@ class TestView(View):
         import time
         times = '%Y-%m-%d'
         # for i in all_data:
+
         times = [time.strftime(times, time.localtime(float(i.timeIn) / 1000)) for i in all_data]
         for i in data:
             if i not in name:
