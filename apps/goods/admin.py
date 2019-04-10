@@ -4,14 +4,15 @@ import os
 from Shop import settings
 from django.core.cache import cache
 from .models import *
+from modeltranslation.admin import TranslationAdmin
 
 
-# Register your models here.
-class GoodsAdmin(admin.ModelAdmin):
+class GoodsAdmin(TranslationAdmin):
     list_display = ['name', 'desc', 'goods_sn', 'add_time']
     search_fields = ['name', 'goods_sn']
     list_filter = ['add_time']
-    style_fields = {'attr': 'm2m_transfer'}
+    # style_fields = {'attr': 'm2m_transfer'}
+    filter_horizontal = ('attr',)
 
     def save_models(self):
         obj = self.new_obj
@@ -21,25 +22,25 @@ class GoodsAdmin(admin.ModelAdmin):
         obj.save()
 
 
-class GoodsCategoryAdmin(admin.ModelAdmin):
+class GoodsCategoryAdmin(TranslationAdmin):
     list_display = ['name', 'add_time']
     search_fields = ['name']
     list_filter = ['add_time']
 
 
-class GoodsImageAdmin(admin.ModelAdmin):
+class GoodsImageAdmin(TranslationAdmin):
     list_display = ['goods', 'image_url', 'add_time']
     search_fields = ['goods']
     list_filter = ['add_time']
 
 
-class BannerAdmin(admin.ModelAdmin):
+class BannerAdmin(TranslationAdmin):
     list_display = ['title', 'index', 'add_time']
     search_fields = ['title', ]
     list_filter = ['add_time']
 
 
-class GoodsAttributesAdmin(admin.ModelAdmin):
+class GoodsAttributesAdmin(TranslationAdmin):
     list_display = ['name', 'value']
     search_fields = ['name', 'value']
     list_filter = ['name', ]
@@ -51,7 +52,7 @@ class MessageAdmin(admin.ModelAdmin):
     list_filter = ['inquire', 'name', ]
 
 
-class VideoAdmin(admin.ModelAdmin):
+class VideoAdmin(TranslationAdmin):
     list_display = ['title', 'video', ]
     search_fields = ['title', ]
     list_filter = ['title', ]
@@ -64,7 +65,7 @@ class VideoAdmin(admin.ModelAdmin):
         obj.save()
 
 
-class GoodsSeriesAdmin(admin.ModelAdmin):
+class GoodsSeriesAdmin(TranslationAdmin):
     list_display = ['name', ]
     search_fields = ['name', ]
 

@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, re_path, include
-import xadmin
 from django.views.static import serve
 from Shop.settings import MEDIA_ROOT
 from django.conf import settings
@@ -32,9 +31,8 @@ urlpatterns = [
     path('mdeditor/', include('mdeditor.urls')),
     path('goods/', include('goods.urls', namespace='goods')),
     path('other/', include('other.urls', namespace='other')),
-
+    path('i18n/', include('django.conf.urls.i18n')),
     path('viewscount.html', ViewsCount.as_view(), name='ViewsCount'),
-
     path('viewsCount/', include('viewsCount.urls', namespace='viewsCount'))
 ]
 

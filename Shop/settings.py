@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['*', ]
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'goods.apps.GoodsConfig',
     'pure_pagination',
-    'xadmin',
     'mdeditor',
     'crispy_forms',
     'other.apps.OtherConfig',
@@ -79,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # 上下文管理器
                 'django.template.context_processors.media',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -121,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'zh-hans'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -129,11 +130,18 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 LANGUAGES = (
     ('en', 'English'),
-    ('es', 'Spanish'),
+    ('es', 'Español'),
+    ('pt', 'Português'),
+    ('ja', '日本語'),
+    ('ko', '한국어'),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
 )
 
 # Static files (CSS, JavaScript, Images)
@@ -196,7 +204,6 @@ CACHES = {
 NEVER_REDIS_TIMEOUT = 365 * 24 * 60 * 60  # 一年
 REDIS_TIMEOUT = 7 * 24 * 60 * 60  # 一周
 CUBES_REDIS_TIMEOUT = 30  # 一小时
-
 EMAIL_HOST = "smtp.qq.com"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = '1302982067@qq.com'
@@ -207,7 +214,3 @@ EMAIL_FROM = '1302982067@qq.com'
 ADMIN_EMAIL = '1302982067@qq.com'
 
 HOST_NAME = "127.0.0.1"
-
-LOCALE_PATH = [
-    os.path.join(BASE_DIR, 'locale')
-]

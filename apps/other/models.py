@@ -46,8 +46,8 @@ class Factory(models.Model):
     '''
     工厂信息
     '''
-    title = models.CharField(max_length=1000, help_text='厂名', blank=True, verbose_name='厂名')
-    image = models.ImageField(upload_to='factory/image', verbose_name='图片', blank=True, )
+    title = models.CharField(max_length=1000, help_text='厂名', verbose_name='厂名')
+    image = models.ImageField(upload_to='factory/image', verbose_name='图片', )
 
     class Meta:
         verbose_name = '工厂信息'
@@ -61,8 +61,8 @@ class Customer(models.Model):
     '''
     宣传客户
     '''
-    title = models.CharField(max_length=1000, help_text='标题', blank=True, verbose_name='标题')
-    image = models.ImageField(upload_to='customer/image', verbose_name='图片', blank=True, )
+    title = models.CharField(max_length=1000, help_text='标题', verbose_name='标题')
+    image = models.ImageField(upload_to='customer/image', verbose_name='图片', )
 
     class Meta:
         verbose_name = '宣传客户'
@@ -76,9 +76,9 @@ class Index(models.Model):
     '''
     首页关键词
     '''
-    title = models.CharField(max_length=100, blank=True, verbose_name='title', default='', null=True)
-    keywords = models.CharField(max_length=100, blank=True, verbose_name='keywords', default='', null=True)
-    description = models.CharField(max_length=100, blank=True, verbose_name='description', default='', null=True)
+    title = models.CharField(max_length=100, verbose_name='title', default='', )
+    keywords = models.CharField(max_length=100, verbose_name='keywords', default='', )
+    description = models.CharField(max_length=100, verbose_name='description', default='', )
 
     class Meta:
         verbose_name = '首页关键词'
@@ -92,11 +92,11 @@ class UserContactInfo(models.Model):
     """
     用户联系信息
     """
-    name = models.CharField(max_length=100, blank=True, verbose_name='昵称', default='')
+    name = models.CharField(max_length=100, verbose_name='昵称', default='')
     phone = models.CharField(max_length=100, blank=True, null=True, verbose_name='联系电话', default='')
-    email = models.EmailField(max_length=100, blank=True, verbose_name='邮箱', default='')
-    country = models.CharField(max_length=100, blank=True, verbose_name='国家', default='')
-    message = models.TextField(verbose_name='联系内容', blank=True, default='', )
+    email = models.EmailField(max_length=100,  verbose_name='邮箱', default='')
+    country = models.CharField(max_length=100, verbose_name='国家', default='')
+    message = models.TextField(verbose_name='联系内容',  default='', )
     add_time = models.DateTimeField(default=datetime.now, verbose_name='联系时间')
 
     class Meta:
@@ -105,4 +105,3 @@ class UserContactInfo(models.Model):
 
     def __str__(self):
         return self.name + self.country + '，发起了联系'
-

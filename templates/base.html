@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE HTML>
 {% load staticfiles %}
 <html>
@@ -28,8 +29,22 @@
                 <li><a href="{% url 'other:CompanyIntroduction' %}">ABOUT</a></li>
                 <li><a href="{% url 'other:News' %}">NEWS</a></li>
                 <li><a href="{% url 'other:contact' %}">CONTACT</a></li>
-{#                <li><a href="#">ENGLISH,click change</a></li>#}
+                {#                <li><a href="#">ENGLISH,click change</a></li>#}
                 {#                <li><a href="#">Adipiscing</a></li>#}
+                <li>
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                        <select name="language">
+                            {% for language in LANGUAGES %}
+                                <option value="{{ language.0 }}"{% if language.0 == LANGUAGE_CODE %}
+                                        selected="selected"{% endif %}>
+                                {{ language.1 }}
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Go"/>
+                    </form>
+                </li>
             </ul>
         </nav>
         <nav class="main">
@@ -63,25 +78,25 @@
                 <li>
                     <a href="{% url 'index' %}">
                         <h3>HOME</h3>
-{#                        <p>Feugiat tempus veroeros dolor</p>#}
+                        {#                        <p>Feugiat tempus veroeros dolor</p>#}
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'goods:ProductsList' %}">
                         <h3>PRODUCTS</h3>
-{#                        <p>Sed vitae justo condimentum</p>#}
+                        {#                        <p>Sed vitae justo condimentum</p>#}
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'other:News' %}">
                         <h3>NEWS</h3>
-{#                        <p>Phasellus sed ultricies mi congue</p>#}
+                        {#                        <p>Phasellus sed ultricies mi congue</p>#}
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'other:contact' %}">
                         <h3>CONTACT</h3>
-{#                        <p>Porta lectus amet ultricies</p>#}
+                        {#                        <p>Porta lectus amet ultricies</p>#}
                     </a>
                 </li>
             </ul>
@@ -158,15 +173,14 @@
                     </p>
                     <footer>
                         <ul class="actions">
-                            <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">More
-                                Info</a>
+                            <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">{% trans 'More Info' %}</a>
                             </li>
                         </ul>
-{#                        <ul class="stats">#}
-{#                            <li><a href="#">General</a></li>#}
-{#                            <li><a href="#" class="icon fa-heart">28</a></li>#}
-{#                            <li><a href="#" class="icon fa-comment">128</a></li>#}
-{#                        </ul>#}
+                        {#                        <ul class="stats">#}
+                        {#                            <li><a href="#">General</a></li>#}
+                        {#                            <li><a href="#" class="icon fa-heart">28</a></li>#}
+                        {#                            <li><a href="#" class="icon fa-comment">128</a></li>#}
+                        {#                        </ul>#}
                     </footer>
                 </article>
             {% endfor %}
@@ -210,14 +224,15 @@
 
                     <!-- Mini Post -->
                     {% for hot in hot_goods %}
-                    <article class="mini-post">
-                        <header>
-                            <h3><p>{{ hot.name }}</p></h3>
-                            <time class="published" datetime="2015-10-20">{{ hot.add_time }}</time>
-                            <a href="" class="author"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
-                        </header>
-                        <a href="{% url 'goods:goods-detail' hot.id %}" class="image"><img src="{{ MEDIA_URL }}{{ hot.goods_front_img }}" alt=""/></a>
-                    </article>
+                        <article class="mini-post">
+                            <header>
+                                <h3><p>{{ hot.name }}</p></h3>
+                                <time class="published" datetime="2015-10-20">{{ hot.add_time }}</time>
+                                <a href="" class="author"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
+                            </header>
+                            <a href="{% url 'goods:goods-detail' hot.id %}" class="image"><img
+                                    src="{{ MEDIA_URL }}{{ hot.goods_front_img }}" alt=""/></a>
+                        </article>
                     {% endfor %}
 
 
@@ -229,17 +244,18 @@
             <!-- Posts List -->
             <section>
                 <ul class="posts">
-                {% for goods in all_goods.object_list %}
-                    <li>
-                        <article>
-                            <header>
-                                <h3><p>{{ goods.name }}</p></h3>
-                                <time class="published" datetime="2015-10-20">{{ goods.add_time }}</time>
-                            </header>
-                            <a href="{% url 'goods:goods-detail' goods.id %}" class="image"><img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}" alt=""/></a>
-                        </article>
-                    </li>
-                {% endfor %}
+                    {% for goods in all_goods.object_list %}
+                        <li>
+                            <article>
+                                <header>
+                                    <h3><p>{{ goods.name }}</p></h3>
+                                    <time class="published" datetime="2015-10-20">{{ goods.add_time }}</time>
+                                </header>
+                                <a href="{% url 'goods:goods-detail' goods.id %}" class="image"><img
+                                        src="{{ MEDIA_URL }}{{ goods.goods_front_img }}" alt=""/></a>
+                            </article>
+                        </li>
+                    {% endfor %}
                 </ul>
             </section>
 
@@ -249,7 +265,7 @@
                 <span style="font-size: 16px;">Like our website?
                     just share it.</span>
                 <ul class="actions">
-{#                    <li><a href="#" class="button">Learn More</a></li>#}
+                    {#                    <li><a href="#" class="button">Learn More</a></li>#}
                 </ul>
             </section>
 
@@ -267,7 +283,6 @@
             </section>
         </section>
     {% endblock %}
-
 </div>
 
 <!-- Scripts -->
