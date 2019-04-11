@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39706e56-1de8-4040-bfba-81be33ee3c39" name="Default Changelist" comment="翻译">
+    <list default="true" id="39706e56-1de8-4040-bfba-81be33ee3c39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/goods/goods-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/goods/goods-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/goods/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/goods/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/other/CompanyIntroduction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/CompanyIntroduction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/other/Customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/Customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/other/Factory.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/Factory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/other/NEWS.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/NEWS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/other/NEWS_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/NEWS_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/other/Video.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/Video.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,14 +24,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/viewsCount/tasks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="102" column="90" lean-forward="true" selection-start-line="102" selection-start-column="90" selection-end-line="102" selection-end-column="90" />
+            <state relative-caret-position="328">
+              <caret line="79" column="12" lean-forward="true" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="32" column="66" lean-forward="true" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -151,18 +150,12 @@
             <path>
               <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shop" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="Shop" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shop" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="viewsCount" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shop" type="462c0819:PsiDirectoryNode" />
-              <item name="Shop" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
@@ -324,7 +317,7 @@
       <workItem from="1554875255611" duration="8761000" />
       <workItem from="1554967507481" duration="79000" />
       <workItem from="1554967612584" duration="2897000" />
-      <workItem from="1554995152575" duration="785000" />
+      <workItem from="1554995152575" duration="1084000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1551426876108</created>
@@ -438,11 +431,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554879974643</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="翻译">
+      <created>1554997063317</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1554997063317</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242253000" />
+    <option name="totallyTimeSpent" value="242552000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -457,7 +457,7 @@
     <frame x="-8" y="0" width="1936" height="1096" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -471,7 +471,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49785408" weight="0.3281471" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.3281471" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23284823" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23804574" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32952183" />
       <window_info anchor="bottom" id="manage.py@Shop" order="13" weight="0.2993763" />
       <window_info anchor="bottom" id="Messages" order="14" />
@@ -739,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/contact.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -838,11 +831,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/viewsCount/tasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="102" column="90" lean-forward="true" selection-start-line="102" selection-start-column="90" selection-end-line="102" selection-end-column="90" />
+        <state relative-caret-position="328">
+          <caret line="79" column="12" lean-forward="true" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="32" column="66" lean-forward="true" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
         </state>
       </provider>
     </entry>
