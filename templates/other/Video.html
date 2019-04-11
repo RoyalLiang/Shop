@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load staticfiles %}
 {% block title %}{{ index_info.title }}{% endblock %}
 {% block description %}{{ index_info.description }}{% endblock %}
@@ -16,16 +17,16 @@
         <div class="container">
             <ul>
                 <li>
-                    <a href="{% url 'other:CompanyIntroduction' %}">Company Introduction</a>
+                    <a href="{% url 'other:CompanyIntroduction' %}">{% trans 'Company Introduction' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Factory' %}">Factory</a>
+                    <a href="{% url 'other:Factory' %}">{% trans 'Factory' %}</a>
                 </li>
                 <li class="active">
-                    <a href="#">Video</a>
+                    <a href="#">{% trans 'Video' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Customer' %}">Customer</a>
+                    <a href="{% url 'other:Customer' %}">{% trans 'Customer' %}</a>
                 </li>
             </ul>
         </div>
@@ -33,7 +34,7 @@
     <div class="wrap wrap-video">
         <div class="container">
             <div class="title-in">
-                <h2>Video</h2>
+                <h2>{% trans 'Video' %}</h2>
                 <p>Located in Qingdao city,whose factroy ,cao county yuguang crafts co.,ltd covers an area of 4,000
                     square meters and is located in the beautiful hometown of peony - Heze City, Shandong Province.</p>
             </div>
@@ -69,14 +70,14 @@
             </div>
             <ul class="pager">
                 {% if videos.has_previous %}
-                    <li><a href="?{{ videos.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+                    <li><a href="?{{ videos.previous_page_number.querystring }}">&laquo;{% trans 'PREVIOUS PAGE' %}</a></li>
                 {% else %}
-                    <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+                    <li><a class="disabled"><span>&laquo;{% trans 'PREVIOUS PAGE' %}</span></a></li>
                 {% endif %}
                 {% if videos.has_next %}
-                    <li><a href="?{{ videos.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+                    <li><a href="?{{ videos.next_page_number.querystring }}">{% trans 'NEXT PAGE' %}&raquo;</a></li>
                 {% else %}
-                    <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+                    <li><a class="disabled"><span>{% trans 'NEXT PAGE' %}&raquo;</span></a></li>
                 {% endif %}
             </ul>
 

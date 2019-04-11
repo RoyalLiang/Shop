@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load staticfiles %}
 {% block title %}{{ goods.title }}{% endblock %}
 {% block description %}{{ goods.description }}{% endblock %}
@@ -14,8 +15,8 @@
     <div class="wrap wrap-product-show">
         <div class="container">
             <div class="location">
-                <a style="text-decoration : none;" href="{% url 'index' %}">HOME</a>
-                <a style="text-decoration : none;" href="{% url 'goods:ProductsList' %}">PRODUCTS</a>
+                <a style="text-decoration : none;" href="{% url 'index' %}">{% trans 'HOME' %}</a>
+                <a style="text-decoration : none;" href="{% url 'goods:ProductsList' %}">{% trans 'PRODUCTS' %}</a>
                 <a style="text-decoration : none;"
                    href="{% url 'goods:ProductsList' %}?sid={{ sid }}&cid={{ cid }}">{{ sname }}&nbsp;{{ cname }}</a>
             </div>
@@ -78,10 +79,10 @@
                                 {{ goods.desc }}
                             </div>
                             <div class="link">
-                                <a class="inquire" href="#inquiry">Inquire Now</a>
+                                <a class="inquire" href="#inquiry">{% trans 'Inquire Now' %}</a>
                             </div>
                             <div class="share">
-                                <h4>Like this page? Share it with your friends!</h4>
+                                <h4>{% trans 'Like this page? Share it with your friends!' %}</h4>
                                 <div class="addthis_inline_share_toolbox"
                                      data-url="http://www.oradarstorage.com/rustic-wood-coffee-table-breakfast-tray.html"
                                      data-title="multipurpose wood tray with a decorative rustic finish"
@@ -111,7 +112,7 @@
 
             <div class="parameter">
                 <div class="pro-title">
-                    <h3>Table Parameter</h3>
+                    <h3>{% trans 'Table Parameter' %}</h3>
                 </div>
                 <div class="text">
                     {% for attr in goods_attrs %}
@@ -125,41 +126,40 @@
 
             <div class="inquiry" id="inquiry">
                 <div class="pro-title">
-                    <h3>Inquire Now</h3>
+                    <h3>{% trans 'Inquire Now' %}</h3>
                 </div>
                 <div class="note">
-                    <p>If you have any questions, feedback or comments, please fill out the form below and we will reply
-                        you back as soon as possible.</p>
-                    <p>* Required field.</p>
+                    <p>{% trans 'If you have any questions, feedback or comments, please fill out the form below and we will reply you back as soon as possible.' %}</p>
+                    <p>* {% trans 'Required field.' %}</p>
                     <form class="row feedback-form" onsubmit="return false;" method="post">
                         <div class="col-xs-12 read">
-                            <input type="text" value="{{ goods.goods_sn }}" readonly="" name="inquire"
+                            <input type="text" value="{{ goods.goods_sn }}" readonly="readonly" name="inquire"
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12 col-md-6 text">
-                            <input type="text" placeholder="name" name="name"
+                            <input type="text" placeholder="{% trans 'Name' %}" name="name"
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12 col-md-6 text">
-                            <input type="text" placeholder="phone" name="phone"
+                            <input type="text" placeholder="{% trans 'Phone' %}" name="phone"
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12 col-md-6 text">
-                            <input type="text" placeholder="email＊" name="email"
+                            <input type="text" placeholder="{% trans 'Email' %} *" name="email"
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12 col-md-6 text">
-                            <input type="text" placeholder="address" name="address"
+                            <input type="text" placeholder="{% trans 'Address' %}" name="address"
                                    style="background-color: rgb(246, 244, 236);">
                         </div>
                         <div class="col-xs-12">
-                            <textarea name="message" rows="6" placeholder="message＊"
+                            <textarea name="message" rows="6" placeholder="{% trans 'Message' %} *"
                                       style="background-color: rgb(246, 244, 236);"></textarea>
                         </div>
                         <div class="col-xs-12">
                             <input type="hidden" name="id" value="{{ goods.id }}"
                                    style="background-color: rgb(246, 244, 236);">
-                            <button class="send submit"><span>SUBMIT</span></button>
+                            <button class="send submit"><span>{% trans 'SUBMIT' %}</span></button>
                         </div>
                     </form>
                 </div>

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load staticfiles %}
 {% block title %}{{ index_info.title }}{% endblock %}
 {% block description %}{{ index_info.description }}{% endblock %}
@@ -14,16 +15,16 @@
         <div class="container">
             <ul>
                 <li class="active">
-                    <a href="#">Company Introduction</a>
+                    <a href="#">{% trans 'Company Introduction' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Factory' %}">Factory</a>
+                    <a href="{% url 'other:Factory' %}">{% trans 'Factory' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Video' %}">Video</a>
+                    <a href="{% url 'other:Video' %}">{% trans 'Video' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Customer' %}">Customer</a>
+                    <a href="{% url 'other:Customer' %}">{% trans 'Customer' %}</a>
                 </li>
             </ul>
         </div>
