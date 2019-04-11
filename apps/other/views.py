@@ -39,6 +39,7 @@ class CompanyIntroduction_view(View):
 
 class Video_view(View):
     def get(self, request):
+        video_info = PageInformation.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -55,12 +56,16 @@ class Video_view(View):
             cache.set('index_info', index_info)
         index_info = {'title': 'Video', 'description': index_info.description,
                       'keywords': index_info.keywords}
-        return render(request, 'other/Video.html',
-                      {'videos': videos, 'index_info': index_info})
+        return render(request, 'other/Video.html', {
+            'videos': videos,
+            'index_info': index_info,
+            'video_info': video_info,
+        })
 
 
 class Factory_view(View):
     def get(self, request):
+        page_info = PageInformation.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -79,12 +84,14 @@ class Factory_view(View):
                       'keywords': index_info.keywords}
         return render(request, 'other/Factory.html', {
             'all_factory': all_factory,
-            'index_info': index_info
+            'index_info': index_info,
+            'page_info': page_info
         })
 
 
 class Customer_view(View):
     def get(self, request):
+        page_info = PageInformation.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -103,12 +110,14 @@ class Customer_view(View):
                       'keywords': index_info.keywords}
         return render(request, 'other/Customer.html', {
             'all_customer': all_customer,
-            'index_info': index_info
+            'index_info': index_info,
+            'page_info': page_info
         })
 
 
 class News_view(View):
     def get(self, request):
+        page_info = PageInformation.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -127,7 +136,8 @@ class News_view(View):
                       'keywords': index_info.keywords}
         return render(request, 'other/NEWS.html', {
             'all_news': all_news,
-            'index_info': index_info
+            'index_info': index_info,
+            'page_info': page_info
         })
 
 

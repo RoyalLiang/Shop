@@ -30,6 +30,11 @@ class UserContactMessageAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'country', 'message']
 
 
+@admin.register(PageInformation)
+class PageInformationAdmin(admin.ModelAdmin):
+    list_display = ['product_info', 'news_info', 'video_info', 'customer_info', 'factory_info']
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(CompanyIntroduction, CompanyIntroductionAdmin)
 admin.site.register(Factory, FactoryAdmin)
