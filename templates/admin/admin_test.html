@@ -1,6 +1,41 @@
 {% extends 'admin/change_list.html' %}
 {% block content_title %}
     <h1>Test Page</h1>
+    <style>
+        .bar-chart{
+            display: flex;
+            justify-content: space-around;
+            height: 160px;
+            padding-top: 60px;
+            overflow: hidden;
+        }
+    .bar-chart .bar{
+        flex: 100%;
+        align-self: flex-end;
+        margin-right: 2px;
+        position: relative;
+        background-color: #79aec8;
+    }
+    .bar-chart .bar:hover{
+        background-color: #417690;
+    }
+    .bar-chart .bar .bar-tooltip{
+        position: relative;
+        z-index: 999;
+    }
+    .bar-chart .bar .bar-tooltip{
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-weight: bold;
+        opacity: 0;
+    }
+    .bar-chart .bar:hover .bar-tooltip{
+        opacity: 1;
+    }
+    </style>
 {% endblock %}
 
 {% block result_list %}
@@ -10,21 +45,51 @@
                 <tr>
                     <th>
                         <div class="text">
-                            <a href="#">分类</a>
+                            <a href="#">日期</a>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text">
+                            <a href="#">每日访问量</a>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="text">
+                            <a href="#">ip数量</a>
                         </div>
                     </th>
                 </tr>
+
             </thead>
 
             <tbody>
-                {% for row in summary %}
-                    <tr>
-                        <td>{{ row.total }}</td>
+                {% for row in date %}
+                    <tr class="{% cycle 'row1' 'row2' %}">
+                        <td>{{ row.day }}</td>
+                        <td>{{ row.views_count }}</td>
+                        <td>{{ row.ip_count }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+
+        <h2>图表分析</h2>
+        <div class="results">
+            <div class="bar-chart">
+                {% for x in views_by_day %}
+                    <div class="bar" style="height: {{ x.pct }}%">
+                        <div class="bar-tooltip">
+                            {{ x.total | default:0 | intcomma }}<br>
+                            {{ x.date | date:"d/m/Y" }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
     </div>
+
 
 {% endblock %}
 

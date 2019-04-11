@@ -39,3 +39,6 @@ urlpatterns = [
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = '伊特纳(天津)科技发展有限公司'
+admin.site.site_title = '伊特纳(天津)科技发展有限公司后台管理'

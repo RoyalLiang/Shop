@@ -26,7 +26,7 @@ app.conf.update(
     CELERYBEAT_SCHEDULE={
         'data_processing': {
             'task': 'viewsCount.tasks.data_processing',
-            'schedule': timedelta(days=1),
+            'schedule': timedelta(minutes=5),
         }
     }
 )
