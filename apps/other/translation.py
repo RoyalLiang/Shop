@@ -22,8 +22,13 @@ class IndexTranslationOptions(TranslationOptions):
     fields = ('title', 'keywords', 'description')
 
 
+class PageInformationTranslationOptions(TranslationOptions):
+    fields = ('product_info', 'video_info', 'customer_info', 'factory_info', 'news_info')
+
+
 translator.register(News, NewsTranslationOptions)
 translator.register(CompanyIntroduction, CompanyIntroductionTranslationOptions)
 translator.register(Factory, FactoryTranslationOptions)
 translator.register(Customer, CustomerTranslationOptions)
 translator.register(Index, IndexTranslationOptions)
+translator.register(PageInformation, PageInformationTranslationOptions)

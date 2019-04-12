@@ -105,3 +105,18 @@ class UserContactInfo(models.Model):
 
     def __str__(self):
         return self.name + self.country + '，发起了联系'
+
+
+class PageInformation(models.Model):
+    product_info = models.TextField(verbose_name='产品页描述', default='')
+    video_info = models.TextField(verbose_name='视频页描述', default='')
+    customer_info = models.TextField(verbose_name='顾客页描述', default='')
+    factory_info = models.TextField(verbose_name='工厂页描述', default='')
+    news_info = models.TextField(verbose_name='新闻页描述', default='')
+
+    class Meta:
+        verbose_name = '页面信息'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.product_info

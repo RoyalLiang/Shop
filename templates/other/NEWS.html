@@ -24,8 +24,7 @@
     <div class="container">
         <div class="title-in">
             <h2>{% trans 'News' %}</h2>
-            <p>采用天然木材，精细工艺，创造客户需求的各类产品和配件。</p>
-            <p>自然环保，经久耐用，力求尊重追求完美品质的自然前提。</p>
+            <p>{{ page_info.news_info }}</p>
         </div>
 
         <div class="row waterfall">
@@ -51,7 +50,7 @@
                 {% endfor %}
             </div>
 
-
+        </div>
         </div>
         <ul class="pager">
             {% if all_news.has_previous %}
@@ -77,13 +76,12 @@
             <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
             <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
         </ul>
-        <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
-                href="http://unsplash.com">Unsplash</a>.</p>
+
     </section>
 
 {% endblock %}
 
 
 {% block js %}
-    <script src="/static/JS/main_.js"></script>
+    <script src="{% static 'JS/main_.js' %}"></script>
 {% endblock %}

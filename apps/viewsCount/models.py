@@ -41,7 +41,7 @@ class ViewsByDay(models.Model):
     ip_count = models.IntegerField(verbose_name='ip数', default=0, blank=True)
 
     class Meta:
-        verbose_name = '每天访问量统计'
+        verbose_name = '每日访问量统计'
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -97,3 +97,11 @@ class RegionByDay(models.Model):
 
     def __str__(self):
         return "%s-%s" % (self.region, self.date)
+
+
+class TestModel(ViewsByDay):
+    class Meta:
+        proxy = True
+        verbose_name = 'Test'
+        verbose_name_plural = verbose_name
+

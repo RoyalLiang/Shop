@@ -33,8 +33,7 @@
         <div class="container">
             <div class="title-in">
                 <h2>{% trans 'Factory' %}</h2>
-                <p>Located in Qingdao city,whose factroy ,cao county yuguang crafts co.,ltd covers an area of 4,000
-                    square meters and is located in the beautiful hometown of peony - Heze City, Shandong Province.</p>
+                <p>{{ page_info.factory_info }}</p>
             </div>
 
             <div class="row">
@@ -79,13 +78,12 @@
             <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
             <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
         </ul>
-        <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
-                href="http://unsplash.com">Unsplash</a>.</p>
+
     </section>
 
 {% endblock %}
 
 
 {% block js %}
-    <script src="/static/JS/main_.js"></script>
+    <script src="{% static 'JS/main_.js' %}"></script>
 {% endblock %}

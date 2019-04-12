@@ -7,6 +7,12 @@ from .models import *
 from modeltranslation.admin import TranslationAdmin
 
 
+class BannerAdmin(TranslationAdmin):
+    list_display = ['title', 'index', 'add_time']
+    search_fields = ['title', ]
+    list_filter = ['add_time']
+
+
 class GoodsAdmin(TranslationAdmin):
     list_display = ['name', 'desc', 'goods_sn', 'add_time']
     search_fields = ['name', 'goods_sn']
@@ -31,12 +37,6 @@ class GoodsCategoryAdmin(TranslationAdmin):
 class GoodsImageAdmin(TranslationAdmin):
     list_display = ['goods', 'image_url', 'add_time']
     search_fields = ['goods']
-    list_filter = ['add_time']
-
-
-class BannerAdmin(TranslationAdmin):
-    list_display = ['title', 'index', 'add_time']
-    search_fields = ['title', ]
     list_filter = ['add_time']
 
 
@@ -70,12 +70,10 @@ class GoodsSeriesAdmin(TranslationAdmin):
     search_fields = ['name', ]
 
 
-# admin.site.register(views.BaseAdminView, BaseSettings)
-# admin.site.register(views.CommAdminView, GlobalSettings)
+admin.site.register(Banner, BannerAdmin)
 admin.site.register(GoodsSeries, GoodsSeriesAdmin)
 admin.site.register(GoodsCategory, GoodsCategoryAdmin)
 admin.site.register(Goods, GoodsAdmin)
-admin.site.register(Banner, BannerAdmin)
 admin.site.register(GoodsImage, GoodsImageAdmin)
 admin.site.register(GoodsAttributes, GoodsAttributesAdmin)
 admin.site.register(Message, MessageAdmin)

@@ -46,7 +46,7 @@ class Goods(models.Model):
     desc = models.TextField(blank=True, verbose_name='商品描述', null=True)
     detail = MDTextField(verbose_name='商品详情', default='', blank=True, null=True)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
-    attr = models.ManyToManyField('GoodsAttributes', related_name='goods', verbose_name='商品属性', blank=True, null=True)
+    attr = models.ManyToManyField('GoodsAttributes', related_name='goods', verbose_name='商品属性')
     title = models.CharField(max_length=100, blank=True, verbose_name='title', default='', null=True)
     keywords = models.CharField(max_length=100, blank=True, verbose_name='keywords', default='', null=True)
     description = models.CharField(max_length=100, blank=True, verbose_name='description', default='', null=True)
