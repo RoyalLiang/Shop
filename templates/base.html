@@ -31,8 +31,31 @@
                 <li><a href="{% url 'other:contact' %}">{% trans 'CONTACT' %}</a></li>
                 {#                <li><a href="#">ENGLISH,click change</a></li>#}
                 {#                <li><a href="#">Adipiscing</a></li>#}
+                <li>
+                    <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">{% trans 'Language' %}</a>
+                </li>
             </ul>
+
         </nav>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" style="line-height: 100%;" value="{{ redirect_to }}"/>
+                        <select name="language">
+                            {% for language in LANGUAGES %}
+                                <option style="line-height: 100%;" value="{{ language.0 }}"
+                                        {% if language.0 == LANGUAGE_CODE %}
+                                        selected="selected"{% endif %}>
+                                {{ language.1 }}
+                            {% endfor %}
+                        </select>
+                        <input style="display: inline-block;height: 3.5em;line-height: 100%;width: 100%;text-align:center;" type="submit" value="go"/>
+                    </form>
+                </div>
+            </div>
+        </div>
         <nav class="main">
             <ul>
                 <li class="search">
@@ -159,7 +182,8 @@
                     </p>
                     <footer>
                         <ul class="actions">
-                            <li><a href="{% url 'goods:goods-detail' goods.id %}" class="button large">{% trans 'More Info' %}</a>
+                            <li><a href="{% url 'goods:goods-detail' goods.id %}"
+                                   class="button large">{% trans 'More Info' %}</a>
                             </li>
                         </ul>
                         {#                        <ul class="stats">#}
@@ -173,7 +197,9 @@
             <!-- Pagination -->
             <ul class="pager">
                 {% if all_goods.has_previous %}
-                    <li><a href="?{{ all_goods.previous_page_number.querystring }}">&laquo;{% trans 'PREVIOUS PAGE' %}</a></li>
+                    <li>
+                        <a href="?{{ all_goods.previous_page_number.querystring }}">&laquo;{% trans 'PREVIOUS PAGE' %}</a>
+                    </li>
                 {% else %}
                     <li><a class="disabled"><span>&laquo;{% trans 'PREVIOUS PAGE' %}</span></a></li>
                 {% endif %}
@@ -247,7 +273,7 @@
 
             <!-- About -->
             <section class="blurb">
-                <h2>About</h2>
+                <h2>{% trans 'ABOUT' %}</h2>
                 <span style="font-size: 16px;">{% trans 'Like our website? just share it.' %}</span>
                 <ul class="actions">
                     {#                    <li><a href="#" class="button">Learn More</a></li>#}

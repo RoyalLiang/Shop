@@ -30,10 +30,6 @@ msgstr ""
 msgid "hello world"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
-msgid "Messages"
-msgstr ""
-
 #: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:7
 msgid "Site Maps"
 msgstr ""
@@ -1205,6 +1201,140 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+msgid "HOME"
+msgstr "CASA"
+
+msgid "PRODUCTS"
+msgstr "PRODUCTOS"
+
+msgid "ABOUT"
+msgstr "ACERCA DE"
+
+msgid "NEWS"
+msgstr "NOTICIAS"
+
+msgid "CONTACT"
+msgstr "CONTACTO"
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Menu"
+msgstr "Menú"
 
 msgid "More Info"
 msgstr "Más información"
+
+msgid "PREVIOUS PAGE"
+msgstr "PAGINA ANTERIOR"
+
+msgid "NEXT PAGE"
+msgstr "SIGUIENTE PÁGINA"
+
+msgid "SEE HOT PRODUCTS?"
+msgstr "¿VER PRODUCTOS CALIENTES?"
+
+msgid "We have listed some hot items, let’s take a look."
+msgstr "Hemos enumerado algunos artículos calientes, vamos a echar un vistazo."
+
+msgid "More Products"
+msgstr "Más productos"
+
+msgid "About"
+msgstr "Acerca de"
+
+msgid "Like our website? just share it."
+msgstr "¿Te gusta nuestro sitio web? solo compartelo"
+
+msgid "CONTACT US"
+msgstr "CONTÁCTENOS"
+
+msgid "Company Info"
+msgstr "Información de la compañía"
+
+msgid "Address"
+msgstr "Dirección"
+
+msgid "Tel"
+msgstr "Tel"
+
+msgid "Website"
+msgstr "Sitio web"
+
+msgid "Contact"
+msgstr "Contacto"
+
+msgid "Leave us a message"
+msgstr "Dejanos un mensaje"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Phone"
+msgstr "Teléfono"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Country"
+msgstr "País"
+
+msgid "Messages"
+msgstr "Mensajes"
+
+msgid "Required Field."
+msgstr "Campo requerido."
+
+msgid "SUBMIT"
+msgstr "ENVIAR"
+
+msgid "We have received your message and will contact you as soon as possible."
+msgstr "Hemos recibido su mensaje y nos pondremos en contacto con usted lo antes posible."
+
+msgid "Inquire Now"
+msgstr "Pregunte ahora"
+
+msgid "Like this page? Share it with your friends!"
+msgstr "¿Me gusta ésta página? Compártelo con tus amigos!"
+
+msgid "Table Parameter"
+msgstr "Parámetro de la tabla"
+
+msgid "If you have any questions, feedback or comments, please fill out the form below and we will reply you back as soon as possible."
+msgstr "Si tiene preguntas, comentarios o comentarios, complete el formulario a continuación y le responderemos lo antes posible."
+
+msgid "Series"
+msgstr "Serie"
+
+msgid "All"
+msgstr "Todos"
+
+msgid "Category"
+msgstr "Categoría"
+
+msgid "Products"
+msgstr "Productos"
+
+msgid "No Products"
+msgstr "Sin productos"
+
+msgid "Company Introduction"
+msgstr "Introducción de la Compañía"
+
+msgid "Factory"
+msgstr "Fábrica"
+
+msgid "Video"
+msgstr "Vídeo"
+
+msgid "Customer"
+msgstr "Cliente"
+
+msgid "Company News"
+msgstr "Noticias de la compañía"
+
+msgid "News"
+msgstr "Noticias"
+
+msgid "Language"
+msgstr "Idioma"

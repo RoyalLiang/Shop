@@ -30,10 +30,6 @@ msgstr ""
 msgid "hello world"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
-msgid "Messages"
-msgstr ""
-
 #: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:7
 msgid "Site Maps"
 msgstr ""
@@ -1205,6 +1201,140 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+msgid "HOME"
+msgstr "HOME"
+
+msgid "PRODUCTS"
+msgstr "製品"
+
+msgid "ABOUT"
+msgstr "について"
+
+msgid "NEWS"
+msgstr "ニュース"
+
+msgid "CONTACT"
+msgstr "接触"
+
+msgid "Search"
+msgstr "サーチ"
+
+msgid "Menu"
+msgstr "メニュー"
 
 msgid "More Info"
 msgstr "より多くの情報"
+
+msgid "PREVIOUS PAGE"
+msgstr "前のページ"
+
+msgid "NEXT PAGE"
+msgstr "次のページ"
+
+msgid "SEE HOT PRODUCTS?"
+msgstr "熱いプロダクトを見なさいか。"
+
+msgid "We have listed some hot items, let’s take a look."
+msgstr "いくつか注目の商品をリストアップしました。見てみましょう。"
+
+msgid "More Products"
+msgstr "より多くの製品"
+
+msgid "About"
+msgstr "について"
+
+msgid "Like our website? just share it."
+msgstr "私たちのウェブサイトが好きですか？ それを共有するだけです。"
+
+msgid "CONTACT US"
+msgstr "お問い合わせ"
+
+msgid "Company Info"
+msgstr "会社情報"
+
+msgid "Address"
+msgstr "住所"
+
+msgid "Tel"
+msgstr "電話番号"
+
+msgid "Website"
+msgstr "ウェブサイト"
+
+msgid "Contact"
+msgstr "接触"
+
+msgid "Leave us a message"
+msgstr "私達にメッセージを残しなさい"
+
+msgid "Name"
+msgstr "名"
+
+msgid "Phone"
+msgstr "電話"
+
+msgid "Email"
+msgstr "Eメール"
+
+msgid "Country"
+msgstr "国"
+
+msgid "Messages"
+msgstr "メッセージ"
+
+msgid "Required Field."
+msgstr "必須フィールド"
+
+msgid "SUBMIT"
+msgstr "サブミット"
+
+msgid "We have received your message and will contact you as soon as possible."
+msgstr "私達はあなたのメッセージを受け取ったので、できるだけ早くあなたに連絡します。"
+
+msgid "Inquire Now"
+msgstr "今すぐ問い合わせる"
+
+msgid "Like this page? Share it with your friends!"
+msgstr "このページが好きですか？ 友達とシェアしよう！"
+
+msgid "Table Parameter"
+msgstr "テーブルパラメータ"
+
+msgid "If you have any questions, feedback or comments, please fill out the form below and we will reply you back as soon as possible."
+msgstr "ご質問、ご意見、ご意見がございましたら、下記のフォームに記入してください。できるだけ早く返信させていただきます。"
+
+msgid "Series"
+msgstr "シリーズ"
+
+msgid "All"
+msgstr "すべて"
+
+msgid "Category"
+msgstr "カテゴリー"
+
+msgid "Products"
+msgstr "製品情報"
+
+msgid "No Products"
+msgstr "製品なし"
+
+msgid "Company Introduction"
+msgstr "会社紹介"
+
+msgid "Factory"
+msgstr "工場"
+
+msgid "Video"
+msgstr "ビデオ"
+
+msgid "Customer"
+msgstr "顧客"
+
+msgid "Company News"
+msgstr "会社のニュース"
+
+msgid "News"
+msgstr "ニュース"
+
+msgid "Language"
+msgstr "言語"
