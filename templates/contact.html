@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load staticfiles %}
-{% block title %}CONTACT US{% endblock %}
+{% block title %}{% trans 'CONTACT US' %}{% endblock %}
 {% block content-index %}
     <div id="main">
         <!-- Post -->
@@ -8,17 +9,16 @@
             <header>
                 <div class="title">
                     <section>
-                        <h2>Company Info</h2><br><br>
+                        <h2>{% trans 'Company Info' %}</h2><br><br>
                     </section>
 
-                    <span style="font-size: 20px;color: #3c3c3c">Address:&nbsp;&nbsp;{{ com_message.addr }}</span><br>
-                    <span style="font-size: 20px;color: #3c3c3c">Tel:&nbsp;&nbsp;{{ com_message.tel }}</span><br>
-                    <span style="font-size: 20px;color: #3c3c3c">Email:&nbsp;&nbsp;{{ com_message.email }}</span><br>
-                    <span style="font-size: 20px;color: #3c3c3c">Website:&nbsp;&nbsp;<a href="https://www.baidu.com"
-                                                                                        style="text-decoration:none;">{{ com_message.web }}</a></span>
+                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Address' %}:&nbsp;&nbsp;{{ com_message.addr }}</span><br>
+                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Tel' %}:&nbsp;&nbsp;{{ com_message.tel }}</span><br>
+                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Email' %}:&nbsp;&nbsp;{{ com_message.email }}</span><br>
+                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Website' %}:&nbsp;&nbsp;<a href="https://www.baidu.com" style="text-decoration:none;">{{ com_message.web }}</a></span>
                 </div>
                 <div class="meta">
-                    <h3>Contact</h3>
+                    <h3>{% trans 'Contact' %}</h3>
                     <time class="published" datetime="2015-11-01"><h5 style="color: orange">{{ com_message.name }}</h5>
                     </time>
                     {#                    <a href="{{ com_message.web }}" class="author"><span class="name"></span></a>#}
@@ -28,7 +28,7 @@
             {#            <span class="image featured"><img src="{% static 'images/pic01.jpg' %}" alt="" /></span>#}
             {#            <p>{{ com_message.detail| safe }}</p>#}
             <div class="note">
-                <span style="font-size: 30px; font-weight: bold;">Leave us a message</span><br><br><br>
+                <span style="font-size: 30px; font-weight: bold;">{% trans 'Leave us a message' %}</span><br><br><br>
 {#            <form class="form-inline">#}
 {#                <div class="form-group">#}
 {#                    <label for="inputName3" class="sr-only">Name</label>#}
@@ -74,32 +74,32 @@
                     {% csrf_token %}
 
                     <div class="col-xs-12 col-md-6 text">
-                        <input type="text" placeholder="Name*" name="name" id="name"
+                        <input type="text" placeholder="{% trans 'Name' %} *" name="name" id="name"
                                style="background-color: rgb(246, 244, 236);">
                     </div>
                     <div class="col-xs-12 col-md-6 text">
-                        <input type="text" placeholder="Phone" name="phone" id="phone"
+                        <input type="text" placeholder="{% trans 'Phone' %}" name="phone" id="phone"
                                style="background-color: rgb(246, 244, 236);">
                     </div>
                     <br><br><br>
                     <div class="col-xs-12 col-md-6 text">
-                        <input type="text" placeholder="Email*" name="email" id="email"
+                        <input type="text" placeholder="{% trans 'Email' %} *" name="email" id="email"
                                style="background-color: rgb(246, 244, 236);">
                     </div>
                     <div class="col-xs-12 col-md-6 text">
-                        <input type="text" placeholder="Country*" name="country" id="country"
+                        <input type="text" placeholder="{% trans 'Country' %} *" name="country" id="country"
                                style="background-color: rgb(246, 244, 236);">
                     </div>
                     <br><br><br>
                     <div class="col-xs-12">
-                        <textarea name="message" rows="6" placeholder="Messages＊" id="message"
+                        <textarea name="message" rows="6" placeholder="{% trans 'Messages' %} *" id="message"
                                   style="background-color: rgb(246, 244, 236);"></textarea>
                     </div>
                     <p>* Required Field.</p>
                     <p class="errors" id="jsCompanyTips"></p>
                     <br><br><br>
                     <div class="col-xs-12">
-                        <button class="send submit" id="jsBtn"><span>SUBMIT</span></button>
+                        <button class="send submit" id="jsBtn"><span>{% trans 'SUBMIT' %} </span></button>
                     </div>
 
                 </form>
@@ -147,7 +147,7 @@
                         success: function (data) {
                             if (data.status === 'success') {
                                 $('#jsForm')[0].reset();
-                                alert("We have received your message and will contact you as soon as possible.")
+                                alert("{% trans 'We have received your message and will contact you as soon as possible.' %}")
                             } else if (data.status === 'fail') {
                                 $('#jsCompanyTips').html(data.msg)
                             }

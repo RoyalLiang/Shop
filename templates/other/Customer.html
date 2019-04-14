@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load staticfiles %}
 {% block title %}{{ index_info.title }}{% endblock %}
 {% block description %}{{ index_info.description }}{% endblock %}
@@ -14,16 +15,16 @@
         <div class="container">
             <ul>
                 <li>
-                    <a href="{% url 'other:CompanyIntroduction' %}">Company Introduction</a>
+                    <a href="{% url 'other:CompanyIntroduction' %}">{% trans 'Company Introduction' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Factory' %}">Factory</a>
+                    <a href="{% url 'other:Factory' %}">{% trans 'Factory' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Video' %}">Video</a>
+                    <a href="{% url 'other:Video' %}">{% trans 'Video' %}</a>
                 </li>
                 <li class="active">
-                    <a href="#">Customer</a>
+                    <a href="#">{% trans 'Customer' %}</a>
                 </li>
             </ul>
         </div>
@@ -31,7 +32,7 @@
     <div class="wrap wrap-factory">
         <div class="container">
             <div class="title-in">
-                <h2>Customer</h2>
+                <h2>{% trans 'Customer' %}</h2>
                 <p>{{ page_info.customer_info }}</p>
             </div>
 
@@ -55,15 +56,15 @@
             </div>
             <ul class="pager">
                 {% if all_customer.has_previous %}
-                    <li><a href="?{{ all_customer.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+                    <li><a href="?{{ all_customer.previous_page_number.querystring }}">&laquo;{% trans 'PREVIOUS PAGE' %}</a></li>
                 {% else %}
-                    <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+                    <li><a class="disabled"><span>&laquo;{% trans 'PREVIOUS PAGE' %}</span></a></li>
                 {% endif %}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {% if all_customer.has_next %}
-                    <li><a href="?{{ all_customer.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+                    <li><a href="?{{ all_customer.next_page_number.querystring }}">{% trans 'NEXT PAGE' %}&raquo;</a></li>
                 {% else %}
-                    <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+                    <li><a class="disabled"><span>{% trans 'NEXT PAGE' %}&raquo;</span></a></li>
                 {% endif %}
             </ul>
         </div>
@@ -78,12 +79,13 @@
             <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
             <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
         </ul>
-
+        <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
+                href="http://unsplash.com">Unsplash</a>.</p>
     </section>
 
 {% endblock %}
 
 
 {% block js %}
-    <script src="{% static 'JS/main_.js' %}"></script>
+    <script src="/static/JS/main_.js"></script>
 {% endblock %}

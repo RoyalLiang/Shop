@@ -30,9 +30,6 @@ msgstr ""
 msgid "hello world"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
-msgid "Messages"
-msgstr ""
 
 #: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:7
 msgid "Site Maps"
@@ -1205,6 +1202,140 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+msgid "HOME"
+msgstr "홈페이지"
+
+msgid "PRODUCTS"
+msgstr "제작품"
+
+msgid "ABOUT"
+msgstr "약"
+
+msgid "NEWS"
+msgstr "뉴스"
+
+msgid "CONTACT"
+msgstr "접촉"
+
+msgid "Search"
+msgstr "수색"
+
+msgid "Menu"
+msgstr "메뉴"
 
 msgid "More Info"
 msgstr "더 많은 정보"
+
+msgid "PREVIOUS PAGE"
+msgstr "이전 페이지"
+
+msgid "NEXT PAGE"
+msgstr "다음 페이지"
+
+msgid "SEE HOT PRODUCTS?"
+msgstr "뜨거운 제품을 보시겠습니까?"
+
+msgid "We have listed some hot items, let’s take a look."
+msgstr "우리는 몇 가지 뜨거운 항목을 나열하자,보세요."
+
+msgid "More Products"
+msgstr "기타 제품"
+
+msgid "About"
+msgstr "약"
+
+msgid "Like our website? just share it."
+msgstr "우리 웹 사이트처럼?그냥 공유하십시오."
+
+msgid "CONTACT US"
+msgstr "문의하기"
+
+msgid "Company Info"
+msgstr "회사 정보"
+
+msgid "Address"
+msgstr "주소"
+
+msgid "Tel"
+msgstr "전화"
+
+msgid "Website"
+msgstr "웹 사이트"
+
+msgid "Contact"
+msgstr "접촉"
+
+msgid "Leave us a message"
+msgstr "우리에게 메시지 남겨주세요."
+
+msgid "Name"
+msgstr "이름"
+
+msgid "Phone"
+msgstr "전화"
+
+msgid "Email"
+msgstr "이메일"
+
+msgid "Country"
+msgstr "국가"
+
+msgid "Messages"
+msgstr "메시지"
+
+msgid "Required Field."
+msgstr "필수 입력란."
+
+msgid "SUBMIT"
+msgstr "제출"
+
+msgid "We have received your message and will contact you as soon as possible."
+msgstr "귀하의 메시지를 받았으며 가능한 한 빨리 연락 드리겠습니다."
+
+msgid "Inquire Now"
+msgstr "지금 문의하기"
+
+msgid "Like this page? Share it with your friends!"
+msgstr "이 페이지를 좋아합니다? 친구와 공유하십시오!"
+
+msgid "Table Parameter"
+msgstr "표 매개 변수"
+
+msgid "If you have any questions, feedback or comments, please fill out the form below and we will reply you back as soon as possible."
+msgstr "문의 사항이나 의견, 의견이 있으시면 아래 양식을 작성해 주시면 가능한 빨리 답변 해 드리겠습니다."
+
+msgid "Series"
+msgstr "시리즈"
+
+msgid "All"
+msgstr "모든"
+
+msgid "Category"
+msgstr "범주"
+
+msgid "Products"
+msgstr "제작품"
+
+msgid "No Products"
+msgstr "제품 없음"
+
+msgid "Company Introduction"
+msgstr "회사 소개"
+
+msgid "Factory"
+msgstr "공장"
+
+msgid "Video"
+msgstr "비디오"
+
+msgid "Customer"
+msgstr "고객"
+
+msgid "Company News"
+msgstr "회사 뉴스"
+
+msgid "News"
+msgstr "뉴스"
+
+msgid "Language"
+msgstr "언어"

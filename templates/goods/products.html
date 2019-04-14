@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load staticfiles %}
 {% block title %}{{ index_info.title }}{% endblock %}
 {% block description %}{{ index_info.description }}{% endblock %}
@@ -14,11 +15,11 @@
         <div class="container">
             <ul>
                 <li>
-                    <a href="#" style="width: 120px">Series</a>
+                    <a href="#" style="width: 120px">{% trans 'Series' %}</a>
                 </li>
                 {% if sid %}
                     <li>
-                        <a href="{% url 'goods:ProductsList' %}">All</a>
+                        <a href="{% url 'goods:ProductsList' %}">{% trans 'All' %}</a>
                     </li>
                     {% for s in series %}
                         {% if sid == s.id %}
@@ -33,7 +34,7 @@
                     {% endfor %}
                 {% else %}
                     <li class="active">
-                        <a href="{% url 'goods:ProductsList' %}">All</a>
+                        <a href="{% url 'goods:ProductsList' %}">{% trans 'All' %}</a>
                     </li>
                     {% for s in series %}
                         <li>
@@ -46,11 +47,11 @@
         <div class="container">
             <ul>
                 <li>
-                    <a href="#" style="width: 120px">Category</a>
+                    <a href="#" style="width: 120px">{% trans 'Category' %}</a>
                 </li>
                 {% if cid %}
                     <li>
-                        <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}">All</a>
+                        <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}">{% trans 'All' %}</a>
                     </li>
                     {% for c in categorys %}
                         {% if cid == c.id %}
@@ -65,7 +66,7 @@
                     {% endfor %}
                 {% else %}
                     <li class="active">
-                        <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}">All</a>
+                        <a href="{% url 'goods:ProductsList' %}?sid={{ sid }}">{% trans 'All' %}</a>
                     </li>
                     {% for c in categorys %}
                         <li>
@@ -79,13 +80,13 @@
     <div class="wrap wrap-product">
     <div class="container">
         <div class="title-in">
-            <h2>Products</h2>
+            <h2>{% trans 'Products' %}</h2>
             <p>{{ page_info.product_info }}</p>
         </div>
 
         <div class="row">
             {% if not goods_list %}
-                <h2>No Products</h2>
+                <h2>{% trans 'No Products' %}</h2>
             {% endif %}
             {% for goods in goods_list.object_list %}
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -134,14 +135,14 @@
         </div>
         <ul class="pager">
             {% if goods_list.has_previous %}
-                <li><a href="?{{ goods_list.previous_page_number.querystring }}">&laquo;PREVIOUS PAGE</a></li>
+                <li><a href="?{{ goods_list.previous_page_number.querystring }}">&laquo;{% trans 'PREVIOUS PAGE' %}</a></li>
             {% else %}
-                <li><a class="disabled"><span>&laquo;PREVIOUS PAGE</span></a></li>
+                <li><a class="disabled"><span>&laquo;{% trans 'PREVIOUS PAGE' %}</span></a></li>
             {% endif %}
             {% if goods_list.has_next %}
-                <li><a href="?{{ goods_list.next_page_number.querystring }}">NEXT PAGE&raquo;</a></li>
+                <li><a href="?{{ goods_list.next_page_number.querystring }}">{% trans 'NEXT PAGE' %}&raquo;</a></li>
             {% else %}
-                <li><a class="disabled"><span>NEXT PAGE&raquo;</span></a></li>
+                <li><a class="disabled"><span>{% trans 'NEXT PAGE' %}&raquo;</span></a></li>
             {% endif %}
         </ul>
     </div>

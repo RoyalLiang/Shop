@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="39706e56-1de8-4040-bfba-81be33ee3c39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
       <change beforePath="$PROJECT_DIR$/apps/goods/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/goods/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/goods/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/goods/views.py" afterDir="false" />
@@ -28,6 +30,7 @@
       <change beforePath="$PROJECT_DIR$/templates/other/Factory.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/Factory.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/other/NEWS.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/NEWS.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/other/Video.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/other/Video.html" afterDir="false" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +44,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/Shop/celery.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/viewsCount/tasks.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="79" column="12" lean-forward="true" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+=======
         <entry file="file://$PROJECT_DIR$/apps/other/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="215">
@@ -145,7 +165,17 @@
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="32" column="66" lean-forward="true" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -178,6 +208,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/static/banner/js/unslider.js" />
+=======
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
         <option value="$PROJECT_DIR$/templates/pagination.html" />
         <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/templates/index.html" />
@@ -189,14 +223,17 @@
         <option value="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/test.html" />
         <option value="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/hahaha.html" />
         <option value="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/test/test.html" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/apps/goods/views.py" />
+=======
         <option value="$PROJECT_DIR$/templates/goods/goods-detail.html" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
         <option value="$PROJECT_DIR$/apps/other/urls.py" />
         <option value="$PROJECT_DIR$/apps/other/forms.py" />
         <option value="$PROJECT_DIR$/apps/other/adminx.py" />
         <option value="$PROJECT_DIR$/apps/viewsCount/tasks.py" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/apps/goods/adminx.py" />
-        <option value="$PROJECT_DIR$/templates/contact.html" />
         <option value="$PROJECT_DIR$/apps/viewsCount/urls.py" />
         <option value="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/includes/sitemenu_accordion.html" />
         <option value="$PROJECT_DIR$/templates/test.html" />
@@ -219,6 +256,25 @@
         <option value="$PROJECT_DIR$/templates/other/CompanyIntroduction.html" />
         <option value="$PROJECT_DIR$/templates/other/NEWS_detail.html" />
         <option value="$PROJECT_DIR$/apps/other/models.py" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/templates/contact.html" />
+        <option value="$PROJECT_DIR$/templates/goods/goods-detail.html" />
+        <option value="$PROJECT_DIR$/templates/goods/products.html" />
+        <option value="$PROJECT_DIR$/templates/other/CompanyIntroduction.html" />
+        <option value="$PROJECT_DIR$/templates/other/Customer.html" />
+        <option value="$PROJECT_DIR$/templates/other/Factory.html" />
+        <option value="$PROJECT_DIR$/templates/other/NEWS.html" />
+        <option value="$PROJECT_DIR$/templates/other/NEWS_detail.html" />
+        <option value="$PROJECT_DIR$/templates/other/Video.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
+=======
         <option value="$PROJECT_DIR$/apps/other/admin.py" />
         <option value="$PROJECT_DIR$/templates/other/Video.html" />
         <option value="$PROJECT_DIR$/apps/other/views.py" />
@@ -237,6 +293,7 @@
     <option name="y" value="29" />
     <option name="width" value="1440" />
     <option name="height" value="799" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -256,24 +313,24 @@
             <path>
               <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shop" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shop" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="goods" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
             </path>
             <path>
               <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="Shop" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
             </path>
             <path>
               <item name="Shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Shop" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+=======
               <item name="goods" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
             </path>
           </expand>
           <select />
@@ -307,19 +364,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/apps" />
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/other/test" />
-      <recent name="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/other" />
-      <recent name="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\WPN\PycharmProjects\Shop\locale" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/static/js" />
       <recent name="$PROJECT_DIR$/static/sass" />
       <recent name="$PROJECT_DIR$/static/sass/libs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps" />
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/other/test" />
+      <recent name="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/other" />
+      <recent name="$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -428,9 +485,16 @@
       <workItem from="1554831800241" duration="15000" />
       <workItem from="1554831982563" duration="23000" />
       <workItem from="1554832370040" duration="161000" />
+<<<<<<< HEAD
+      <workItem from="1554875255611" duration="8761000" />
+      <workItem from="1554967507481" duration="79000" />
+      <workItem from="1554967612584" duration="2897000" />
+      <workItem from="1554995152575" duration="1084000" />
+=======
       <workItem from="1554875255611" duration="3304000" />
       <workItem from="1554958280242" duration="166000" />
       <workItem from="1554958471128" duration="5560000" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1551426876108</created>
@@ -530,6 +594,34 @@
       <option name="project" value="LOCAL" />
       <updated>1554646219991</updated>
     </task>
+<<<<<<< HEAD
+    <task id="LOCAL-00015" summary="翻译">
+      <created>1554878855675</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1554878855675</updated>
+    </task>
+    <task id="LOCAL-00016" summary="翻译">
+      <created>1554879974643</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1554879974643</updated>
+    </task>
+    <task id="LOCAL-00017" summary="翻译">
+      <created>1554997063317</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1554997063317</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="242552000" />
+=======
     <task id="LOCAL-00015" summary="增加model，修改页面。">
       <created>1554972014640</created>
       <option name="number" value="00015" />
@@ -542,6 +634,7 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="246943000" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -553,10 +646,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="-8" y="0" width="1936" height="1096" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
+=======
     <frame x="0" y="23" width="1440" height="799" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25965664" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -569,8 +669,13 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49785408" weight="0.3281471" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
+<<<<<<< HEAD
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.3281471" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23804574" />
+=======
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5035765" side_tool="true" weight="0.3592645" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.17671518" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32952183" />
       <window_info anchor="bottom" id="manage.py@Shop" order="13" weight="0.29844412" />
       <window_info anchor="bottom" id="Messages" order="14" />
@@ -638,32 +743,25 @@
     <MESSAGE value="新页面及调整" />
     <MESSAGE value="页面恢复" />
     <MESSAGE value="图表测试" />
+<<<<<<< HEAD
+    <MESSAGE value="翻译" />
+    <option name="LAST_COMMIT_MESSAGE" value="翻译" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/base.html" />
+    <entry file="file://$PROJECT_DIR$/extra_apps/xadmin/templates/xadmin/base_site.html" />
+    <entry file="file://$PROJECT_DIR$/extra_apps/xadmin/locale/en/LC_MESSAGES/django.po" />
+=======
     <MESSAGE value="增加model，修改页面。" />
     <option name="LAST_COMMIT_MESSAGE" value="增加model，修改页面。" />
   </component>
   <component name="editorHistoryManager">
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
     <entry file="file://$PROJECT_DIR$/extra_apps/xadmin/sites.py" />
     <entry file="file://$PROJECT_DIR$/apps/viewsCount/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/viewsCount/tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1108">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -730,16 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="108">
-            <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -747,6 +835,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -798,6 +888,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
     <entry file="file://$PROJECT_DIR$/Shop/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -926,8 +1017,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/other/views.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="-1733">
+          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+=======
         <state relative-caret-position="330">
           <caret line="139" column="34" selection-start-line="139" selection-start-column="34" selection-end-line="139" selection-end-column="34" />
+>>>>>>> 9a3db6a67c3fcfc31a51585dc28611c89484748f
           <folding>
             <element signature="e#0#49#0" expanded="true" />
             <element signature="e#1437#2260#0" />
@@ -966,6 +1062,120 @@
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/contact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="151" column="66" lean-forward="true" selection-start-line="151" selection-start-column="66" selection-end-line="151" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/goods/goods-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-137">
+          <caret line="161" column="82" selection-start-line="161" selection-start-column="62" selection-end-line="161" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/goods/products.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="146" column="69" selection-start-line="146" selection-start-column="69" selection-end-line="146" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/other/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="172" column="31" lean-forward="true" selection-start-line="172" selection-start-column="31" selection-end-line="172" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/other/Customer.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/other/CompanyIntroduction.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="17" column="66" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/other/Factory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="67" column="69" selection-start-line="67" selection-start-column="69" selection-end-line="67" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/other/Video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="79" column="73" selection-start-line="79" selection-start-column="73" selection-end-line="79" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/other/NEWS_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-234">
+          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/other/NEWS.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="108">
+            <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shop/celery.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/viewsCount/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="79" column="12" lean-forward="true" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="32" column="66" lean-forward="true" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
         </state>
       </provider>
     </entry>
