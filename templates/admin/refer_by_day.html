@@ -1,0 +1,131 @@
+{% extends 'admin/change_list.html' %}
+{% load staticfiles %}
+{% block content_title %}
+    <!-- ECharts单文件引入 -->
+    <script src="{% static 'js/echarts.min.js' %}"></script>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+{% endblock %}
+
+{% block result_list %}
+    <a href="{% url 'viewsCount:refer_export' %}" style="font-weight: bold; font-size: 20px;">导出成xls</a>
+    <div class="results">
+        <table>
+            <thead>
+            <tr>
+                <th>
+                    <div class="text">
+                        <a href="#">日期</a>
+                    </div>
+                </th>
+                <th>
+                    <div class="text">
+                        <a href="#">访问来源</a>
+                    </div>
+                </th>
+                <th>
+                    <div class="text">
+                        <a href="#">来源访问量</a>
+                    </div>
+                </th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+            {% for row in date %}
+                <tr class="{% cycle 'row1' 'row2' %}">
+                    <td>{{ row.days }}</td>
+                    <td>搜索引擎</td>
+                    <td>{{ row.search_engine_count }}</td>
+                </tr>
+                <tr class="{% cycle 'row1' 'row2' %}">
+                    <td>{{ row.days }}</td>
+                    <td>站内访问</td>
+                    <td>{{ row.website_in_count }}</td>
+                </tr>
+                <tr class="{% cycle 'row1' 'row2' %}">
+                    <td>{{ row.days }}</td>
+                    <td>其他来源</td>
+                    <td>{{ row.other_count }}</td>
+                </tr>
+                <tr class="{% cycle 'row1' 'row2' %}">
+                    <td>{{ row.days }}</td>
+                    <td>直接访问</td>
+                    <td>{{ row.input_count }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <br>
+    <div id="mains" style="height:500px; width: 1000px;"></div>
+    <script>
+        let myChart = echarts.init(document.getElementById('mains'));
+        let search_engine_count = 0;
+        let website_in_count = 0;
+        let other_count = 0;
+        let input_count = 0;
+        let days = [];
+        {% for i in date %}
+            search_engine_count += {{ i.search_engine_count }};
+            website_in_count += {{ i.website_in_count }};
+            other_count += {{ i.other_count }};
+            input_count += {{ i.input_count }};
+            days.push({{ i.days }});
+        {% endfor %}
+
+        myChart.setOption({
+            toolbox: {
+                show: true,
+                feature: {
+                    mark: {show: true},
+                    dataView: {show: true, readOnly: false},
+                    restore: {show: true},
+                    saveAsImage: {show: true}
+                }
+            },
+            calculable: true,
+
+            title: {
+                text: '站点用户访问来源统计',
+                x:'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['搜索引擎', '站内访问', '其他来源', '直接访问']
+            },
+
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    data: [
+                        {value: search_engine_count, name: '搜索引擎'},
+                        {value: website_in_count, name: '站内访问'},
+                        {value: other_count, name: '其他来源'},
+                        {value: input_count, name: '直接访问'},
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                },
+            ]
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block pagination %}{% endblock %}
