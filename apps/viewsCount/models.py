@@ -99,9 +99,23 @@ class RegionByDay(models.Model):
         return "%s-%s" % (self.region, self.date)
 
 
-class TestModel(ViewsByDay):
+class ViewsByDayModel(ViewsByDay):
     class Meta:
         proxy = True
-        verbose_name = 'Test'
+        verbose_name = '每日浏览次数统计'
+        verbose_name_plural = verbose_name
+
+
+class DeviceByDayModel(DeviceByDay):
+    class Meta:
+        proxy = True
+        verbose_name = '每日访问设备统计'
+        verbose_name_plural = verbose_name
+
+
+class ReferByDayModel(ReferByDay):
+    class Meta:
+        proxy = True
+        verbose_name = '站点访问来源统计'
         verbose_name_plural = verbose_name
 

@@ -96,7 +96,7 @@ class ReferByDayResource(resources.ModelResource):
         csv_resource = ReferByDayResource()
         dataset = csv_resource.export()
         response = HttpResponse(dataset.csv, content_type='text/csv')
-        response['Content-Disposition'] = 'attachment; filename="refer.csv"'
+        response['Content-Disposition'] = 'attachment; filename="vrefer.csv"'
         return response
 
     def export_excel(request):
@@ -104,4 +104,23 @@ class ReferByDayResource(resources.ModelResource):
         dataset = excel_resource.export()
         response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
         response['Content-Disposition'] = 'attachment; filename="refer.xls"'
+        return response
+
+
+class ViewsByDayResource(resources.ModelResource):
+    class Meta:
+        model = ViewsByDay
+
+    def export_csv(request):
+        csv_resource = ViewsByDayResource()
+        dataset = csv_resource.export()
+        response = HttpResponse(dataset.csv, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="views_by_day.csv"'
+        return response
+
+    def export_excel(request):
+        excel_resource = ViewsByDayResource()
+        dataset = excel_resource.export()
+        response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+        response['Content-Disposition'] = 'attachment; filename="views_by_day.xls"'
         return response

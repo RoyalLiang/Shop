@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ['*', ]
 
 INSTALLED_APPS = [
     'modeltranslation',
-    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'other.apps.OtherConfig',
     'viewsCount.apps.viewsCountConfig',
+    'import_export',
 
 ]
 

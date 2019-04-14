@@ -1,95 +1,120 @@
 {% extends 'admin/change_list.html' %}
+{% load staticfiles %}
 {% block content_title %}
-    <h1>Test Page</h1>
-    <style>
-        .bar-chart{
-            display: flex;
-            justify-content: space-around;
-            height: 160px;
-            padding-top: 60px;
-            overflow: hidden;
-        }
-    .bar-chart .bar{
-        flex: 100%;
-        align-self: flex-end;
-        margin-right: 2px;
-        position: relative;
-        background-color: #79aec8;
-    }
-    .bar-chart .bar:hover{
-        background-color: #417690;
-    }
-    .bar-chart .bar .bar-tooltip{
-        position: relative;
-        z-index: 999;
-    }
-    .bar-chart .bar .bar-tooltip{
-        position: absolute;
-        top: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        font-weight: bold;
-        opacity: 0;
-    }
-    .bar-chart .bar:hover .bar-tooltip{
-        opacity: 1;
-    }
-    </style>
+    {#    <h1>网站图表统计</h1>#}
+    <!-- ECharts单文件引入 -->
+    <script src="{% static 'js/echarts.min.js' %}"></script>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 {% endblock %}
 
 {% block result_list %}
+    <a href="{% url 'viewsCount:views_export' %}" style="font-weight: bold; font-size: 20px;">导出成xls</a>
     <div class="results">
         <table>
             <thead>
-                <tr>
-                    <th>
-                        <div class="text">
-                            <a href="#">日期</a>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="text">
-                            <a href="#">每日访问量</a>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="text">
-                            <a href="#">ip数量</a>
-                        </div>
-                    </th>
-                </tr>
+            <tr>
+                <th>
+                    <div class="text">
+                        <a href="#">日期</a>
+                    </div>
+                </th>
+                <th>
+                    <div class="text">
+                        <a href="#">每日访问量</a>
+                    </div>
+                </th>
+                <th>
+                    <div class="text">
+                        <a href="#">ip数量</a>
+                    </div>
+                </th>
+            </tr>
 
             </thead>
 
             <tbody>
-                {% for row in date %}
-                    <tr class="{% cycle 'row1' 'row2' %}">
-                        <td>{{ row.day }}</td>
-                        <td>{{ row.views_count }}</td>
-                        <td>{{ row.ip_count }}</td>
-                    </tr>
-                {% endfor %}
+            {% for row in date %}
+                <tr class="{% cycle 'row1' 'row2' %}">
+                    <td>{{ row.days }}</td>
+                    <td>{{ row.views_count }}</td>
+                    <td>{{ row.ip_count }}</td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
 
-        <h2>图表分析</h2>
-        <div class="results">
-            <div class="bar-chart">
-                {% for x in views_by_day %}
-                    <div class="bar" style="height: {{ x.pct }}%">
-                        <div class="bar-tooltip">
-                            {{ x.total | default:0 | intcomma }}<br>
-                            {{ x.date | date:"d/m/Y" }}
-                        </div>
-                    </div>
-                {% endfor %}
-
-            </div>
-
-        </div>
     </div>
+    <br>
+    <div id="mains" style="height:400px; width: 1000px;"></div>
+    <script>
+        let myChart = echarts.init(document.getElementById('mains'));
+        let data1 = [];
+        let data2 = [];
+        let day = [];
+        {% for i in date %}
+            data1.push({{ i.views_count }});
+            data2.push({{ i.ip_count }});
+            day.push({{ i.days }});
+        {% endfor %}
 
+        myChart.setOption({
+            toolbox: {
+                show: true,
+                feature: {
+                    mark: {show: true},
+                    dataView: {show: true, readOnly: false},
+                    magicType: {show: true, type: ['line', 'bar']},
+                    restore: {show: true},
+                    saveAsImage: {show: true}
+                }
+            },
+            calculable: true,
+
+            title: {
+                text: '网站每日浏览次数'
+            },
+            tooltip: {
+                trigger: 'axis',
+            },
+            legend: {
+                data: ['访问次数', 'ip数量']
+            },
+
+            xAxis: [
+                {
+                    type: 'category',
+                    data: day
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                }
+            ],
+
+            series: [
+                {
+                    name: '访问次数',
+                    type: 'bar',
+                    data: data1,
+                    markPoint: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
+                    ]
+                },
+                {
+                    name: 'ip数量',
+                    type: 'bar',
+                    data: data2,
+                    markPoint: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
+                    ]
+                },
+            ]
+        });
+
+    </script>
 
 {% endblock %}
 
