@@ -1,5 +1,5 @@
 {% load i18n %}
-<!DOCTYPE HTML>
+{# <!DOCTYPE HTML> #}
 {% load staticfiles %}
 <html>
 <head>
@@ -21,7 +21,7 @@
 
     <!-- Header -->
     <header id="header">
-        <h1><a href="/">AGAPASS</a></h1>
+	<a class="author" style="font-weight: bold;margin-left: 20px;text-decoration: none;"><span class="name"><img src="{% static 'images/com-logo.png' %}" alt=""/></span>AGAPASS</a>
         <nav class="links">
             <ul>
                 <li><a href="{% url 'index' %}">{% trans 'HOME' %}</a></li>
@@ -29,33 +29,22 @@
                 <li><a href="{% url 'other:CompanyIntroduction' %}">{% trans 'ABOUT' %}</a></li>
                 <li><a href="{% url 'other:News' %}">{% trans 'NEWS' %}</a></li>
                 <li><a href="{% url 'other:contact' %}">{% trans 'CONTACT' %}</a></li>
-                {#                <li><a href="#">ENGLISH,click change</a></li>#}
-                {#                <li><a href="#">Adipiscing</a></li>#}
-                <li>
-                    <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">{% trans 'Language' %}</a>
+		<li>
+                    <form action="{% url 'set_language' %}" method="post" id="change_form">
+                        {% csrf_token %}
+                        {% get_available_languages as LANGUAGES %}
+                        <select name="language" id="language" class="change_language" style="background-color: white;">
+                            {% for language in LANGUAGES %}
+                                <option value="{{ language.0 }}" {% ifequal language.0 LANGUAGE_CODE %}selected{% endifequal %}>
+                                    {{ language.1 }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </form>
                 </li>
             </ul>
 
         </nav>
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <form action="{% url 'set_language' %}" method="post">
-                        {% csrf_token %}
-                        <input name="next" type="hidden" style="line-height: 100%;" value="{{ redirect_to }}"/>
-                        <select name="language">
-                            {% for language in LANGUAGES %}
-                                <option style="line-height: 100%;" value="{{ language.0 }}"
-                                        {% if language.0 == LANGUAGE_CODE %}
-                                        selected="selected"{% endif %}>
-                                {{ language.1 }}
-                            {% endfor %}
-                        </select>
-                        <input style="display: inline-block;height: 3.5em;line-height: 100%;width: 100%;text-align:center;" type="submit" value="go"/>
-                    </form>
-                </div>
-            </div>
-        </div>
         <nav class="main">
             <ul>
                 <li class="search">
@@ -87,36 +76,41 @@
                 <li>
                     <a href="{% url 'index' %}">
                         <h3>{% trans 'HOME' %}</h3>
-                        {#                        <p>Feugiat tempus veroeros dolor</p>#}
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'goods:ProductsList' %}">
                         <h3>{% trans 'PRODUCTS' %}</h3>
-                        {#                        <p>Sed vitae justo condimentum</p>#}
                     </a>
                 </li>
+		<li>
+			<a href="{% url 'other:CompanyIntroduction' %}"><h3>{% trans 'ABOUT' %}</h3></a>
+		</li>
                 <li>
                     <a href="{% url 'other:News' %}">
                         <h3>{% trans 'NEWS' %}</h3>
-                        {#                        <p>Phasellus sed ultricies mi congue</p>#}
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'other:contact' %}">
                         <h3>{% trans 'CONTACT' %}</h3>
-                        {#                        <p>Porta lectus amet ultricies</p>#}
                     </a>
+                </li>
+		<li>
+		    <form action="{% url 'set_language' %}" method="post" id="change_form">
+                        {% csrf_token %}
+                        {% get_available_languages as LANGUAGES %}
+                        <select name="language" id="language" class="change_language" style="background-color: white;">
+                            {% for language in LANGUAGES %}
+                                <option value="{{ language.0 }}"{% ifequal language.0 LANGUAGE_CODE %} selected {% endifequal %}>
+                                    {{ language.1 }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </form>
                 </li>
             </ul>
         </section>
-
-        <!-- Actions -->
-        {#        <section>#}
-        {#            <ul class="actions stacked">#}
-        {#                <li><a href="#" class="button large fit">Log In</a></li>#}
-        {#            </ul>#}
-        {#        </section>#}
 
     </section>
 
@@ -169,16 +163,14 @@
                         <div class="meta">
                             <time class="published" datetime="{{ goods.add_time }}">{{ goods.add_time }}</time>
                             <a href="#" class="author"><span class="name"></span>
-                                <img alt='' src={% static 'images/com-logo.png' %}/></a>
+                                <img alt='' src={% static 'images/com-logo.png' %} /></a>
                         </div>
                     </header>
                     <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured">
                         <img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"/>
                     </a>
                     <p>
-                        {#                                    {% autoescape off %}#}
                         {{ goods.detail|safe }}
-                        {#                                    {% endautoescape %}#}
                     </p>
                     <footer>
                         <ul class="actions">
@@ -186,11 +178,6 @@
                                    class="button large">{% trans 'More Info' %}</a>
                             </li>
                         </ul>
-                        {#                        <ul class="stats">#}
-                        {#                            <li><a href="#">General</a></li>#}
-                        {#                            <li><a href="#" class="icon fa-heart">28</a></li>#}
-                        {#                            <li><a href="#" class="icon fa-comment">128</a></li>#}
-                        {#                        </ul>#}
                     </footer>
                 </article>
             {% endfor %}
@@ -223,7 +210,6 @@
 
             <!-- Intro -->
             <section id="intro">
-                <a href="#" class="logo"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
                 <header>
                     <h2>{% trans 'SEE HOT PRODUCTS?' %}</h2><br>
                     <span style="font-size: 18px;">{% trans 'We have listed some hot items, let’s take a look.' %}</span>
@@ -276,10 +262,8 @@
                 <h2>{% trans 'ABOUT' %}</h2>
                 <span style="font-size: 16px;">{% trans 'Like our website? just share it.' %}</span>
                 <ul class="actions">
-                    {#                    <li><a href="#" class="button">Learn More</a></li>#}
                 </ul>
             </section>
-
             <!-- Footer -->
             <section id="footer">
                 <ul class="icons">
@@ -305,6 +289,15 @@
 <script src="{% static 'js/main.js' %}"></script>
 {% block js %}
 {% endblock %}
+<script>
+    jQuery(document).ready(function ($) {
+        $('.change_language').change(function (e) {
+            e.preventDefault();
+            $('#change_form').submit();
+            return false;
+        })
+    })
+</script>
 <script src="{% static 'Plugins/Bootstrap/js/bootstrap.js' %}"></script>
 </body>
 </html>

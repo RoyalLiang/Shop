@@ -73,18 +73,14 @@ class VideoAdmin(TranslationAdmin):
     def save_model(self, request, obj, form, change):
         '''
         admin
-        :param request:
-        :param obj:
-        :param form:
-        :param change:
-        :return:
         '''
         obj.save()
         video_url = os.path.join(settings.MEDIA_ROOT, str(obj.video))
+        # linux设置视频文件权限
+        os.system("chmod 644 %s" % video_url)
         obj.image = 'video_image/%s' % auth.get_video_pic(video_url)
         obj.save()
         super().save_model(request, obj, form, change)
-
     # def save_models(self):
     #     '''
     #     xadmin

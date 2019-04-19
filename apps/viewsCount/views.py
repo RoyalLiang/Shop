@@ -13,17 +13,22 @@ import pymysql
 class ViewsCount(View):
     @csrf_exempt
     def post(self, request):
-        if request.META.get('HTTP_X_FORWARDED_FOR', None):
-            in_ip = request.META['HTTP_X_FORWARDED_FOR']
-        else:
-            in_ip = request.META['REMOTE_ADDR']
-        data_json = request.POST.get('data', None)
-        data = {
-            'in_ip': in_ip,
-            'data_json': data_json,
-        }
-        views_count_save.delay(data)
-        return HttpResponse(json.dumps({'status': 'ok'}))
+        try:
+            print(request.POST)
+            print(request.COOKIES)
+            # if request.META.get('HTTP_X_FORWARDED_FOR', None):
+            #     in_ip = request.META['HTTP_X_FORWARDED_FOR']
+            # else:
+            #     in_ip = request.META['REMOTE_ADDR']
+            # data_json = request.POST.get('data', None)
+            # data = {
+            # 'in_ip': in_ip,
+            # 'data_json': data_json,
+            # }
+            # views_count_save.delay(data)
+            return HttpResponse(json.dumps({'status': 'ok'}))
+        except Exception as e:
+            print(1)
 
 
 class TestView(View):
@@ -34,13 +39,16 @@ class TestView(View):
         conn = pymysql.connect('47.100.164.154', 'admin', 'Lzy96800..', 'shop', charset='utf8')
         cursor = conn.cursor()
         # cursor.execute("SELECT FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d'),user_agent,count(*) from viewsCount_visitor group by user_agent,FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
-        cursor.execute("SELECT user_agent,count(*) from viewsCount_visitor group by user_agent,FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
+        cursor.execute(
+            "SELECT user_agent,count(*) from viewsCount_visitor group by user_agent,FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
         data1 = cursor.fetchall()
-        cursor.execute("SELECT FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d') from viewsCount_visitor group by FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
+        cursor.execute(
+            "SELECT FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d') from viewsCount_visitor group by FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
         date_li = cursor.fetchall()
         my_data = {}.fromkeys([date for date in date_li], [])
 
-        cursor.execute("SELECT FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d'),user_agent from viewsCount_visitor group by user_agent,FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d') order by FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
+        cursor.execute(
+            "SELECT FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d'),user_agent from viewsCount_visitor group by user_agent,FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d') order by FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
         # cursor.execute("select FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d'),user_agent,count(*) from viewsCount_visitor where DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')) group by user_agent,FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
         # cursor.execute("select user_agent FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d') from viewsCount_visitor group by FROM_UNIXTIME(timeIn/1000, '%Y-%m-%d')")
         test = cursor.fetchall()
