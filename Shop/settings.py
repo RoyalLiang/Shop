@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ['*', ]
 
 INSTALLED_APPS = [
     'modeltranslation',
-    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'other.apps.OtherConfig',
     'viewsCount.apps.viewsCountConfig',
+    'import_export',
 
 ]
 
@@ -206,11 +206,11 @@ REDIS_TIMEOUT = 7 * 24 * 60 * 60  # 一周
 CUBES_REDIS_TIMEOUT = 30  # 一小时
 EMAIL_HOST = "smtp.qq.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '1302982067@qq.com'
-EMAIL_HOST_PASSWORD = "pqcuradnebmxhief"
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = True
-EMAIL_FROM = '1302982067@qq.com'
+EMAIL_FROM = ''
 
-ADMIN_EMAIL = '1302982067@qq.com'
+ADMIN_EMAIL = ''
 
 HOST_NAME = "127.0.0.1"
