@@ -1,0 +1,88 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {#        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}"/>#}
+</head>
+<body>
+<div id="footer-wrapper"
+     style="width: 100%;height: 350px;padding-top: 60px;background-color: #3c3b3b;text-decoration: none;border-radius: 25px;">
+    <footer id="footer" class="container">
+        <div class="row">
+            <div class="col-3 col-6-medium col-12-small">
+
+                <!-- Links -->
+                <section class="widget links">
+                    <h3 style="color: white;">ABOUT US</h3>
+                    <ul>
+                        <li><a href="{% url 'other:CompanyIntroduction' %}" style="color: #3c763d;">Company
+                            Introduction</a></li>
+                        <li><a href="{% url 'other:Factory' %}" style="color: #3c763d;">Factory</a></li>
+                        <li><a href="{% url 'other:Video' %}" style="color: #3c763d;">Video</a></li>
+                        <li><a href="{% url 'other:Customer' %}" style="color: #3c763d;">Customer</a></li>
+                    </ul>
+                </section>
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+
+                <!-- Links -->
+                <section class="widget links">
+                    <h3 style="color: white;">PRODUCT</h3>
+                    <ul class="style2">
+                        {% for i in all_series %}
+                            <li><a href="{% url 'goods:ProductsList' %}?sid={{ i.id }}"
+                                   style="color: #3c763d;">{{ i.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+
+                <!-- Links -->
+                <section class="widget links">
+                    <h3 style="color: white;">Random Stuff</h3>
+                    <ul class="style2">
+                        <li><a href="#" style="color: #3c763d;">Etiam feugiat condimentum</a></li>
+                        <li><a href="#" style="color: #3c763d;">Aliquam imperdiet suscipit odio</a></li>
+                        <li><a href="#" style="color: #3c763d;">Sed porttitor cras in erat nec</a></li>
+                        <li><a href="#" style="color: #3c763d;">Felis varius pellentesque potenti</a></li>
+                        <li><a href="#" style="color: #3c763d;">Nullam scelerisque blandit leo</a></li>
+                    </ul>
+                </section>
+
+            </div>
+            <div class="col-3 col-6-medium col-12-small">
+
+                <!-- Contact -->
+                <section class="widget links">
+                    <h3 style="color: white;">CONTACT</h3>
+                    <ul class="icons">
+                        <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+                        <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                    <span style="color: white;">Tel:<a></a></span><br>
+                    <span style="color: white;">Email:<a></a></span><br>
+                    <span style="color: white;">Website:<a></a></span><br>
+                </section>
+
+            </div>
+        </div>
+
+    </footer>
+</div>
+
+</body>
+{#<script src="{% static 'assets/js/jquery.min.js' %}"></script>#}
+{#<script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>#}
+{#<script src="{% static 'assets/js/browser.min.js' %}"></script>#}
+{#<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>#}
+{#<script src="{% static 'assets/js/util.js' %}"></script>#}
+{#<script src="{% static 'assets/js/main.js' %}"></script>#}
+</html>
