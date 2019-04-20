@@ -9,7 +9,7 @@ import markdown
 import json
 from viewsCount.tasks import send_goods_email
 from django.conf import settings
-from other.models import Index
+from other.models import Index, CompanyIntroduction
 from other.models import PageInformation
 
 
@@ -18,15 +18,11 @@ from other.models import PageInformation
 
 class IndexView(View):
     def get(self, request):
-        try:
-            page = request.GET.get('page', 1)
-        except PageNotAnInteger:
-            page = 1
         all_goods = cache.get('all_goods')
-        hot_goods = Goods.objects.all().order_by('-leval')[:3]
-        more_goods = Goods.objects.all().order_by('-add_time')
+        all_series = GoodsSeries.objects.all()
+        com_info = CompanyIntroduction.objects.get(pk=1)
         if not all_goods:
-            all_goods = Goods.objects.all().order_by('-leval')
+            all_goods = Goods.objects.all().order_by('-leval')[:3]
             cache.set('all_goods', all_goods, settings.CUBES_REDIS_TIMEOUT)
         for goods in all_goods:
             goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[
@@ -34,8 +30,6 @@ class IndexView(View):
                 'markdown.extensions.codehilite',
                 'markdown.extensions.toc',
             ])
-        p = Paginator(all_goods, request=request, per_page=3)
-        all_goods = p.page(page)
         all_category = cache.get('all_category')
         if not all_category:
             all_category = GoodsCategory.objects.all()
@@ -50,13 +44,16 @@ class IndexView(View):
             'all_goods': all_goods,
             'all_banner': all_banner,
             'index_info': index_info,
-            'hot_goods': hot_goods,
-            'more_goods': more_goods,
+            'all_series': all_series,
+            'com_info': com_info,
+
         })
 
 
 class GoodsDetail(View):
     def get(self, request, goods_id):
+        all_series = GoodsSeries.objects.all()
+        com_info = CompanyIntroduction.objects.get(pk=1)
         goods = cache.get('goods_%s' % goods_id)
         if not goods:
             goods = Goods.objects.filter(id=goods_id).first()
@@ -90,11 +87,14 @@ class GoodsDetail(View):
             'cid': current_category.id,
             'sname': current_series.name,
             'cname': current_category.name,
+            'all_series': all_series,
+            'com_info': com_info,
         })
 
 
 class ProductsList(View):
     def get(self, request):
+        com_info = CompanyIntroduction.objects.get(pk=1)
         page_info = PageInformation.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
@@ -158,15 +158,18 @@ class ProductsList(View):
                           'sid': sid,
                           'cid': cid,
                           'categorys': categorys,
-                          'series': series,
+                          'all_series': series,
                           'goods_list': goods_list,
                           'index_info': index_info,
                           'page_info': page_info,
+                          'com_info': com_info,
                       })
 
 
 class Search(View):
     def get(self, request):
+        all_series = GoodsSeries.objects.all()
+        com_info = CompanyIntroduction.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -200,9 +203,11 @@ class Search(View):
                           'sid': None,
                           'cid': None,
                           'categorys': None,
-                          'series': None,
+                          # 'all_series': None,
                           'goods_list': goods_list,
                           'index_info': index_info,
+                          'com_info': com_info,
+                          'all_series': all_series,
                       })
 
 

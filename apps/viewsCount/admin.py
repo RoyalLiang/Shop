@@ -44,6 +44,7 @@ class DeviceByDayAdmin(ImportExportModelAdmin):
             qs
                 .values('date')
                 .annotate(**metrics)
+                .order_by('date')
         )
 
         return response
@@ -85,6 +86,7 @@ class ViewsByDayAdmin(ImportExportModelAdmin):
             qs
                 .values('date')
                 .annotate(**metrics)
+                .order_by('date')
         )
 
         return response

@@ -5,7 +5,7 @@
 {% block description %}{{ index_info.description }}{% endblock %}
 {% block keywords %}{{ index_info.keywords }}{% endblock %}
 {% block css %}
-    <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block body %}
     <body class="single is-preload">
@@ -37,7 +37,8 @@
 
             <ul class="pager">
                 {% if pnews %}
-                    <li class="previous"><a href="{% url 'other:NewsDetail' pnews.id %}">&laquo;{{ pnews.title }}</a></li>
+                    <li class="previous"><a href="{% url 'other:NewsDetail' pnews.id %}">&laquo;{{ pnews.title }}</a>
+                    </li>
                 {% endif %}
                 {% if nnews %}
                     <li class="next"><a href="{% url 'other:NewsDetail' nnews.id %}">{{ nnews.title }}&raquo;</a></li>
@@ -45,22 +46,88 @@
             </ul>
         </div>
     </div>
+    <style>
+        #footer .links a {
+            display: block !important;
+            color:#7e7e7e;
+        }
+    </style>
+    <div id="footer-wrapper"
+         style="width: 100%;padding: 60px 60px 200px 60px;background-color: #303030;text-decoration: none;border-radius: 25px;">
+        <footer id="footer" class="">
+            <div class="row">
+                <div class="col-3 col-6-medium col-12-small">
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3 style="color: white;">ABOUT US</h3>
+                        <a href="{% url 'other:CompanyIntroduction' %}">Company Introduction</a>
+                        <a href="{% url 'other:Factory' %}">Factory</a>
+                        <a href="{% url 'other:Video' %}" >Video</a>
+                        <a href="{% url 'other:Customer' %}">Customer</a>
+                    </section>
+                </div>
+                <div class="col-3 col-6-medium col-12-small">
+
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3 style="color: white;">PRODUCT</h3>
+                        {% for i in all_series %}
+                            <a href="{% url 'goods:ProductsList' %}?sid={{ i.id }}">{{ i.name }}</a>
+
+                        {% endfor %}
+                    </section>
+
+                </div>
+                <div class="col-3 col-6-medium col-12-small">
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3 style="color: white;">Random Stuff</h3>
+                        {#                                <ul class="style2">#}
+                        <a href="#" >Etiam feugiat condimentum</a>
+                        <a href="#" >Aliquam imperdiet suscipit odio</a>
+                        <a href="#" >Sed porttitor cras in erat nec</a>
+                        <a href="#" >Felis varius pellentesque potenti</a>
+                        <a href="#" >Nullam scelerisque blandit leo</a>
+                        {#                                </ul>#}
+                    </section>
+
+                </div>
+                <div class="col-3 col-6-medium col-12-small">
+
+                    <!-- Contact -->
+                    <section class="widget links">
+                        <h3 style="color: white;">CONTACT</h3>
+                        <ul class="icons">
+                            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+                            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+                        </ul>
+                        <span style="color: white;">Tel:&nbsp;
+                            <a>{{ com_info.tel }}</a>
+                        </span>
+                        <span style="color: white;">Email:&nbsp;
+                            <a>{{ com_info.email }}</a>
+                        </span>
+                        <span style="color: white;">Website:&nbsp;
+                            <a href="http://{{ com_info.web }}">{{ com_info.web }}</a>
+                        </span>
+                    </section>
+
+                </div>
+            </div>
+
+        </footer>
+    </div>
+
 {% endblock %}
 {% block left-content %}
-    <section id="footer">
-        <ul class="icons">
-            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
-        </ul>
 
-    </section>
 
 {% endblock %}
 
 
 {% block js %}
-    <script src="{% static 'JS/main_.js' %}"></script>
+    <script src="{% static 'js/main_.js' %}"></script>
 {% endblock %}

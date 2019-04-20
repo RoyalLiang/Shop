@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from pure_pagination import Paginator, PageNotAnInteger
 from django.views import View
-from goods.views import Video
+from goods.views import Video, GoodsSeries
 from django.core.cache import cache
 from django.conf import settings
 
@@ -17,6 +17,7 @@ import markdown
 class CompanyIntroduction_view(View):
     def get(self, request):
         company_info = cache.get('company_info')
+        all_series = GoodsSeries.objects.all()
         if not company_info:
             company_info = CompanyIntroduction.objects.last()
             cache.set('company_info', company_info, settings.CUBES_REDIS_TIMEOUT)
@@ -33,13 +34,16 @@ class CompanyIntroduction_view(View):
                       'keywords': index_info.keywords}
         return render(request, 'other/CompanyIntroduction.html', {
             'company_info': company_info,
-            'index_info': index_info
+            'index_info': index_info,
+            'all_series': all_series,
         })
 
 
 class Video_view(View):
     def get(self, request):
         video_info = PageInformation.objects.get(pk=1)
+        all_series = GoodsSeries.objects.all()
+        com_info = CompanyIntroduction.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -60,11 +64,15 @@ class Video_view(View):
             'videos': videos,
             'index_info': index_info,
             'video_info': video_info,
+            'all_series': all_series,
+            'com_info': com_info,
         })
 
 
 class Factory_view(View):
     def get(self, request):
+        all_series = GoodsSeries.objects.all()
+        com_info = CompanyIntroduction.objects.get(pk=1)
         page_info = PageInformation.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
@@ -85,12 +93,16 @@ class Factory_view(View):
         return render(request, 'other/Factory.html', {
             'all_factory': all_factory,
             'index_info': index_info,
-            'page_info': page_info
+            'page_info': page_info,
+            'all_series': all_series,
+            'com_info': com_info,
         })
 
 
 class Customer_view(View):
     def get(self, request):
+        all_series = GoodsSeries.objects.all()
+        com_info = CompanyIntroduction.objects.get(pk=1)
         page_info = PageInformation.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
@@ -111,12 +123,16 @@ class Customer_view(View):
         return render(request, 'other/Customer.html', {
             'all_customer': all_customer,
             'index_info': index_info,
-            'page_info': page_info
+            'page_info': page_info,
+            'all_series': all_series,
+            'com_info': com_info,
         })
 
 
 class News_view(View):
     def get(self, request):
+        all_series = GoodsSeries.objects.all()
+        com_info = CompanyIntroduction.objects.get(pk=1)
         page_info = PageInformation.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
@@ -137,13 +153,17 @@ class News_view(View):
         return render(request, 'other/NEWS.html', {
             'all_news': all_news,
             'index_info': index_info,
-            'page_info': page_info
+            'page_info': page_info,
+            'all_series': all_series,
+            'com_info': com_info,
         })
 
 
 class News_detail(View):
     def get(self, request, news_id):
         news = cache.get('news_%s' % news_id)
+        all_series = GoodsSeries.objects.all()
+        com_info = CompanyIntroduction.objects.get(pk=1)
         if not news:
             news = News.objects.get(id=int(news_id))
             cache.set('news_%s' % news_id, news, settings.CUBES_REDIS_TIMEOUT)
@@ -170,7 +190,9 @@ class News_detail(View):
             'pnews': pnews,
             'news': news,
             'nnews': nnews,
-            'index_info': index_info
+            'index_info': index_info,
+            'all_series': all_series,
+            'com_info': com_info,
         })
 
 
@@ -180,9 +202,11 @@ class ContactView(View):
     """
 
     def get(self, request):
+        all_series = GoodsSeries.objects.all()
         com_message = CompanyIntroduction.objects.get(pk=1)
         return render(request, 'contact.html', {
             'com_message': com_message,
+            'all_series': all_series,
         })
 
     @csrf_exempt

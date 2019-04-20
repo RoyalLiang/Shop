@@ -21,7 +21,8 @@
 
     <!-- Header -->
     <header id="header">
-	<a class="author" style="font-weight: bold;margin-left: 20px;text-decoration: none;"><span class="name"><img src="{% static 'images/com-logo.png' %}" alt=""/></span>AGAPASS</a>
+        <a class="author" style="font-weight: bold;margin-left: 20px;text-decoration: none;"><span class="name"><img
+                src="{% static 'images/com-logo.png' %}" alt=""/></span>AGAPASS</a>
         <nav class="links">
             <ul>
                 <li><a href="{% url 'index' %}">{% trans 'HOME' %}</a></li>
@@ -29,13 +30,14 @@
                 <li><a href="{% url 'other:CompanyIntroduction' %}">{% trans 'ABOUT' %}</a></li>
                 <li><a href="{% url 'other:News' %}">{% trans 'NEWS' %}</a></li>
                 <li><a href="{% url 'other:contact' %}">{% trans 'CONTACT' %}</a></li>
-		<li>
+                <li>
                     <form action="{% url 'set_language' %}" method="post" id="change_form">
                         {% csrf_token %}
                         {% get_available_languages as LANGUAGES %}
                         <select name="language" id="language" class="change_language" style="background-color: white;">
                             {% for language in LANGUAGES %}
-                                <option value="{{ language.0 }}" {% ifequal language.0 LANGUAGE_CODE %}selected{% endifequal %}>
+                                <option value="{{ language.0 }}"
+                                        {% ifequal language.0 LANGUAGE_CODE %}selected{% endifequal %}>
                                     {{ language.1 }}
                                 </option>
                             {% endfor %}
@@ -83,9 +85,9 @@
                         <h3>{% trans 'PRODUCTS' %}</h3>
                     </a>
                 </li>
-		<li>
-			<a href="{% url 'other:CompanyIntroduction' %}"><h3>{% trans 'ABOUT' %}</h3></a>
-		</li>
+                <li>
+                    <a href="{% url 'other:CompanyIntroduction' %}"><h3>{% trans 'ABOUT' %}</h3></a>
+                </li>
                 <li>
                     <a href="{% url 'other:News' %}">
                         <h3>{% trans 'NEWS' %}</h3>
@@ -96,13 +98,14 @@
                         <h3>{% trans 'CONTACT' %}</h3>
                     </a>
                 </li>
-		<li>
-		    <form action="{% url 'set_language' %}" method="post" id="change_form">
+                <li>
+                    <form action="{% url 'set_language' %}" method="post" id="change_form">
                         {% csrf_token %}
                         {% get_available_languages as LANGUAGES %}
                         <select name="language" id="language" class="change_language" style="background-color: white;">
                             {% for language in LANGUAGES %}
-                                <option value="{{ language.0 }}"{% ifequal language.0 LANGUAGE_CODE %} selected {% endifequal %}>
+                                <option value="{{ language.0 }}"{% ifequal language.0 LANGUAGE_CODE %}
+                                        selected {% endifequal %}>
                                     {{ language.1 }}
                                 </option>
                             {% endfor %}
@@ -153,132 +156,145 @@
                     </a><!-- 右箭头 -->
                 </div>
             </div>
-            {% for goods in all_goods.object_list %}
-                <article class="post">
-                    <header>
-                        <div class="title">
-                            <h2><a href="{% url 'goods:goods-detail' goods.id %}">{{ goods.name }}</a></h2>
-                            <p>{{ goods.desc }}</p>
-                        </div>
-                        <div class="meta">
-                            <time class="published" datetime="{{ goods.add_time }}">{{ goods.add_time }}</time>
-                            <a href="#" class="author"><span class="name"></span>
-                                <img alt='' src={% static 'images/com-logo.png' %} /></a>
-                        </div>
-                    </header>
-                    <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured">
-                        <img src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"/>
-                    </a>
-                    <p>
-                        {{ goods.detail|safe }}
-                    </p>
-                    <footer>
-                        <ul class="actions">
-                            <li><a href="{% url 'goods:goods-detail' goods.id %}"
-                                   class="button large">{% trans 'More Info' %}</a>
-                            </li>
+
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href=""></a></h2>
+                        <p></p>
+                    </div>
+                    <div class="meta">
+                        <time class="published" datetime=""></time>
+                        <a href="#" class="author"><span class="name"></span>
+                            <img alt='' src={% static 'images/com-logo.png' %}/></a>
+                    </div>
+                </header>
+                <a href="" class="image featured">
+                    <img src=""/>
+                </a>
+                <p>
+                    hahahahahahahaha
+                </p>
+                <footer>
+                    <ul class="actions">
+                        <li><a href=""
+                               class="button large">{% trans 'More Info' %}</a>
+                        </li>
+                    </ul>
+                </footer>
+            </article>
+            <div id="features-wrapper" style="width: 100%;">
+{#                <div class="container">#}
+                    <div class="row">
+                        {% for goods in all_goods %}
+                            <div class="col-4 col-12-medium"
+                                 style="border-radius: 25px;{% ifequal forloop.counter|add:0 2 %}padding: 0 2px;{% else %}padding: 0;{% endifequal %}margin: 0">
+
+                                <!-- Box -->
+                                <section class="box feature" style="border-radius: 25px;">
+                                    <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured"><img
+                                            style="border-radius: 25px;"
+                                            src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"
+                                            alt=""/></a>
+                                    <div class="inner">
+                                        <header>
+                                            <h1>{{ goods.name }}</h1>
+                                            <p>{{ goods.add_time }}</p>
+                                        </header>
+                                        <p>{{ goods.desc }}</p>
+                                        <br>
+                                    </div>
+                                </section>
+                            </div>
+                        {% endfor %}
+{#                    </div>#}
+                </div>
+            </div>
+            <style>
+        #footer .links a {
+            display: block !important;
+            color:#7e7e7e;
+        }
+    </style>
+            <div id="footer-wrapper"
+         style="width: 100%;padding: 60px 60px 200px 60px;background-color: #303030;text-decoration: none;border-radius: 25px;">
+        <footer id="footer" class="">
+            <div class="row">
+                <div class="col-3 col-6-medium col-12-small">
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3 style="color: white;">ABOUT US</h3>
+                        <a href="{% url 'other:CompanyIntroduction' %}">Company Introduction</a>
+                        <a href="{% url 'other:Factory' %}">Factory</a>
+                        <a href="{% url 'other:Video' %}" >Video</a>
+                        <a href="{% url 'other:Customer' %}">Customer</a>
+                    </section>
+                </div>
+                <div class="col-3 col-6-medium col-12-small">
+
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3 style="color: white;">PRODUCT</h3>
+                        {% for i in all_series %}
+                            <a href="{% url 'goods:ProductsList' %}?sid={{ i.id }}">{{ i.name }}</a>
+
+                        {% endfor %}
+                    </section>
+
+                </div>
+                <div class="col-3 col-6-medium col-12-small">
+                    <!-- Links -->
+                    <section class="widget links">
+                        <h3 style="color: white;">Random Stuff</h3>
+                        {#                                <ul class="style2">#}
+                        <a href="#" >Etiam feugiat condimentum</a>
+                        <a href="#" >Aliquam imperdiet suscipit odio</a>
+                        <a href="#" >Sed porttitor cras in erat nec</a>
+                        <a href="#" >Felis varius pellentesque potenti</a>
+                        <a href="#" >Nullam scelerisque blandit leo</a>
+                        {#                                </ul>#}
+                    </section>
+
+                </div>
+                <div class="col-3 col-6-medium col-12-small">
+
+                    <!-- Contact -->
+                    <section class="widget links">
+                        <h3 style="color: white;">CONTACT</h3>
+                        <ul class="icons">
+                            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+                            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
                         </ul>
-                    </footer>
-                </article>
-            {% endfor %}
-            <!-- Pagination -->
-            <ul class="pager">
-                {% if all_goods.has_previous %}
-                    <li>
-                        <a href="?{{ all_goods.previous_page_number.querystring }}">&laquo;{% trans 'PREVIOUS PAGE' %}</a>
-                    </li>
-                {% else %}
-                    <li><a class="disabled"><span>&laquo;{% trans 'PREVIOUS PAGE' %}</span></a></li>
-                {% endif %}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {% if all_goods.has_next %}
-                    <li><a href="?{{ all_goods.next_page_number.querystring }}">{% trans 'NEXT PAGE' %}&raquo;</a></li>
-                {% else %}
-                    <li><a class="disabled"><span>{% trans 'NEXT PAGE' %}&raquo;</span></a></li>
-                {% endif %}
-            </ul>
+                        <span style="color: white;">Tel:&nbsp;
+                            <a>{{ com_info.tel }}</a>
+                        </span>
+                        <span style="color: white;">Email:&nbsp;
+                            <a>{{ com_info.email }}</a>
+                        </span>
+                        <span style="color: white;">Website:&nbsp;
+                            <a href="http://{{ com_info.web }}">{{ com_info.web }}</a>
+                        </span>
+                    </section>
 
+                </div>
+            </div>
 
+        </footer>
+    </div>
         </div>
     {% endblock %}
 
-    {% block footer %}{% endblock %}
+
 
     <!-- Sidebar -->
     {% block left-content %}
-        <section id="sidebar">
-
-            <!-- Intro -->
-            <section id="intro">
-                <header>
-                    <h2>{% trans 'SEE HOT PRODUCTS?' %}</h2><br>
-                    <span style="font-size: 18px;">{% trans 'We have listed some hot items, let’s take a look.' %}</span>
-                </header>
-            </section>
-
-            <!-- Mini Posts -->
-            <section>
-                <div class="mini-posts">
-
-                    <!-- Mini Post -->
-                    {% for hot in hot_goods %}
-                        <article class="mini-post">
-                            <header>
-                                <h3><p>{{ hot.name }}</p></h3>
-                                <time class="published" datetime="{{ hot.add_time }}">{{ hot.add_time }}</time>
-                                <a href="" class="author"><img src="{% static 'images/com-logo.png' %}" alt=""/></a>
-                            </header>
-                            <a href="{% url 'goods:goods-detail' hot.id %}" class="image"><img
-                                    src="{{ MEDIA_URL }}{{ hot.goods_front_img }}" alt=""/></a>
-                        </article>
-                    {% endfor %}
-
-
-                </div>
-            </section>
-            <section>
-                <h3>{% trans 'More Products' %}</h3>
-            </section>
-            <!-- Posts List -->
-            <section>
-                <ul class="posts">
-                    {% for goods in more_goods %}
-                        <li>
-                            <article>
-                                <header>
-                                    <h3><p>{{ goods.name }}</p></h3>
-                                    <time class="published" datetime="{{ goods.add_time }}">{{ goods.add_time }}</time>
-                                </header>
-                                <a href="{% url 'goods:goods-detail' goods.id %}" class="image"><img
-                                        src="{{ MEDIA_URL }}{{ goods.goods_front_img }}" alt=""/></a>
-                            </article>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </section>
-
-            <!-- About -->
-            <section class="blurb">
-                <h2>{% trans 'ABOUT' %}</h2>
-                <span style="font-size: 16px;">{% trans 'Like our website? just share it.' %}</span>
-                <ul class="actions">
-                </ul>
-            </section>
-            <!-- Footer -->
-            <section id="footer">
-                <ul class="icons">
-                    <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-                    <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
-                </ul>
-
-            </section>
-        </section>
     {% endblock %}
 </div>
-
+{% block footer %}
+{% endblock %}
 <!-- Scripts -->
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/jquery.cookie.js' %}"></script>
@@ -287,6 +303,13 @@
 <script src="{% static 'js/breakpoints.min.js' %}"></script>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script src="{% static 'js/main.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+<script src="{% static 'assets/js/browser.min.js' %}"></script>
+<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+<script src="{% static 'assets/js/util.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
 {% block js %}
 {% endblock %}
 <script>
@@ -299,5 +322,7 @@
     })
 </script>
 <script src="{% static 'Plugins/Bootstrap/js/bootstrap.js' %}"></script>
+<style>
+</style>
 </body>
 </html>
