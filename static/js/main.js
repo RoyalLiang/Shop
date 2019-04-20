@@ -10,6 +10,8 @@ function judgeTerminalBrowser(userAgent) {
     };
     let regs = {};
     let terminal = {
+        'android': 'Android',
+        'iphone': 'iPhone',
         'windows nt 10': 'Windows 10',
         'windows nt 6.3': 'Windows 8.1',
         'windows nt 6.2': 'Windows 8',
@@ -25,12 +27,10 @@ function judgeTerminalBrowser(userAgent) {
         'win16': 'Windows 3.11',
         'macintosh|mac os x': 'Mac OS X',
         'mac_powerpc': 'Mac OS 9',
-        'linux': 'Linux',
         'ubuntu': 'Ubuntu',
-        'phone': 'iPhone',
+        'linux': 'Linux',
         'pod': 'iPod',
         'pad': 'iPad',
-        'android': 'Android',
         'blackberry': 'BlackBerry',
         'webos': 'Mobile',
         'freebsd': 'FreeBSD',
@@ -51,6 +51,8 @@ function judgeTerminalBrowser(userAgent) {
         data.browser = 'firefox ' + regs['1'];
     } else if (regs = userAgent.match(/Opera[\s|\/](\d+)\..*/)) {
         data.browser = 'opera ' + regs['1'];
+    } else if (regs = userAgent.match(/Edge[\s|\/](\d+)\..*/)) {
+        data.browser = 'edge ' + regs['1'];
     } else if (regs = userAgent.match(/Chrome\/(\d+)\..*/)) {
         data.browser = 'chrome ' + regs['1'];
     } else if (regs = userAgent.match(/Safari\/(\d+)\..*$/)) {
@@ -78,10 +80,14 @@ function getReferrer() {
             }
         }
     }
-    if (referrer === '') {
-        referrer = document.referrer;
-    }
+    // finally {
+    //     if (referrer === '') {
+    //         referrer = document.referrer;
+    //     }
+    //
+    // }
     return referrer;
+
 }
 
 (function ($) {
@@ -89,20 +95,22 @@ function getReferrer() {
         window.setInterval(function () {
             second++;
         }, 1000);
-        var tjArr = localStorage.getItem("jsArr") ? localStorage.getItem("jsArr") : '[{}]';
+        var tjArr = undefined;
+        // var tjArr = localStorage.getItem("jsArr") ? localStorage.getItem("jsArr") : '[{}]';
         // alert(tjArr);
-        $.cookie('tjRefer', getReferrer(), {expires: 1, path: '/'});
+        // $.cookie('tjRefer', getReferrer(), {expires: 1, path: '/'});
         window.onbeforeunload = function () {
-            if ($.cookie('tjRefer') == '') {
-                var tjT = eval('(' + localStorage.getItem("jsArr") + ')');
-                if (tjT) {
-                    tjT[tjT.length - 1].time += second;
-                    var jsArr = JSON.stringify(tjT);
-                    localStorage.clear();
-                    localStorage.setItem("jsArr", jsArr);
-                }
-            } else {
-                {
+            // if ($.cookie('tjRefer') == '') {
+            //     var tjT = eval('(' + localStorage.getItem("jsArr") + ')');
+            //     if (tjT) {
+            //         tjT[tjT.length - 1].time += second;
+            //         tjT[tjT.length - 1].refer = '';
+            //         var jsArr = JSON.stringify(tjT);
+            //         localStorage.clear();
+            //         localStorage.setItem("jsArr", jsArr);
+            //     }
+            // } else {
+            //     {
                     var dataArr = {
                         'url': location.href,
                         'time': second,
@@ -111,10 +119,32 @@ function getReferrer() {
                         'timeOut': Date.parse(new Date()) + (second * 1000),
                     };
                     tjArr = JSON.stringify(dataArr);
-                    localStorage.clear();
-                    localStorage.setItem("jsArr", tjArr);
+                    // localStorage.clear();
+                    // localStorage.setItem("jsArr", tjArr);
+                // }
+            // }
+            $.ajax({
+            'url': '/viewscount.html',
+            'data': {
+                data: JSON.stringify({
+                    'ip': returnCitySN["cip"],
+                    'address': returnCitySN["cname"],
+                    'user_agent': JSON.stringify(judgeTerminalBrowser(navigator.userAgent)),
+                    'tjArr': tjArr,
+                })
+            },
+            'async' : false,
+            'type': 'post',
+            'dataType': 'json',
+            'success': function (rs) {
+                if (rs.status === 'ok') {
+                    return true;
+                } else {
+                    alert(rs.content);
+                    return false;
                 }
             }
+        });
         };
 
 
@@ -233,30 +263,5 @@ function getReferrer() {
                 }
             }
         });
-
-
-        $.ajax({
-            'url': '/viewscount.html',
-            'data': {
-                data: JSON.stringify({
-                    'ip': returnCitySN["cip"],
-                    'address': returnCitySN["cname"],
-                    'user_agent': JSON.stringify(judgeTerminalBrowser(navigator.userAgent)),
-                    'tjArr': tjArr,
-                })
-            },
-            'type': 'post',
-            'dataType': 'json',
-            'success': function (rs) {
-                if (rs.status === 'ok') {
-                    return true;
-                } else {
-                    alert(rs.content);
-                    return false;
-                }
-            }
-        });
-
-
     }
 )(jQuery);

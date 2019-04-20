@@ -20,12 +20,25 @@ class GoodsAdmin(TranslationAdmin):
     # style_fields = {'attr': 'm2m_transfer'}
     filter_horizontal = ('attr',)
 
-    def save_models(self):
-        obj = self.new_obj
+    def save_model(self, request, obj, form, change):
+        '''
+        admin
+        '''
         all_goods = cache.get('all_goods')
         if all_goods:
             cache.set('all_goods', list(all_goods).append(obj), settings.CUBES_REDIS_TIMEOUT)
         obj.save()
+        super().save_model(request, obj, form, change)
+    # def save_models(self):
+    #     '''
+    #     xadmin
+    #     :return:
+    #     '''
+    #     obj = self.new_obj
+    #     all_goods = cache.get('all_goods')
+    #     if all_goods:
+    #         cache.set('all_goods', list(all_goods).append(obj), settings.CUBES_REDIS_TIMEOUT)
+    #     obj.save()
 
 
 class GoodsCategoryAdmin(TranslationAdmin):
@@ -57,12 +70,27 @@ class VideoAdmin(TranslationAdmin):
     search_fields = ['title', ]
     list_filter = ['title', ]
 
-    def save_models(self):
-        obj = self.new_obj
+    def save_model(self, request, obj, form, change):
+        '''
+        admin
+        '''
         obj.save()
         video_url = os.path.join(settings.MEDIA_ROOT, str(obj.video))
+        # linux设置视频文件权限
+        os.system("chmod 644 %s" % video_url)
         obj.image = 'video_image/%s' % auth.get_video_pic(video_url)
         obj.save()
+        super().save_model(request, obj, form, change)
+    # def save_models(self):
+    #     '''
+    #     xadmin
+    #     :return:
+    #     '''
+    #     obj = self.new_obj
+    #     obj.save()
+    #     video_url = os.path.join(settings.MEDIA_ROOT, str(obj.video))
+    #     obj.image = 'video_image/%s' % auth.get_video_pic(video_url)
+    #     obj.save()
 
 
 class GoodsSeriesAdmin(TranslationAdmin):
