@@ -9,8 +9,7 @@ import markdown
 import json
 from viewsCount.tasks import send_goods_email
 from django.conf import settings
-from other.models import Index, CompanyIntroduction
-from other.models import PageInformation
+from other.models import Index, CompanyIntroduction, PageInformation, Brands
 
 
 # Create your views here.
@@ -21,6 +20,7 @@ class IndexView(View):
         all_goods = cache.get('all_goods')
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.get(pk=1)
+        all_brands = Brands.objects.all()
         if not all_goods:
             all_goods = Goods.objects.all().order_by('-leval')[:3]
             cache.set('all_goods', all_goods, settings.CUBES_REDIS_TIMEOUT)
@@ -46,6 +46,7 @@ class IndexView(View):
             'index_info': index_info,
             'all_series': all_series,
             'com_info': com_info,
+            'all_brands': all_brands,
 
         })
 
@@ -54,6 +55,7 @@ class GoodsDetail(View):
     def get(self, request, goods_id):
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.get(pk=1)
+        all_brands = Brands.objects.all()
         goods = cache.get('goods_%s' % goods_id)
         if not goods:
             goods = Goods.objects.filter(id=goods_id).first()
@@ -89,6 +91,7 @@ class GoodsDetail(View):
             'cname': current_category.name,
             'all_series': all_series,
             'com_info': com_info,
+            'all_brands': all_brands
         })
 
 
@@ -96,6 +99,7 @@ class ProductsList(View):
     def get(self, request):
         com_info = CompanyIntroduction.objects.get(pk=1)
         page_info = PageInformation.objects.get(pk=1)
+        all_brands = Brands.objects.all()
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -163,6 +167,7 @@ class ProductsList(View):
                           'index_info': index_info,
                           'page_info': page_info,
                           'com_info': com_info,
+                          'all_brands': all_brands,
                       })
 
 
@@ -170,6 +175,7 @@ class Search(View):
     def get(self, request):
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.get(pk=1)
+        all_brands = Brands.objects.all()
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -203,11 +209,11 @@ class Search(View):
                           'sid': None,
                           'cid': None,
                           'categorys': None,
-                          # 'all_series': None,
                           'goods_list': goods_list,
                           'index_info': index_info,
                           'com_info': com_info,
                           'all_series': all_series,
+                          'all_brands': all_brands,
                       })
 
 

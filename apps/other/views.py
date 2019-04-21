@@ -18,6 +18,7 @@ class CompanyIntroduction_view(View):
     def get(self, request):
         company_info = cache.get('company_info')
         all_series = GoodsSeries.objects.all()
+        all_brands = Brands.objects.all()
         if not company_info:
             company_info = CompanyIntroduction.objects.last()
             cache.set('company_info', company_info, settings.CUBES_REDIS_TIMEOUT)
@@ -36,6 +37,7 @@ class CompanyIntroduction_view(View):
             'company_info': company_info,
             'index_info': index_info,
             'all_series': all_series,
+            'all_brands': all_brands,
         })
 
 
@@ -43,6 +45,7 @@ class Video_view(View):
     def get(self, request):
         video_info = PageInformation.objects.get(pk=1)
         all_series = GoodsSeries.objects.all()
+        all_brands = Brands.objects.all()
         com_info = CompanyIntroduction.objects.get(pk=1)
         try:
             page = request.GET.get('page', 1)
@@ -66,6 +69,7 @@ class Video_view(View):
             'video_info': video_info,
             'all_series': all_series,
             'com_info': com_info,
+            'all_brands': all_brands,
         })
 
 
@@ -74,6 +78,7 @@ class Factory_view(View):
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.get(pk=1)
         page_info = PageInformation.objects.get(pk=1)
+        all_brands = Brands.objects.all()
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -96,6 +101,8 @@ class Factory_view(View):
             'page_info': page_info,
             'all_series': all_series,
             'com_info': com_info,
+            'all_brands': all_brands,
+
         })
 
 
@@ -104,6 +111,8 @@ class Customer_view(View):
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.get(pk=1)
         page_info = PageInformation.objects.get(pk=1)
+        all_brands = Brands.objects.all()
+
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -126,6 +135,7 @@ class Customer_view(View):
             'page_info': page_info,
             'all_series': all_series,
             'com_info': com_info,
+            'all_brands': all_brands,
         })
 
 
@@ -134,6 +144,7 @@ class News_view(View):
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.get(pk=1)
         page_info = PageInformation.objects.get(pk=1)
+        all_brands = Brands.objects.all()
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -156,6 +167,7 @@ class News_view(View):
             'page_info': page_info,
             'all_series': all_series,
             'com_info': com_info,
+            'all_brands': all_brands,
         })
 
 
@@ -164,6 +176,7 @@ class News_detail(View):
         news = cache.get('news_%s' % news_id)
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.get(pk=1)
+        all_brands = Brands.objects.all()
         if not news:
             news = News.objects.get(id=int(news_id))
             cache.set('news_%s' % news_id, news, settings.CUBES_REDIS_TIMEOUT)
@@ -193,6 +206,7 @@ class News_detail(View):
             'index_info': index_info,
             'all_series': all_series,
             'com_info': com_info,
+            'all_brands': all_brands,
         })
 
 
@@ -204,9 +218,11 @@ class ContactView(View):
     def get(self, request):
         all_series = GoodsSeries.objects.all()
         com_message = CompanyIntroduction.objects.get(pk=1)
+        all_brands = Brands.objects.all()
         return render(request, 'contact.html', {
             'com_message': com_message,
             'all_series': all_series,
+            'all_brands': all_brands,
         })
 
     @csrf_exempt

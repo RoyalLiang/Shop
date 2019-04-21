@@ -44,7 +44,7 @@
     <style>
         #footer .links a {
             display: block !important;
-            color:#7e7e7e;
+            color: #7e7e7e;
         }
     </style>
     <div id="footer-wrapper"
@@ -57,7 +57,7 @@
                         <h3 style="color: white;">ABOUT US</h3>
                         <a href="{% url 'other:CompanyIntroduction' %}">Company Introduction</a>
                         <a href="{% url 'other:Factory' %}">Factory</a>
-                        <a href="{% url 'other:Video' %}" >Video</a>
+                        <a href="{% url 'other:Video' %}">Video</a>
                         <a href="{% url 'other:Customer' %}">Customer</a>
                     </section>
                 </div>
@@ -76,14 +76,10 @@
                 <div class="col-3 col-6-medium col-12-small">
                     <!-- Links -->
                     <section class="widget links">
-                        <h3 style="color: white;">Random Stuff</h3>
-                        {#                                <ul class="style2">#}
-                        <a href="#" >Etiam feugiat condimentum</a>
-                        <a href="#" >Aliquam imperdiet suscipit odio</a>
-                        <a href="#" >Sed porttitor cras in erat nec</a>
-                        <a href="#" >Felis varius pellentesque potenti</a>
-                        <a href="#" >Nullam scelerisque blandit leo</a>
-                        {#                                </ul>#}
+                        <h3 style="color: white;">OUR BRANDS</h3>
+                        {% for i in all_brands %}
+                            <a href="http://{{ i.url }}">{{ i.name }}</a>
+                        {% endfor %}
                     </section>
 
                 </div>
@@ -118,16 +114,7 @@
 
 {% endblock %}
 {% block left-content %}
-{#    <section id="footer">#}
-{#        <ul class="icons">#}
-{#            <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>#}
-{#            <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>#}
-{#            <li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>#}
-{#            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>#}
-{#            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>#}
-{#        </ul>#}
-{##}
-{#    </section>#}
+
 
 {% endblock %}
 

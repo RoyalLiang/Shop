@@ -29,16 +29,6 @@ class GoodsAdmin(TranslationAdmin):
             cache.set('all_goods', list(all_goods).append(obj), settings.CUBES_REDIS_TIMEOUT)
         obj.save()
         super().save_model(request, obj, form, change)
-    # def save_models(self):
-    #     '''
-    #     xadmin
-    #     :return:
-    #     '''
-    #     obj = self.new_obj
-    #     all_goods = cache.get('all_goods')
-    #     if all_goods:
-    #         cache.set('all_goods', list(all_goods).append(obj), settings.CUBES_REDIS_TIMEOUT)
-    #     obj.save()
 
 
 class GoodsCategoryAdmin(TranslationAdmin):
@@ -81,16 +71,6 @@ class VideoAdmin(TranslationAdmin):
         obj.image = 'video_image/%s' % auth.get_video_pic(video_url)
         obj.save()
         super().save_model(request, obj, form, change)
-    # def save_models(self):
-    #     '''
-    #     xadmin
-    #     :return:
-    #     '''
-    #     obj = self.new_obj
-    #     obj.save()
-    #     video_url = os.path.join(settings.MEDIA_ROOT, str(obj.video))
-    #     obj.image = 'video_image/%s' % auth.get_video_pic(video_url)
-    #     obj.save()
 
 
 class GoodsSeriesAdmin(TranslationAdmin):

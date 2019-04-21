@@ -35,6 +35,13 @@ class PageInformationAdmin(admin.ModelAdmin):
     list_display = ['product_info', 'news_info', 'video_info', 'customer_info', 'factory_info']
 
 
+@admin.register(Brands)
+class BrandsAdmin(admin.ModelAdmin):
+    list_display = ['name', 'url']
+    search_fields = ['name', 'url']
+    list_filter = ['add_time']
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(CompanyIntroduction, CompanyIntroductionAdmin)
 admin.site.register(Factory, FactoryAdmin)

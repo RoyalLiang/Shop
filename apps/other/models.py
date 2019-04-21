@@ -94,9 +94,9 @@ class UserContactInfo(models.Model):
     """
     name = models.CharField(max_length=100, verbose_name='昵称', default='')
     phone = models.CharField(max_length=100, blank=True, null=True, verbose_name='联系电话', default='')
-    email = models.EmailField(max_length=100,  verbose_name='邮箱', default='')
+    email = models.EmailField(max_length=100, verbose_name='邮箱', default='')
     country = models.CharField(max_length=100, verbose_name='国家', default='')
-    message = models.TextField(verbose_name='联系内容',  default='', )
+    message = models.TextField(verbose_name='联系内容', default='', )
     add_time = models.DateTimeField(default=datetime.now, verbose_name='联系时间')
 
     class Meta:
@@ -120,3 +120,20 @@ class PageInformation(models.Model):
 
     def __str__(self):
         return self.product_info
+
+
+class Brands(models.Model):
+    """
+    品牌信息
+    """
+    name = models.CharField(max_length=30, verbose_name='品牌名称', default='')
+    desc = models.CharField(max_length=200, verbose_name='品牌描述', default='', null=True, blank=True)
+    url = models.URLField(verbose_name='品牌链接', default='')
+    add_time = models.DateTimeField(default=datetime.now, verbose_name='联系时间')
+
+    class Meta:
+        verbose_name = '品牌信息'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
