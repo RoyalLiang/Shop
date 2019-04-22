@@ -10,8 +10,8 @@ class GoodsSeriesTranslationOptions(TranslationOptions):
     fields = ('name',)
 
 
-class GoodsCategoryTranslationOptions(TranslationOptions):
-    fields = ('name',)
+# class GoodsCategoryTranslationOptions(TranslationOptions):
+#     fields = ('name',)
 
 
 class GoodsImageTranslationOptions(TranslationOptions):
@@ -32,7 +32,7 @@ class VideoTranslationOptions(TranslationOptions):
 
 translator.register(Goods, GoodsTranslationOptions)
 translator.register(GoodsSeries, GoodsSeriesTranslationOptions)
-translator.register(GoodsCategory, GoodsCategoryTranslationOptions)
+# translator.register(GoodsCategory, GoodsCategoryTranslationOptions)
 translator.register(GoodsImage, GoodsImageTranslationOptions)
 translator.register(Banner, BannerTranslationOptions)
 translator.register(GoodsAttributes, GoodsAttributesTranslationOptions)

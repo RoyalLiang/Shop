@@ -31,10 +31,10 @@ class GoodsAdmin(TranslationAdmin):
         super().save_model(request, obj, form, change)
 
 
-class GoodsCategoryAdmin(TranslationAdmin):
-    list_display = ['name', 'add_time']
-    search_fields = ['name']
-    list_filter = ['add_time']
+# class GoodsCategoryAdmin(TranslationAdmin):
+#     list_display = ['name', 'add_time']
+#     search_fields = ['name']
+#     list_filter = ['add_time']
 
 
 class GoodsImageAdmin(TranslationAdmin):
@@ -51,6 +51,7 @@ class GoodsAttributesAdmin(TranslationAdmin):
 
 class MessageAdmin(admin.ModelAdmin):
     list_display = ['inquire', 'name', 'phone', 'email', 'address', 'message']
+    readonly_fields = ('inquire', 'name', 'phone', 'email', 'address', 'message', 'add_time')
     search_fields = ['name', 'inquire']
     list_filter = ['inquire', 'name', ]
 
@@ -80,7 +81,7 @@ class GoodsSeriesAdmin(TranslationAdmin):
 
 admin.site.register(Banner, BannerAdmin)
 admin.site.register(GoodsSeries, GoodsSeriesAdmin)
-admin.site.register(GoodsCategory, GoodsCategoryAdmin)
+# admin.site.register(GoodsCategory, GoodsCategoryAdmin)
 admin.site.register(Goods, GoodsAdmin)
 admin.site.register(GoodsImage, GoodsImageAdmin)
 admin.site.register(GoodsAttributes, GoodsAttributesAdmin)

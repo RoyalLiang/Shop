@@ -19,27 +19,27 @@ class GoodsSeries(models.Model):
         return self.name
 
 
-class GoodsCategory(models.Model):
-    """
-    商品分类
-    """
-    name = models.CharField(max_length=50, unique=True, verbose_name='类别名', help_text='类别名')
-    series = models.ForeignKey(GoodsSeries, verbose_name='系列', on_delete=models.CASCADE)
-    add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
-
-    class Meta:
-        verbose_name = '商品分类'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return self.name
+# class GoodsCategory(models.Model):
+#     """
+#     商品分类
+#     """
+#     name = models.CharField(max_length=50, unique=True, verbose_name='类别名', help_text='类别名')
+#     # series = models.ForeignKey(GoodsSeries, verbose_name='系列', on_delete=models.CASCADE)
+#     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+#
+#     class Meta:
+#         verbose_name = '商品分类'
+#         verbose_name_plural = verbose_name
+#
+#     def __str__(self):
+#         return self.name
 
 
 class Goods(models.Model):
     """
     商品信息
     """
-    category = models.ForeignKey(GoodsCategory, on_delete=models.CASCADE, verbose_name='商品类别')
+    series = models.ForeignKey(GoodsSeries, on_delete=models.CASCADE, verbose_name='商品系列', null=True)
     name = models.CharField(max_length=100, verbose_name='商品名', help_text='商品名')
     goods_sn = models.CharField(max_length=128, unique=True, verbose_name='商品编码')
     goods_front_img = models.ImageField(upload_to='goods/images', verbose_name='商品封面')

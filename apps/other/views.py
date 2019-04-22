@@ -227,7 +227,7 @@ class ContactView(View):
 
     @csrf_exempt
     def post(self, request):
-        data = {}
+        data = dict()
         data['name'] = request.POST.get('name', None)
         data['phone'] = request.POST.get('phone', None)
         data['email'] = request.POST.get('email', None)

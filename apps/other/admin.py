@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import *
 from modeltranslation.admin import TranslationAdmin
+
+
 # Register your models here.
 
 
@@ -28,15 +30,16 @@ class IndexAdmin(TranslationAdmin):
 
 class UserContactMessageAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'country', 'message']
+    readonly_fields = ('name', 'email', 'country', 'message', 'phone', 'add_time')
 
 
 @admin.register(PageInformation)
-class PageInformationAdmin(admin.ModelAdmin):
+class PageInformationAdmin(TranslationAdmin):
     list_display = ['product_info', 'news_info', 'video_info', 'customer_info', 'factory_info']
 
 
 @admin.register(Brands)
-class BrandsAdmin(admin.ModelAdmin):
+class BrandsAdmin(TranslationAdmin):
     list_display = ['name', 'url']
     search_fields = ['name', 'url']
     list_filter = ['add_time']
