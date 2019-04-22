@@ -26,8 +26,7 @@
                     <img src="{% static 'images/com-logo.png' %}" alt=""/>
                 </div>
             </header>
-            {#            <span class="image featured"><img src="{% static 'images/pic01.jpg' %}" alt="" /></span>#}
-            {#            <p>{{ com_message.detail| safe }}</p>#}
+
             <div class="note">
                 <span style="font-size: 30px; font-weight: bold;">{% trans 'Leave us a message' %}</span><br><br><br>
                 <form class="row feedback-form" onsubmit="return false;" method="post" id="jsForm">
@@ -152,15 +151,7 @@
                         alert('* Field is Required');
                         return;
                     }
-                    {#if(email === ''){#}
-                    {#    alert('Email is Null');#}
-                    {#    return ;#}
-                    {#if(country === ''){#}
-                    {#    alert('Country is Null');#}
-                    {#    return ;#}
-                    {#if(message === ''){#}
-                    {#    alert('Message is Null');#}
-                    {#    return ;#}
+
                     $.ajax({
                         cache: false,
                         type: "POST",

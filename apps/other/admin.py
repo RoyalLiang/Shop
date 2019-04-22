@@ -13,15 +13,18 @@ class NewsAdmin(TranslationAdmin):
 
 
 class CompanyIntroductionAdmin(TranslationAdmin):
-    list_display = ['name', 'detail', 'add_time', ]
+    list_display = ['name', 'summary', 'add_time', ]
+    readonly_fields = ['summary']
 
 
 class FactoryAdmin(TranslationAdmin):
     list_display = ['title', 'image', ]
+    list_filter = ['title']
 
 
 class CustomerAdmin(TranslationAdmin):
     list_display = ['title', 'image', ]
+    list_filter = ['title']
 
 
 class IndexAdmin(TranslationAdmin):

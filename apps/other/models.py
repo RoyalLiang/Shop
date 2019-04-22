@@ -27,6 +27,7 @@ class CompanyIntroduction(models.Model):
     公司信息
     '''
     name = models.CharField(max_length=100, verbose_name='公司名称', blank=True)
+    summary = models.CharField(max_length=250, default='', verbose_name='公司摘要')
     detail = MDTextField(verbose_name='详细信息')
     addr = models.CharField(max_length=200, default='', verbose_name='公司地址', blank=True, null=True)
     tel = models.CharField(max_length=20, default='', verbose_name='公司电话', blank=True, null=True)
@@ -37,6 +38,16 @@ class CompanyIntroduction(models.Model):
     class Meta:
         verbose_name = '公司信息'
         verbose_name_plural = verbose_name
+
+    def save_summary(self, *args, **kwargs):
+        import re
+        # 从 detail 摘取前 250 个字符赋给到 summary
+        summary = re.sub(' ', '', self.detail)
+        summary = re.sub('#', '', summary)
+        self.summary = summary[:250]
+
+        # 调用父类的 save 方法将数据保存到数据库中
+        super(CompanyIntroduction, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
