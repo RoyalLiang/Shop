@@ -125,5 +125,14 @@
 
 
 {% block js %}
+    <script>
+    $(function () {
+        $('.change_language').change(function (e) {
+                e.preventDefault();
+                $('#change_form').submit();
+                return false;
+            });
+    })
+    </script>
     <script src="{% static 'js/main_.js' %}"></script>
 {% endblock %}

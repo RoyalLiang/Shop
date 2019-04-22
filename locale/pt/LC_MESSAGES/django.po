@@ -1338,3 +1338,16 @@ msgstr "Notícia"
 
 msgid "Language"
 msgstr "Língua"
+
+msgid "More"
+msgstr "Mais"
+
+msgid "ABOUT US"
+msgstr "SOBRE NÓS"
+
+msgid "PRODUCT"
+msgstr "PRODUTOS"
+
+msgid "OUR BRANDS"
+msgstr "NOSSAS MARCAS"
+

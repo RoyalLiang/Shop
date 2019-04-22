@@ -1339,3 +1339,16 @@ msgstr "뉴스"
 
 msgid "Language"
 msgstr "언어"
+
+msgid "More"
+msgstr "더"
+
+msgid "ABOUT US"
+msgstr "회사 소개"
+
+msgid "PRODUCT"
+msgstr "생성물"
+
+msgid "OUR BRANDS"
+msgstr "우리 브랜드"
+

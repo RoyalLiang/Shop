@@ -164,15 +164,15 @@
                 <header>
                     <div class="title">
                         <h2><a href=""></a></h2>
-                        <h3>About {{ com_info.name }}</h3>
+                        <h3>{% trans 'About' %} {{ com_info.name }}</h3>
 
                         <p>
                             <span>{{ com_info.summary }}</span>
                         </p>
-                        <a href="{% url 'other:CompanyIntroduction' %}" style="color: orange;">More>></a>
+                        <a href="{% url 'other:CompanyIntroduction' %}" style="color: orange;">{% trans 'More' %}>></a>
                     </div>
                     <div class="meta">
-                        <time class="published" datetime="">ABOUT</time>
+                        <time class="published" datetime="">{% trans 'ABOUT' %}</time>
                         <a href="#" class="author"><span class="name"></span>
                             <img alt='' src={% static 'images/com-logo.png' %}/></a>
                     </div>
@@ -181,7 +181,7 @@
                     <a class="img-box" data-toggle="modal" data-target=".{{ video.title }}x">
                         <img alt="{{ video.title }}"
                              src="{{ MEDIA_URL }}{{ video.image }}"
-                             style="display: block;">
+                             style="display: block;width: 100%">
                     </a>
                     <div class="modal fade {{ video.title }}x" id="{{ video.title }}x" tabindex="-1" role="dialog"
                          aria-labelledby="myLargeModalLabel">
@@ -242,18 +242,18 @@
                         <div class="col-3 col-6-medium col-12-small">
                             <!-- Links -->
                             <section class="widget links">
-                                <h3 style="color: white;">ABOUT US</h3>
-                                <a href="{% url 'other:CompanyIntroduction' %}">Company Introduction</a>
-                                <a href="{% url 'other:Factory' %}">Factory</a>
-                                <a href="{% url 'other:Video' %}">Video</a>
-                                <a href="{% url 'other:Customer' %}">Customer</a>
+                                <h3 style="color: white;">{% trans 'ABOUT US' %}</h3>
+                                <a href="{% url 'other:CompanyIntroduction' %}">{% trans 'Company Introduction' %}</a>
+                                <a href="{% url 'other:Factory' %}">{% trans 'Factory' %}</a>
+                                <a href="{% url 'other:Video' %}">{% trans 'Video' %}</a>
+                                <a href="{% url 'other:Customer' %}">{% trans 'Customer' %}</a>
                             </section>
                         </div>
                         <div class="col-3 col-6-medium col-12-small">
 
                             <!-- Links -->
                             <section class="widget links">
-                                <h3 style="color: white;">PRODUCT</h3>
+                                <h3 style="color: white;">{% trans 'PRODUCT' %}</h3>
                                 {% for i in all_series %}
                                     <a href="{% url 'goods:ProductsList' %}?sid={{ i.id }}">{{ i.name }}</a>
 
@@ -264,7 +264,7 @@
                         <div class="col-3 col-6-medium col-12-small">
                             <!-- Links -->
                             <section class="widget links">
-                                <h3 style="color: white;">OUR BRANDS</h3>
+                                <h3 style="color: white;">{% trans 'OUR BRANDS' %}</h3>
                                 {% for i in all_brands %}
                                     <a href="http://{{ i.url }}">{{ i.name }}</a>
                                 {% endfor %}
@@ -275,7 +275,7 @@
 
                             <!-- Contact -->
                             <section class="widget links">
-                                <h3 style="color: white;">CONTACT</h3>
+                                <h3 style="color: white;">{% trans 'CONTACT' %}</h3>
                                 <ul class="icons">
                                     <li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
                                     <li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>

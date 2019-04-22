@@ -1338,3 +1338,16 @@ msgstr "ニュース"
 
 msgid "Language"
 msgstr "言語"
+
+msgid "More"
+msgstr "もっと"
+
+msgid "ABOUT US"
+msgstr "私たちに関しては"
+
+msgid "PRODUCT"
+msgstr "製品"
+
+msgid "OUR BRANDS"
+msgstr "我々のブランド"
+

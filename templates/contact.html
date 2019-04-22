@@ -141,6 +141,11 @@
     <script src="{% static 'JS/main_.js' %}"></script>
     <script>
         $(function () {
+            $('.change_language').change(function (e) {
+                e.preventDefault();
+                $('#change_form').submit();
+                return false;
+            });
             $(document).ready(function () {
                 $('#jsBtn').on('click', function () {
                     let name = $('#name').val();

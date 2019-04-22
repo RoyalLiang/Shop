@@ -163,8 +163,14 @@
 {% block js %}
     <script src="{% static 'js/main_.js' %}"></script>
 {#    <script src="{% static 'js/video.min.js' %}"></script>#}
+
     <script type="text/javascript">
         $(function () {
+            $('.change_language').change(function (e) {
+                e.preventDefault();
+                $('#change_form').submit();
+                return false;
+            });
             $('.video-js').css({
                 width: window.innerWidth * 0.8 + 'px',
                 height: window.innerWidth * 0.4435 + 'px'
