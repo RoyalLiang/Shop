@@ -95,8 +95,13 @@ function getReferrer() {
         window.setInterval(function () {
             second++;
         }, 1000);
-        var tjArr = undefined;
-        // var tjArr = localStorage.getItem("jsArr") ? localStorage.getItem("jsArr") : '[{}]';
+        var tjArr = localStorage.getItem("jsArr") && getReferrer() ? localStorage.getItem("jsArr") : JSON.stringify({
+            'url': location.href,
+            'time': second,
+            'refer': getReferrer(),
+            'timeIn': Date.parse(new Date()) - (second * 1000),
+            'timeOut': Date.parse(new Date()),
+        });
         // alert(tjArr);
         // $.cookie('tjRefer', getReferrer(), {expires: 1, path: '/'});
         window.onbeforeunload = function () {
@@ -111,43 +116,20 @@ function getReferrer() {
             //     }
             // } else {
             //     {
-                    var dataArr = {
-                        'url': location.href,
-                        'time': second,
-                        'refer': getReferrer(),
-                        'timeIn': Date.parse(new Date()),
-                        'timeOut': Date.parse(new Date()) + (second * 1000),
-                    };
-                    tjArr = JSON.stringify(dataArr);
-                    // localStorage.clear();
-                    // localStorage.setItem("jsArr", tjArr);
-                // }
+            var dataArr = {
+                'url': location.href,
+                'time': second,
+                'refer': getReferrer(),
+                'timeIn': Date.parse(new Date()) - (second * 1000),
+                'timeOut': Date.parse(new Date()),
+            };
+            tjArr = JSON.stringify(dataArr);
+            localStorage.clear();
+            localStorage.setItem("jsArr", tjArr);
             // }
-            $.ajax({
-            'url': '/viewscount.html',
-            'data': {
-                data: JSON.stringify({
-                    'ip': returnCitySN["cip"],
-                    'address': returnCitySN["cname"],
-                    'user_agent': JSON.stringify(judgeTerminalBrowser(navigator.userAgent)),
-                    'tjArr': tjArr,
-                })
-            },
-            'async' : false,
-            'type': 'post',
-            'dataType': 'json',
-            'success': function (rs) {
-                if (rs.status === 'ok') {
-                    return true;
-                } else {
-                    alert(rs.content);
-                    return false;
-                }
-            }
-        });
+            // }
+
         };
-
-
         var $window = $(window),
             $body = $('body'),
             $menu = $('#menu'),
@@ -260,6 +242,28 @@ function getReferrer() {
                 var csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        $.ajax({
+            'url': '/viewscount.html',
+            'data': {
+                data: JSON.stringify({
+                    'ip': returnCitySN["cip"],
+                    'address': returnCitySN["cname"],
+                    'user_agent': JSON.stringify(judgeTerminalBrowser(navigator.userAgent)),
+                    'tjArr': tjArr,
+                })
+            },
+            'async' : false,
+            'type': 'post',
+            'dataType': 'json',
+            'success': function (rs) {
+                if (rs.status === 'ok') {
+                    return true;
+                } else {
+                    alert(rs.content);
+                    return false;
                 }
             }
         });
