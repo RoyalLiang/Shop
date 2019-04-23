@@ -41,7 +41,9 @@
                 <div class="col-xs-12 col-sm-6 item" style="width: 100%">
                     {% for video in videos.object_list %}
                         <div class="video">
-                            <a class="img-box" data-toggle="modal" data-target="#{{ video.title }}x">
+                            <a class="img-box" data-toggle="modal" data-target="#{{ video.title }}x" style="position: relative">
+                                <img class="play" src="{% static 'images/play.png' %}" alt="play"
+                                    style="float: left;position: relative">
                                 <img alt="{{ video.title }}"
                                      src="{{ MEDIA_URL }}{{ video.image }}"
                                      style="display: block;">
@@ -167,6 +169,13 @@
 
     <script type="text/javascript">
         $(function () {
+            var w = $('.play').siblings().eq(0).width();
+            var h = $('.play').siblings().eq(0).height();
+            $('.play').width(0.3 * w).height(0.3 * w).css({
+                top: 0.5 * h - 0.15 * w + 'px',
+                left: 0.35 * w + 'px',
+                zIndex:100
+            });
             $('.change_language').change(function (e) {
                 e.preventDefault();
                 $('#change_form').submit();
