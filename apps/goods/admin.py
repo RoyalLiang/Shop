@@ -44,9 +44,9 @@ class GoodsImageAdmin(TranslationAdmin):
 
 
 class GoodsAttributesAdmin(TranslationAdmin):
-    list_display = ['name', 'value']
-    search_fields = ['name', 'value']
-    list_filter = ['name', ]
+    list_display = ['name', 'weight', 'value']
+    search_fields = ['name', 'weight', 'value']
+    list_filter = ['name', 'weight']
 
 
 class MessageAdmin(admin.ModelAdmin):
