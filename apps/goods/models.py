@@ -105,6 +105,7 @@ class GoodsAttributes(models.Model):
     商品属性
     '''
     name = models.CharField(max_length=100, verbose_name='属性名', help_text='属性名')
+    weight = models.IntegerField(default=0, verbose_name='属性权重', help_text='属性权重')
     value = models.CharField(max_length=100, verbose_name='属性值', help_text='属性值')
 
     class Meta:

@@ -99,10 +99,10 @@
                     </a>
                 </li>
                 <li>
-                    <form action="{% url 'set_language' %}" method="post" id="change_form">
+                    <form action="{% url 'set_language' %}" method="post" id="change_form1">
                         {% csrf_token %}
                         {% get_available_languages as LANGUAGES %}
-                        <select name="language" id="language" class="change_language" style="background-color: white;">
+                        <select name="language" id="language" class="change_language1" style="background-color: white;">
                             {% for language in LANGUAGES %}
                                 <option value="{{ language.0 }}"{% ifequal language.0 LANGUAGE_CODE %}
                                         selected {% endifequal %}>
@@ -164,17 +164,16 @@
                 <header>
                     <div class="title">
                         <h2><a href=""></a></h2>
-                        <h3>{% trans 'About' %} {{ com_info.name }}</h3>
-
-                        <p>
-                            <span>{{ com_info.summary }}</span>
-                        </p>
-                        <a href="{% url 'other:CompanyIntroduction' %}" style="color: orange;">{% trans 'More' %}>></a>
+                        <span style="font-weight: bold;font-size: 24px;">{{ com_info.name }}</span><br><br>
+                            <span style="font-size: 16px;">
+                                {{ com_info.summary }}...
+                                <a href="{% url 'other:CompanyIntroduction' %}" style="color: orange;">
+                                {% trans 'More' %}>>
+                                </a>
+                            </span>
                     </div>
                     <div class="meta">
-                        <time class="published" datetime="">{% trans 'ABOUT' %}</time>
-                        <a href="#" class="author"><span class="name"></span>
-                            <img alt='' src={% static 'images/com-logo.png' %}/></a>
+                        <img alt='' src={% static 'images/com-logo.png' %}/>
                     </div>
                 </header>
                 <div class="video">
@@ -189,8 +188,8 @@
                             <div class="modal-content">
                                 <div class="m">
                                     <video id="my-video" class="video-js my_video" controls preload="auto"
-{#                                                                                       width="956px"#}
-{#                                                                                       height="530px"#}
+                                            {#                                                                                       width="956px"#}
+                                            {#                                                                                       height="530px"#}
                                            data-setup="{}">
                                         <source src="{{ MEDIA_URL }}{{ video.video }}" type="video/mp4">
                                     </video>
@@ -199,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-{#                <h3>{{ video.title }}</h3>#}
+                {#                <h3>{{ video.title }}</h3>#}
             </article>
             <div id="features-wrapper" style="width: 100%;">
                 {#                <div class="container">#}
@@ -283,15 +282,17 @@
                                     <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
                                     <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
                                 </ul>
+                                <span style="color: white;">Address:&nbsp;</span><p style="color: #7e7e7e;">{{ com_info.addr }}</p>
                                 <span style="color: white;">Tel:&nbsp;
-                            <a>{{ com_info.tel }}</a>
-                        </span>
+                                    <a>{{ com_info.tel }}</a>
+                                </span>
                                 <span style="color: white;">Email:&nbsp;
-                            <a>{{ com_info.email }}</a>
-                        </span>
+                                    <a>{{ com_info.email }}</a>
+                                </span>
                                 <span style="color: white;">Website:&nbsp;
-                            <a href="http://{{ com_info.web }}">{{ com_info.web }}</a>
-                        </span>
+                                    <a href="http://{{ com_info.web }}">{{ com_info.web }}</a>
+                                </span>
+
                             </section>
 
                         </div>
@@ -323,15 +324,30 @@
 <script src="{% static 'assets/js/util.js' %}"></script>
 <script src="{% static 'assets/js/main.js' %}"></script>
 
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('.change_language').change(function (e) {
+            e.preventDefault();
+            $('#change_form').submit();
+            return false;
+        });
+        $('.change_language1').change(function (e) {
+            e.preventDefault();
+            $('#change_form1').submit();
+            return false;
+        });
+    })
+</script>
+
 {% block js %}
-{#    <script src="{% static 'js/video.min.js' %}"></script>#}
+    {#    <script src="{% static 'js/video.min.js' %}"></script>#}
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
-            $('.change_language').change(function (e) {
-                e.preventDefault();
-                $('#change_form').submit();
-                return false;
-            });
+            {#$('.change_language').change(function (e) {#}
+            {#    e.preventDefault();#}
+            {#    $('#change_form').submit();#}
+            {#    return false;#}
+
             $('.video-js').css({
                 width: window.innerWidth * 0.8 + 'px',
                 height: window.innerWidth * 0.4435 + 'px'
@@ -341,9 +357,10 @@
                 height: window.innerWidth * 0.4435 + 'px',
                 margin: 'auto'
             })
-        });
+        })
+        ;
         $('#{{ video.title }}x').click(function () {
-            var v=$('#{{ video.title }}x').find('video')[0];
+            var v = $('#{{ video.title }}x').find('video')[0];
             if (!v.paused) {
                 v.pause();
             }
@@ -437,7 +454,7 @@
         {#myPlayer = videojs('my-video');#}
         {#videojs("my-video").ready(function () {#}
         {#    myPlayer = this;#}
-            {#myPlayer.play();#}
+        {#myPlayer.play();#}
         {# });#}
     </script>
 

@@ -85,7 +85,7 @@ class GoodsDetail(View):
             cache.set('goods_banners_%s' % goods_id, goods_banners, settings.CUBES_REDIS_TIMEOUT)
         goods_attrs = cache.get('goods_attrs_%s' % goods_id)
         if not goods_attrs:
-            goods_attrs = GoodsAttributes.objects.filter(goods__id=goods_id).all()
+            goods_attrs = GoodsAttributes.objects.filter(goods__id=goods_id).all().order_by('-weight')[:3]
             cache.set('goods_attrs_%s' % goods_id, goods_attrs, settings.CUBES_REDIS_TIMEOUT)
         return render(request, 'goods/goods-detail.html', {
             'goods': goods,

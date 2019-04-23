@@ -78,7 +78,20 @@
                                 <span>{{ goods.name }}</span>
                             </div>
                             <div class="info">
-                                {{ goods.desc }}
+                                <p>{{ goods.desc }}</p>
+                                <p>{{ goods.desc }}</p><br>
+                                <p style="font-weight: bold;">Partial Parameter:</p>
+                                {% for attr in goods_attrs %}
+                                    <p>
+                                        <span style="color: orange;font-weight: bold;font-size: 18px;">
+                                            {{ attr.name }}
+                                        </span>
+                                        :&nbsp;
+                                        <span style="font-size: 16px;">
+                                            {{ attr.value }}
+                                        </span>
+                                    </p>
+                                {% endfor %}
                             </div>
                             <div class="link">
                                 <a class="inquire" href="#inquiry">{% trans 'Inquire Now' %}</a>
@@ -117,13 +130,12 @@
                     <h3>{% trans 'Table Parameter' %}</h3>
                 </div>
                 <div class="text">
-                    {% for attr in goods_attrs %}
-                        <p>{{ attr.name }}:{{ attr.value }}</p>
-                    {% endfor %}
 
                     <p><br></p>
                 </div>
-                {{ goods.detail|safe }}
+                <div style="font-size: 20px;">
+                    {{ goods.detail|safe }}
+                </div>
             </div>
 
             <div class="inquiry" id="inquiry">
@@ -238,6 +250,8 @@
                             <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
                             <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
                         </ul>
+                        <span style="color: white;">Address:&nbsp;</span>
+                        <p style="color: #7e7e7e;">{{ com_info.addr }}</p>
                         <span style="color: white;">Tel:&nbsp;
                             <a>{{ com_info.tel }}</a>
                         </span>
@@ -260,13 +274,13 @@
 
 {% block js %}
     <script>
-    $(function () {
-        $('.change_language').change(function (e) {
+        $(function () {
+            $('.change_language').change(function (e) {
                 e.preventDefault();
                 $('#change_form').submit();
                 return false;
             });
-    })
+        })
     </script>
     <script src="{% static 'js/main_.js' %}"></script>
 {% endblock %}

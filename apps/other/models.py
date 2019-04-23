@@ -39,11 +39,11 @@ class CompanyIntroduction(models.Model):
         verbose_name = '公司信息'
         verbose_name_plural = verbose_name
 
-    def save_summary(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
         import re
         # 从 detail 摘取前 250 个字符赋给到 summary
-        summary = re.sub(' ', '', self.detail)
-        summary = re.sub('#', '', summary)
+        # summary = re.sub(' ', '', self.detail)
+        summary = re.sub('#', '', self.detail)
         self.summary = summary[:250]
 
         # 调用父类的 save 方法将数据保存到数据库中
