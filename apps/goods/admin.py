@@ -8,9 +8,10 @@ from .models import *
 from modeltranslation.admin import TranslationAdmin
 
 
+# 在添加商品的同时添加商品轮播图
 class GoodsImageInline(admin.TabularInline):
     model = GoodsImage
-    extra = 3
+    extra = 2
 
 
 class BannerAdmin(TranslationAdmin):
@@ -25,7 +26,7 @@ class GoodsAdmin(TranslationAdmin):
     list_filter = ['add_time']
     # style_fields = {'attr': 'm2m_transfer'}
     filter_horizontal = ('attr',)
-    inlines = [GoodsImageInline, ]
+    inlines = [GoodsImageInline, ]  # 嵌入轮播图添加
 
     def save_model(self, request, obj, form, change):
         '''
@@ -44,6 +45,7 @@ class GoodsAdmin(TranslationAdmin):
 #     list_filter = ['add_time']
 
 
+@admin.register(GoodsImage)
 class GoodsImageAdmin(TranslationAdmin):
     list_display = ['goods', 'add_time']
     search_fields = ['goods']
@@ -88,9 +90,7 @@ class GoodsSeriesAdmin(TranslationAdmin):
 
 admin.site.register(Banner, BannerAdmin)
 admin.site.register(GoodsSeries, GoodsSeriesAdmin)
-# admin.site.register(GoodsCategory, GoodsCategoryAdmin)
 admin.site.register(Goods, GoodsAdmin)
-admin.site.register(GoodsImage, GoodsImageAdmin)
 admin.site.register(GoodsAttributes, GoodsAttributesAdmin)
 admin.site.register(Message, MessageAdmin)
 admin.site.register(Video, VideoAdmin)

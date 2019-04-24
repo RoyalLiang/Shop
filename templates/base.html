@@ -30,19 +30,13 @@
         {#    padding: 0;#}
         {#    background-color: white;#}
         {#    box-sizing: border-box;#}
-        button {
-            padding: 0;
-            background-color: white;
-            box-sizing: border-box;
-        }
+        {#.video .play {#}
+        {#    height: 74px;#}
+        {#    border-style: solid;#}
+        {#    border-width: 37px 0 37px 60px;#}
+        {#    border-color: transparent transparent transparent black;#}
+        {#    margin: 150px;#}
 
-        .video .play {
-            height: 74px;
-            border-style: solid;
-            border-width: 37px 0 37px 60px;
-            border-color: transparent transparent transparent black;
-            margin: 150px;
-        }
     </style>
 </head>
 {% block body %}
@@ -210,9 +204,8 @@
                 </header>
                 <div class="video">
                     <a class="img-box" data-toggle="modal" data-target=".{{ video.title }}x" style="position: relative">
-                        <a class="play"></a>
-                        {#                        <img class="play" src="{% static 'images/play.png' %}" alt="play"#}
-                        {#                             style="float: left;position: relative">#}
+
+                        <img class="play" src="{% static '498691636b7c94b762b1cef11a9c210f.png' %}" alt="play" style="float: left;position: relative">
                         <img alt="{{ video.title }}"
                              src="{{ MEDIA_URL }}{{ video.image }}"
                              style="display: block;width: 100%">

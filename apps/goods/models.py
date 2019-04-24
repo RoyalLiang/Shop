@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from django.contrib.admin.options import InlineModelAdmin
 from django.db import models
 from mdeditor.fields import MDTextField
 
@@ -69,9 +68,10 @@ class GoodsImage(models.Model):
     goods = models.ForeignKey(Goods, on_delete=models.CASCADE, verbose_name='商品')
     image = models.ImageField(upload_to='goods/banner', verbose_name='商品轮播图')
     index = models.IntegerField(default=0, verbose_name='轮播顺序（第一个轮播图必须为0）')
-    add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
     alt = models.CharField(max_length=100, verbose_name='图片alt', blank=True, null=True, )
     title = models.CharField(max_length=100, verbose_name='图片title', blank=True, null=True, )
+    add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
+
 
     class Meta:
         verbose_name = '商品轮播图'
