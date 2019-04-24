@@ -56,7 +56,7 @@ class IndexView(View):
 class GoodsDetail(View):
     def get(self, request, goods_id):
         all_series = GoodsSeries.objects.all()
-        com_info = CompanyIntroduction.objects.get(pk=1)
+        com_info = CompanyIntroduction.objects.last()
         all_brands = Brands.objects.all()
         goods = cache.get('goods_%s' % goods_id)
         if not goods:
@@ -103,8 +103,13 @@ class GoodsDetail(View):
 
 class ProductsList(View):
     def get(self, request):
-        com_info = CompanyIntroduction.objects.get(pk=1)
-        page_info = PageInformation.objects.get(pk=1)
+        com_info = CompanyIntroduction.objects.last()
+        page_info = PageInformation.objects.last()
+        page_info = markdown.markdown(page_info.product_info.replace("\r\n", '  \n'), extensions=[
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+            'markdown.extensions.toc',
+        ])
         all_brands = Brands.objects.all()
         try:
             page = request.GET.get('page', 1)

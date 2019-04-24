@@ -119,11 +119,11 @@ class UserContactInfo(models.Model):
 
 
 class PageInformation(models.Model):
-    product_info = models.TextField(verbose_name='产品页描述', default='')
-    video_info = models.TextField(verbose_name='视频页描述', default='')
-    customer_info = models.TextField(verbose_name='顾客页描述', default='')
-    factory_info = models.TextField(verbose_name='工厂页描述', default='')
-    news_info = models.TextField(verbose_name='新闻页描述', default='')
+    product_info = MDTextField(verbose_name='产品页描述', default='')
+    video_info = MDTextField(verbose_name='视频页描述', default='')
+    customer_info = MDTextField(verbose_name='顾客页描述', default='')
+    factory_info = MDTextField(verbose_name='工厂页描述', default='')
+    news_info = MDTextField(verbose_name='新闻页描述', default='')
 
     class Meta:
         verbose_name = '页面信息'

@@ -35,7 +35,7 @@
         <div class="container">
             <div class="title-in">
                 <h2>{% trans 'Video' %}</h2>
-                <p>{{ video_info.video_info }}</p>
+                <p>{{ video_info|safe }}</p>
             </div>
             <div class="row info">
                 <div class="col-xs-12 col-sm-6 item" style="width: 100%">

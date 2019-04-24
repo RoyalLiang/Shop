@@ -24,7 +24,7 @@
         <div class="container">
             <div class="title-in">
                 <h2>{% trans 'News' %}</h2>
-                <p>{{ page_info.news_info }}</p>
+                <p>{{ page_info|safe }}</p>
             </div>
 
             <div class="row waterfall">

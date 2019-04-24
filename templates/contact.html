@@ -11,7 +11,7 @@
                     <section>
                         <h2>{% trans 'Company Info' %}</h2><br><br>
                     </section>
-
+                    <h2 style="color: orange">{{ com_message.name }}</h2>
                     <span style="font-size: 20px;color: #3c3c3c">{% trans 'Address' %}:&nbsp;&nbsp;{{ com_message.addr }}</span><br>
                     <span style="font-size: 20px;color: #3c3c3c">{% trans 'Tel' %}:&nbsp;&nbsp;{{ com_message.tel }}</span><br>
                     <span style="font-size: 20px;color: #3c3c3c">{% trans 'Email' %}:&nbsp;&nbsp;{{ com_message.email }}</span><br>
@@ -20,9 +20,6 @@
                 </div>
                 <div class="meta">
                     <h3>{% trans 'Contact' %}</h3>
-                    <time class="published" datetime="2015-11-01"><h5 style="color: orange">{{ com_message.name }}</h5>
-                    </time>
-                    {#                    <a href="{{ com_message.web }}" class="author"><span class="name"></span></a>#}
                     <img src="{% static 'images/com-logo.png' %}" alt=""/>
                 </div>
             </header>

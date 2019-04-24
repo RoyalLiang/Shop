@@ -1,10 +1,16 @@
 from django.contrib import admin
+
 from utils import auth
 import os
 from Shop import settings
 from django.core.cache import cache
 from .models import *
 from modeltranslation.admin import TranslationAdmin
+
+
+class GoodsImageInline(admin.TabularInline):
+    model = GoodsImage
+    extra = 3
 
 
 class BannerAdmin(TranslationAdmin):
@@ -19,6 +25,7 @@ class GoodsAdmin(TranslationAdmin):
     list_filter = ['add_time']
     # style_fields = {'attr': 'm2m_transfer'}
     filter_horizontal = ('attr',)
+    inlines = [GoodsImageInline, ]
 
     def save_model(self, request, obj, form, change):
         '''
@@ -38,7 +45,7 @@ class GoodsAdmin(TranslationAdmin):
 
 
 class GoodsImageAdmin(TranslationAdmin):
-    list_display = ['goods', 'image_url', 'add_time']
+    list_display = ['goods', 'add_time']
     search_fields = ['goods']
     list_filter = ['add_time']
 

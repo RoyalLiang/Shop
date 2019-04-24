@@ -50,7 +50,7 @@
     <div class="container">
         <div class="title-in">
             <h2>{% trans 'Products' %}</h2>
-            <p>{{ page_info.product_info }}</p>
+            <p>{{ page_info|safe }}</p>
         </div>
 
         <div class="row">
