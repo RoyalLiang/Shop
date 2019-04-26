@@ -39,7 +39,16 @@ class IndexView(View):
             all_banner = Banner.objects.order_by('index')
             cache.set('all_banner', all_banner, settings.CUBES_REDIS_TIMEOUT)
         index_info = Index.objects.last()
-        video = Video.objects.last()
+        videos = Video.objects.all()
+        if len(videos) > 2:
+            video1 = videos[len(videos) - 1]
+            video2 = videos[len(videos) - 2]
+        elif len(videos) == 1:
+            video1 = videos[0]
+            video2 = None
+        else:
+            video1 = None
+            video2 = None
         return render(request, 'index.html', {
             # 'all_category': all_category,
             'all_goods': all_goods,
@@ -48,7 +57,8 @@ class IndexView(View):
             'all_series': all_series,
             'com_info': com_info,
             'all_brands': all_brands,
-            'video': video,
+            'video1': video1,
+            'video2': video2,
 
         })
 

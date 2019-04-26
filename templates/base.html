@@ -12,38 +12,12 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
     <link rel="stylesheet" href="{% static 'Plugins/Bootstrap/css/bootstrap.css' %}">
     {% block css %}{% endblock %}
-    <style>
-        #footer .links a {
-            display: block !important;
-            color: #7e7e7e;
-        }
-
-        {#.video ::before{#}
-        {#    display: block;#}
-        {#    width: 60px;#}
-        {#    height: 60px;#}
-        {#    margin: 0 auto;#}
-        {#    content: '';#}
-        {#    background: url("http://www.oradarstorage.com/tpl/en_oradarstorage/assets/images/play.png");#}
-        {#    background-size: cover;#}
-        {#button {#}
-        {#    padding: 0;#}
-        {#    background-color: white;#}
-        {#    box-sizing: border-box;#}
-        {#.video .play {#}
-        {#    height: 74px;#}
-        {#    border-style: solid;#}
-        {#    border-width: 37px 0 37px 60px;#}
-        {#    border-color: transparent transparent transparent black;#}
-        {#    margin: 150px;#}
-
-    </style>
 </head>
 {% block body %}
     <body class="is-preload">
 {% endblock %}
 <!-- Wrapper -->
-<div id="wrapper">
+<div id="wrapper" style="margin: 0;width: 100%;padding: 0;">
 
     <!-- Header -->
     <header id="header">
@@ -145,6 +119,17 @@
 
     <!-- Main -->
     {% block content-index %}
+        <style>
+            .video {
+                width: 48%;
+                margin: 1%;
+                float: left;
+            }
+            #footer .links a {
+                display: block !important;
+                color: #7e7e7e;
+            }
+        </style>
         <div id="main">
             <!-- Banner -->
             <div id="myCarousel" class="carousel slide">
@@ -185,50 +170,79 @@
 
             <article class="post">
                 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-                <link href="{% static 'css/video-js.min.css' %}" rel="stylesheet">
+                {#                <link href="{% static 'css/video-js.min.css' %}" rel="stylesheet">#}
                 <!-- 公司信息 -->
                 <header>
                     <div class="title">
                         <h2><a href=""></a></h2>
-                        <span style="font-weight: bold;font-size: 24px;">{{ com_info.name }}</span><br><br>
-                        <span style="font-size: 16px;">
-                                {{ com_info.summary }}...
-                                <a href="{% url 'other:CompanyIntroduction' %}" style="color: orange;">
-                                {% trans 'More' %}>>
-                                </a>
-                            </span>
+                        <span style="font-weight: bold;font-size:24px;">
+			                {{ com_info.name }}
+                        </span>
+                        <br><br>
+                        <span style="font-size:16px;text-align: left;">{{ com_info.summary }}...
+                                    <a href="{% url 'other:CompanyIntroduction' %}"
+                                       style="color: orange;">{% trans 'More' %}>></a>
+                        </span>
                     </div>
                     <div class="meta">
-                        <img alt='' src={% static 'images/com-logo.png' %}/>
+                        <img alt='' src="{% static 'images/com-logo.png' %}"/>
                     </div>
                 </header>
-                <div class="video">
-                    <a class="img-box" data-toggle="modal" data-target=".{{ video.title }}x" style="position: relative">
-
-                        <img class="play" src="{% static '498691636b7c94b762b1cef11a9c210f.png' %}" alt="play" style="float: left;position: relative">
-                        <img alt="{{ video.title }}"
-                             src="{{ MEDIA_URL }}{{ video.image }}"
-                             style="display: block;width: 100%">
-                    </a>
-                    <div class="modal fade {{ video.title }}x" id="{{ video.title }}x" tabindex="-1" role="dialog"
-                         aria-labelledby="myLargeModalLabel">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="m">
-                                    <video id="my-video" class="video-js my_video" controls preload="auto"
-                                            {#                                                                                       width="956px"#}
-                                            {#                                                                                       height="530px"#}
-                                           data-setup="{}">
-                                        <source src="{{ MEDIA_URL }}{{ video.video }}" type="video/mp4">
-                                    </video>
+                {% if video1 %}
+                    <div class="video">
+                        <h3 style="text-align: center">{{ video1.title }}</h3>
+                        <a class="img-box" data-toggle="modal" data-target=".{{ video1.title }}x"
+                           style="position: relative">
+                            <img alt="{{ video1.title }}"
+                                 src="{{ MEDIA_URL }}{{ video1.image }}"
+                                 style="display: block;width: 100%">
+                        </a>
+                        <div class="modal fade {{ video1.title }}x" id="{{ video1.title }}x" tabindex="-1" role="dialog"
+                             aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="m">
+                                        <video id="my-video" class="video-js my_video" controls preload="auto"
+                                                {#                                                                                       width="956px"#}
+                                                {#                                                                                       height="530px"#}
+                                               data-setup="{}">
+                                            <source src="{{ MEDIA_URL }}{{ video1.video }}" type="video/mp4">
+                                        </video>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
+                {% if video2 %}
+                    <div class="video">
+                        <h3 style="text-align: center">{{ video2.title }}</h3>
+                        <a class="img-box" data-toggle="modal" data-target=".{{ video2.title }}x"
+                           style="position: relative">
+                            <img alt="{{ video2.title }}"
+                                 src="{{ MEDIA_URL }}{{ video2.image }}"
+                                 style="display: block;width: 100%">
+                        </a>
+                        <div class="modal fade {{ video2.title }}x" id="{{ video2.title }}x" tabindex="-1" role="dialog"
+                             aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="m">
+                                        <video id="my-video" class="video-js my_video" controls preload="auto"
+                                                {#                                                                                       width="956px"#}
+                                                {#                                                                                       height="530px"#}
+                                               data-setup="{}">
+                                            <source src="{{ MEDIA_URL }}{{ video2.video }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
                 {#                <h3>{{ video.title }}</h3>#}
             </article>
-            <div id="features-wrapper" style="width: 100%;">
+            <div id="features-wrapper" style="width: 100%;float: left;">
                 {#                <div class="container">#}
                 <div class="row">
                     {% for goods in all_goods %}
@@ -245,7 +259,11 @@
                                 <div class="inner" style="padding: 0 2em">
                                     <header>
                                         <h1>{{ goods.name }}</h1>
-                                        <p>{{ goods.add_time }}</p>
+                                        <p>
+                                            {{ goods.add_time.year }}.
+                                            {{ goods.add_time.month }}.
+                                            {{ goods.add_time.day }}
+                                        </p>
                                     </header>
                                     <p>{{ goods.desc }}</p>
                                     <br>
@@ -256,9 +274,7 @@
                     {#                    </div>#}
                 </div>
             </div>
-
-            <div id="footer-wrapper"
-                 style="width: 100%;padding: 60px 60px 200px 60px;background-color: #303030;text-decoration: none;border-radius: 25px;">
+            <div style="width: 100%;padding: 60px 60px 200px 60px;background-color: #303030;text-decoration: none;border-radius: 25px; float: left">
                 <footer id="footer" class="">
                     <div class="row">
                         <div class="col-3 col-6-medium col-12-small">
@@ -272,7 +288,6 @@
                             </section>
                         </div>
                         <div class="col-3 col-6-medium col-12-small">
-
                             <!-- Links -->
                             <section class="widget links">
                                 <h3 style="color: white;">{% trans 'PRODUCT' %}</h3>
@@ -281,7 +296,6 @@
 
                                 {% endfor %}
                             </section>
-
                         </div>
                         <div class="col-3 col-6-medium col-12-small">
                             <!-- Links -->
@@ -308,15 +322,14 @@
                                 <span style="color: white;">Address:&nbsp;</span>
                                 <p style="color: #7e7e7e;">{{ com_info.addr }}</p>
                                 <span style="color: white;">Tel:&nbsp;
-                                    <a>{{ com_info.tel }}</a>
-                                </span>
+                            <a>{{ com_info.tel }}</a>
+                        </span>
                                 <span style="color: white;">Email:&nbsp;
-                                    <a>{{ com_info.email }}</a>
-                                </span>
+                            <a>{{ com_info.email }}</a>
+                        </span>
                                 <span style="color: white;">Website:&nbsp;
-                                    <a href="http://{{ com_info.web }}">{{ com_info.web }}</a>
-                                </span>
-
+                            <a href="http://{{ com_info.web }}">{{ com_info.web }}</a>
+                        </span>
                             </section>
 
                         </div>
@@ -367,18 +380,6 @@
     {#    <script src="{% static 'js/video.min.js' %}"></script>#}
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
-            var w = $('.play').siblings().eq(0).width();
-            var h = $('.play').siblings().eq(0).height();
-            $('.play').width(0.3 * w).height(0.3 * w).css({
-                top: 0.5 * h - 0.15 * w + 'px',
-                left: 0.35 * w + 'px',
-                zIndex: 100
-            });
-            {#$('.change_language').change(function (e) {#}
-            {#    e.preventDefault();#}
-            {#    $('#change_form').submit();#}
-            {#    return false;#}
-
             $('.video-js').css({
                 width: window.innerWidth * 0.8 + 'px',
                 height: window.innerWidth * 0.4435 + 'px'
@@ -388,8 +389,7 @@
                 height: window.innerWidth * 0.4435 + 'px',
                 margin: 'auto'
             })
-        })
-        ;
+        });
         $('#{{ video.title }}x').click(function () {
             var v = $('#{{ video.title }}x').find('video')[0];
             if (!v.paused) {

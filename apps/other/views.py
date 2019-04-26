@@ -83,7 +83,7 @@ class Factory_view(View):
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.last()
         page_info = PageInformation.objects.last()
-        page_info = markdown.markdown(page_info.factory_info.replace("\r\n", '  \n'), extensions=[
+        page_info.factory_info = markdown.markdown(page_info.factory_info.replace("\r\n", '  \n'), extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
             'markdown.extensions.toc',
@@ -121,7 +121,7 @@ class Customer_view(View):
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.last()
         page_info = PageInformation.objects.last()
-        page_info = markdown.markdown(page_info.customer_info.replace("\r\n", '  \n'), extensions=[
+        page_info.customer_info = markdown.markdown(page_info.customer_info.replace("\r\n", '  \n'), extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
             'markdown.extensions.toc',
@@ -159,7 +159,7 @@ class News_view(View):
         all_series = GoodsSeries.objects.all()
         com_info = CompanyIntroduction.objects.last()
         page_info = PageInformation.objects.last()
-        page_info = markdown.markdown(page_info.news_info.replace("\r\n", '  \n'), extensions=[
+        page_info.news_info = markdown.markdown(page_info.news_info.replace("\r\n", '  \n'), extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
             'markdown.extensions.toc',
