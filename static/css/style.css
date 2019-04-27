@@ -85,29 +85,29 @@ a:link
 {
     font-family: 'avenirnext';
 
-    src: url('../fonts/avenirnextregular.eot');
-    src: url('../fonts/avenirnextregular.eot') format('embedded-opentype'), url('../fonts/avenirnextregular.woff2') format('woff2'), url('../fonts/avenirnextregular.woff') format('woff'), url('../fonts/avenirnextregular.ttf') format('truetype'), url('../fonts/avenirnextregular.svg#avenirnextregular') format('svg');
+    /*src: url('../fonts/avenirnextregular.eot');*/
+    /*src: url('../fonts/avenirnextregular.eot') format('embedded-opentype'), url('../fonts/avenirnextregular.woff2') format('woff2'), url('../fonts/avenirnextregular.woff') format('woff'), url('../fonts/avenirnextregular.ttf') format('truetype'), url('../fonts/avenirnextregular.svg#avenirnextregular') format('svg');*/
 }
 @font-face
 {
     font-family: 'AvenirNextDemiBold';
 
-    src: url('../fonts/AvenirNextDemiBold.eot');
-    src: url('../fonts/AvenirNextDemiBold.eot') format('embedded-opentype'), url('../fonts/AvenirNextDemiBold.woff2') format('woff2'), url('../fonts/AvenirNextDemiBold.woff') format('woff'), url('../fonts/AvenirNextDemiBold.ttf') format('truetype'), url('../fonts/AvenirNextDemiBold.svg#AvenirNextDemiBold') format('svg');
+    /*src: url('../fonts/AvenirNextDemiBold.eot');*/
+    /*src: url('../fonts/AvenirNextDemiBold.eot') format('embedded-opentype'), url('../fonts/AvenirNextDemiBold.woff2') format('woff2'), url('../fonts/AvenirNextDemiBold.woff') format('woff'), url('../fonts/AvenirNextDemiBold.ttf') format('truetype'), url('../fonts/AvenirNextDemiBold.svg#AvenirNextDemiBold') format('svg');*/
 }
 @font-face
 {
     font-family: 'avenirnextbold';
 
-    src: url('../fonts/avenirnextbold.eot');
-    src: url('../fonts/avenirnextbold.eot') format('embedded-opentype'), url('../fonts/avenirnextbold.woff2') format('woff2'), url('../fonts/avenirnextbold.woff') format('woff'), url('../fonts/avenirnextbold.ttf') format('truetype'), url('../fonts/avenirnextbold.svg#avenirnextbold') format('svg');
+    /*src: url('../fonts/avenirnextbold.eot');*/
+    /*src: url('../fonts/avenirnextbold.eot') format('embedded-opentype'), url('../fonts/avenirnextbold.woff2') format('woff2'), url('../fonts/avenirnextbold.woff') format('woff'), url('../fonts/avenirnextbold.ttf') format('truetype'), url('../fonts/avenirnextbold.svg#avenirnextbold') format('svg');*/
 }
 @font-face
 {
     font-family: 'AvenirNextMedium';
 
-    src: url('../fonts/AvenirNextMedium.eot');
-    src: url('../fonts/AvenirNextMedium.eot') format('embedded-opentype'), url('../fonts/AvenirNextMedium.woff2') format('woff2'), url('../fonts/AvenirNextMedium.woff') format('woff'), url('../fonts/AvenirNextMedium.ttf') format('truetype'), url('../fonts/AvenirNextMedium.svg#AvenirNextMedium') format('svg');
+    /*src: url('../fonts/AvenirNextMedium.eot');*/
+    /*src: url('../fonts/AvenirNextMedium.eot') format('embedded-opentype'), url('../fonts/AvenirNextMedium.woff2') format('woff2'), url('../fonts/AvenirNextMedium.woff') format('woff'), url('../fonts/AvenirNextMedium.ttf') format('truetype'), url('../fonts/AvenirNextMedium.svg#AvenirNextMedium') format('svg');*/
 }
 .header
 {
@@ -584,7 +584,7 @@ a:link
 
     content: '';
 
-    background: url(../images/menu.png) no-repeat;
+    /*background: url(../images/menu.png) no-repeat;*/
     background-size: cover;
 }
 .header .navigation .level-1
@@ -831,7 +831,7 @@ a:link
 
     border: 1px solid #e7e7e7;
     border-radius: 50%;
-    background: url(../images/online.png) no-repeat #fff;
+    /*background: url(../images/online.png) no-repeat #fff;*/
 }
 .online a.online-skype
 {
@@ -1589,7 +1589,7 @@ a:link
 {
     position: relative;
 
-    background: url(../images/about-bg.jpg) no-repeat center fixed;
+    /*background: url(../images/about-bg.jpg) no-repeat center fixed;*/
 }
 .box-about::after
 {
@@ -1842,7 +1842,7 @@ a:link
 
     content: '';
 
-    background: url(../images/play.png) no-repeat;
+    /*background: url(../images/play.png) no-repeat;*/
     background-size: cover;
 }
 @media (max-width: 991px)
@@ -2277,7 +2277,7 @@ a:link
             transition:         transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 
     border-radius: 50%;
-    background: url(../images/share.png) no-repeat #fff;
+    /*background: url(../images/share.png) no-repeat #fff;*/
     background-size: cover;
 }
 .footer .copyright .share li:hover
@@ -2319,7 +2319,7 @@ a:link
 }
 .wrap
 {
-    padding: 80px 0;
+    padding: 80px 0 0 0;
 }
 @media (max-width: 767px)
 {
@@ -2499,7 +2499,7 @@ a:link
 
     content: '';
 
-    background: url(../images/play.png) no-repeat;
+    /*background: url(../images/play.png) no-repeat;*/
     background-size: cover;
 }
 @media (max-width: 991px)
