@@ -40,7 +40,7 @@ class IndexView(View):
             cache.set('all_banner', all_banner, settings.CUBES_REDIS_TIMEOUT)
         index_info = Index.objects.last()
         videos = Video.objects.all()
-        if len(videos) >= 2:
+        if len(videos) > 2:
             video1 = videos[len(videos) - 1]
             video2 = videos[len(videos) - 2]
         elif len(videos) == 1:
