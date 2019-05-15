@@ -307,7 +307,7 @@ hr.major {
 
 .row {
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     box-sizing: border-box;
     align-items: stretch;
 }
@@ -373,7 +373,7 @@ hr.major {
 }
 
 .row > .col-4 {
-    width: 33.3333333333%;
+    width: 22%;
 }
 
 .row > .off-4 {
@@ -795,7 +795,7 @@ hr.major {
 
     .row {
         display: flex;
-        flex-wrap: wrap;
+        /*flex-wrap: wrap;*/
         box-sizing: border-box;
         align-items: stretch;
     }

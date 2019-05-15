@@ -19,10 +19,10 @@ class IndexView(View):
     def get(self, request):
         all_goods = cache.get('all_goods')
         all_series = GoodsSeries.objects.all()
-        com_info = CompanyIntroduction.objects.get(pk=1)
+        com_info = CompanyIntroduction.objects.last()
         all_brands = Brands.objects.all()
         if not all_goods:
-            all_goods = Goods.objects.all().order_by('-leval')[:3]
+            all_goods = Goods.objects.all().order_by('-leval')[:4]
             cache.set('all_goods', all_goods, settings.CUBES_REDIS_TIMEOUT)
         for goods in all_goods:
             goods.detail = markdown.markdown(goods.detail.replace("\r\n", '  \n'), extensions=[

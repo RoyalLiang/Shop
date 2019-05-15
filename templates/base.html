@@ -11,6 +11,13 @@
           content="{% block keywords %}{% endblock %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
     <link rel="stylesheet" href="{% static 'Plugins/Bootstrap/css/bootstrap.css' %}">
+    <style>
+        .heard-photo {
+            height: 300px;
+            width: 100%;
+            background: url('../static/111.jpg');
+        }
+    </style>
     {% block css %}{% endblock %}
 </head>
 {% block body %}
@@ -21,7 +28,8 @@
 
     <!-- Header -->
     <header id="header">
-        <a class="author" style="font-weight: bold;margin-left: 20px;text-decoration: none;" href="{% url 'index' %}"><span class="name"><img
+        <a class="author" style="font-weight: bold;margin-left: 20px;text-decoration: none;"
+           href="{% url 'index' %}"><span class="name"><img
                 src="{% static 'images/com-logo.png' %}" alt=""/></span>AGAPASS</a>
         <nav class="links">
             <ul>
@@ -121,8 +129,8 @@
     {% block content-index %}
         <style>
             .video {
-                width: 48%;
-                margin: 1%;
+                width: 40%;
+                margin: 1% 5%;
                 float: left;
             }
 
@@ -191,70 +199,84 @@
                 </header>
                 {% if video1 %}
                     <div class="video">
-                        <h3 style="text-align: center">{{ video1.title }}</h3>
+                        <p style="font-weight: bold;font-size: 30px;display: inline-block;">{{ video1.title }}</p>
                         <a class="img-box" data-toggle="modal" data-target=".{{ video1.title }}x"
                            style="position: relative">
-                            <img alt="{{ video1.title }}"
-                                 src="{{ MEDIA_URL }}{{ video1.image }}"
-                                 style="display: block;width: 100%">
-                        </a>
-                        <div class="modal fade {{ video1.title }}x" id="{{ video1.title }}x" tabindex="-1" role="dialog"
-                             aria-labelledby="myLargeModalLabel">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="m">
-                                        <video id="my-video" class="video-js my_video" controls preload="auto"
-                                                {#                                                                                       width="956px"#}
-                                                {#                                                                                       height="530px"#}
-                                               data-setup="{}">
-                                            <source src="{{ MEDIA_URL }}{{ video1.video }}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
+                            {#                            <img alt="{{ video1.title }}"#}
+                            {#                                 src="{{ MEDIA_URL }}{{ video1.image }}"#}
+                            {#                                 style="display: block;width: 100%">#}
+                            <div class="m">
+                                <video class="video-js my_video" controls preload="auto"
+                                       data-setup="{}">
+                                    <source src="{{ MEDIA_URL }}{{ video1.video }}" type="video/mp4">
+                                </video>
                             </div>
-                        </div>
+                        </a>
+                        {#                        <div class="modal fade {{ video1.title }}x" id="{{ video1.title }}x" tabindex="-1" role="dialog"#}
+                        {#                             aria-labelledby="myLargeModalLabel">#}
+                        {#                            <div class="modal-dialog modal-lg" role="document">#}
+                        {#                                <div class="modal-content">#}
+                        {#                                    <div class="m">#}
+                        {#                                        <video id="my-video" class="video-js my_video" controls preload="auto"#}
+                        {#                                                                                       width="956px"#}
+                        {#                                                                                       height="530px"#}
+                        {#                                               data-setup="{}">#}
+                        {#                                            <source src="{{ MEDIA_URL }}{{ video1.video }}" type="video/mp4">#}
+                        {#                                        </video>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
                     </div>
                 {% endif %}
                 {% if video2 %}
                     <div class="video">
-                        <h3 style="text-align: center">{{ video2.title }}</h3>
+                        <p style="font-weight: bold;font-size: 30px;display: inline-block;">{{ video2.title }}</p>
                         <a class="img-box" data-toggle="modal" data-target=".{{ video2.title }}x"
                            style="position: relative">
-                            <img alt="{{ video2.title }}"
-                                 src="{{ MEDIA_URL }}{{ video2.image }}"
-                                 style="display: block;width: 100%">
-                        </a>
-                        <div class="modal fade {{ video2.title }}x" id="{{ video2.title }}x" tabindex="-1" role="dialog"
-                             aria-labelledby="myLargeModalLabel">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="m">
-                                        <video id="my-video" class="video-js my_video" controls preload="auto"
-                                                {#                                                                                       width="956px"#}
-                                                {#                                                                                       height="530px"#}
-                                               data-setup="{}">
-                                            <source src="{{ MEDIA_URL }}{{ video2.video }}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
+                            {#                            <img alt="{{ video2.title }}"#}
+                            {#                                 src="{{ MEDIA_URL }}{{ video2.image }}"#}
+                            {#                                 style="display: block;width: 100%">#}
+                            <div class="m">
+                                <video id="my-video" class="video-js my_video" controls preload="auto"
+                                        {#                                                                                       width="956px"#}
+                                        {#                                                                                       height="530px"#}
+                                       data-setup="{}">
+                                    <source src="{{ MEDIA_URL }}{{ video2.video }}" type="video/mp4">
+                                </video>
                             </div>
-                        </div>
+                        </a>
+                        {#                        <div class="modal fade {{ video2.title }}x" id="{{ video2.title }}x" tabindex="-1" role="dialog"#}
+                        {#                             aria-labelledby="myLargeModalLabel">#}
+                        {#                            <div class="modal-dialog modal-lg" role="document">#}
+                        {#                                <div class="modal-content">#}
+                        {#                                    <div class="m">#}
+                        {#                                        <video id="my-video" class="video-js my_video" controls preload="auto"#}
+                        {#                                                                                       width="956px"#}
+                        {#                                                                                       height="530px"#}
+                        {#                                               data-setup="{}">#}
+                        {#                                            <source src="{{ MEDIA_URL }}{{ video2.video }}" type="video/mp4">#}
+                        {#                                        </video>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
                     </div>
                 {% endif %}
                 {#                <h3>{{ video.title }}</h3>#}
             </article>
-            <div id="features-wrapper" style="width: 100%;float: left;">
+            <div id="features-wrapper" style="width: 100%;float: left;padding: 0 3em;margin-top: 70px;">
                 {#                <div class="container">#}
-                <div class="row">
+                <div class="row" style="width: 100%;margin: 0">
                     {% for goods in all_goods %}
                         <div class="col-4 col-12-medium"
-                             style="border-radius: 25px;{% ifequal forloop.counter|add:0 2 %}padding: 0 2px;{% else %}padding: 0;{% endifequal %}margin: 0">
+                             style="border-radius: 25px;padding: 0;margin: 0 1.5%">
 
                             <!-- Box -->
                             <section class="box feature" style="border-radius: 25px;">
                                 <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured">
                                     <img
-                                            style="border-radius: 25px;padding: 0 1em"
+                                            style="border-radius: 30px;padding: 0 10px; height: 230px;"
                                             src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"
                                             alt=""/></a>
                                 <div class="inner" style="padding: 0 2em">
@@ -381,23 +403,23 @@
 {% block js %}
     {#    <script src="{% static 'js/video.min.js' %}"></script>#}
     <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $('.video-js').css({
-                width: window.innerWidth * 0.8 + 'px',
-                height: window.innerWidth * 0.4435 + 'px'
-            });
-            $('.modal .modal-dialog').css({
-                width: window.innerWidth * 0.8 + 'px',
-                height: window.innerWidth * 0.4435 + 'px',
-                margin: 'auto'
-            })
-        });
-        $('#{{ video.title }}x').click(function () {
-            var v = $('#{{ video.title }}x').find('video')[0];
-            if (!v.paused) {
-                v.pause();
-            }
-        });
+        {#jQuery(document).ready(function ($) {#}
+        {#    $('.video-js').css({#}
+        {#        width: window.innerWidth * 0.8 + 'px',#}
+        {#        height: window.innerWidth * 0.4435 + 'px'#}
+        {#    });#}
+        {#    $('.modal .modal-dialog').css({#}
+        {#        width: window.innerWidth * 0.8 + 'px',#}
+        {#        height: window.innerWidth * 0.4435 + 'px',#}
+        {#        margin: 'auto'#}
+        {#    })#}
+        {# });#}
+        {#$('#{{ video.title }}x').click(function () {#}
+        {#    var v = $('#{{ video.title }}x').find('video')[0];#}
+        {#    if (!v.paused) {#}
+        {#        v.pause();#}
+        {#    }#}
+        {# });#}
 
         //设置中文
         {#videojs.addLanguage('zh-CN', {#}
