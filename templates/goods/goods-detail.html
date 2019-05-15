@@ -6,6 +6,12 @@
 {% block keywords %}{{ goods.keywords }}{% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .parameter img {
+            width: 100%;
+        }
+    </style>
+
 {% endblock %}
 {% block body %}
     <body class="single is-preload">
@@ -80,7 +86,7 @@
                             <div class="info">
                                 <p>{{ goods.desc }}</p>
                                 <p>{{ goods.desc }}</p><br>
-{#                                <p style="font-weight: bold;">Partial Parameter:</p>#}
+                                {#                                <p style="font-weight: bold;">Partial Parameter:</p>#}
                                 {% for attr in goods_attrs %}
                                     <p>
                                         <span style="color: orange;font-weight: bold;font-size: 18px;">
