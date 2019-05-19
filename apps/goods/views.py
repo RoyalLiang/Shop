@@ -30,6 +30,8 @@ class IndexView(View):
                 'markdown.extensions.codehilite',
                 'markdown.extensions.toc',
             ])
+        for goods in all_goods:
+            goods.goodsimage = list(goods.goodsimage_set.all())
         # all_category = cache.get('all_category')
         # if not all_category:
         #     all_category = GoodsCategory.objects.all()
