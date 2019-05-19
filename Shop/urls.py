@@ -30,7 +30,7 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     path('mdeditor/', include('mdeditor.urls')),
     path('goods/', include('goods.urls', namespace='goods')),
-    path('other/', include('other.urls', namespace='other')),
+    path('company/', include('other.urls', namespace='company')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('viewscount.html', ViewsCount.as_view(), name='ViewsCount'),
     path('viewsCount/', include('viewsCount.urls', namespace='viewsCount'))

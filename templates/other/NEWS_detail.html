@@ -38,11 +38,11 @@
 
             <ul class="pager">
                 {% if pnews %}
-                    <li class="previous"><a href="{% url 'other:NewsDetail' pnews.id %}">&laquo;{{ pnews.title }}</a>
+                    <li class="previous"><a href="{% url 'company:NewsDetail' pnews.id %}">&laquo;{{ pnews.title }}</a>
                     </li>
                 {% endif %}
                 {% if nnews %}
-                    <li class="next"><a href="{% url 'other:NewsDetail' nnews.id %}">{{ nnews.title }}&raquo;</a></li>
+                    <li class="next"><a href="{% url 'company:NewsDetail' nnews.id %}">{{ nnews.title }}&raquo;</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -54,17 +54,17 @@
         }
     </style>
     <div id="footer-wrapper"
-         style="width: 100%;padding: 60px 60px 200px 60px;background-color: #303030;text-decoration: none;margin: 60px 0 0 0;">
+         style="width: 100%;padding: 40px 60px 100px 60px;background-color: #303030;text-decoration: none;margin: 60px 0 0 0;">
         <footer id="footer" class="">
             <div class="row">
                 <div class="col-3 col-6-medium col-12-small">
                     <!-- Links -->
                     <section class="widget links">
                         <h3 style="color: white;">ABOUT US</h3>
-                        <a href="{% url 'other:CompanyIntroduction' %}">Company Introduction</a>
-                        <a href="{% url 'other:Factory' %}">Factory</a>
-                        <a href="{% url 'other:Video' %}">Video</a>
-                        <a href="{% url 'other:Customer' %}">Customer</a>
+                        <a href="{% url 'company:CompanyIntroduction' %}">Company Introduction</a>
+                        <a href="{% url 'company:Factory' %}">Factory</a>
+                        <a href="{% url 'company:Video' %}">Video</a>
+                        <a href="{% url 'company:Customer' %}">Customer</a>
                     </section>
                 </div>
                 <div class="col-3 col-6-medium col-12-small">

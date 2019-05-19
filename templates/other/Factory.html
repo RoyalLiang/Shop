@@ -16,16 +16,16 @@
         <div class="container">
             <ul>
                 <li>
-                    <a href="{% url 'other:CompanyIntroduction' %}">{% trans 'Company Introduction' %}</a>
+                    <a href="{% url 'company:CompanyIntroduction' %}">{% trans 'Company Introduction' %}</a>
                 </li>
                 <li class="active">
                     <a href="#">{% trans 'Factory' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Video' %}">{% trans 'Video' %}</a>
+                    <a href="{% url 'company:Video' %}">{% trans 'Video' %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'other:Customer' %}">{% trans 'Customer' %}</a>
+                    <a href="{% url 'company:Customer' %}">{% trans 'Customer' %}</a>
                 </li>
             </ul>
         </div>
@@ -77,17 +77,17 @@
         }
     </style>
     <div id="footer-wrapper"
-         style="width: 100%;padding: 60px 60px 200px 60px;background-color: #303030;text-decoration: none;">
+         style="width: 100%;padding: 40px 60px 100px 60px;background-color: #303030;text-decoration: none;">
         <footer id="footer" class="">
             <div class="row">
                 <div class="col-3 col-6-medium col-12-small">
                     <!-- Links -->
                     <section class="widget links">
                         <h3 style="color: white;">ABOUT US</h3>
-                        <a href="{% url 'other:CompanyIntroduction' %}">Company Introduction</a>
-                        <a href="{% url 'other:Factory' %}">Factory</a>
-                        <a href="{% url 'other:Video' %}">Video</a>
-                        <a href="{% url 'other:Customer' %}">Customer</a>
+                        <a href="{% url 'company:CompanyIntroduction' %}">Company Introduction</a>
+                        <a href="{% url 'company:Factory' %}">Factory</a>
+                        <a href="{% url 'company:Video' %}">Video</a>
+                        <a href="{% url 'company:Customer' %}">Customer</a>
                     </section>
                 </div>
                 <div class="col-3 col-6-medium col-12-small">

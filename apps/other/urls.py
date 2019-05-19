@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import CompanyIntroduction_view, Factory_view, Customer_view, Video_view, News_view, News_detail, ContactView
 
-app_name = 'other'
+app_name = 'company'
 urlpatterns = [
     path('about.html', CompanyIntroduction_view.as_view(), name='CompanyIntroduction'),
     path('video.html', Video_view.as_view(), name='Video'),

@@ -35,9 +35,9 @@
             <ul>
                 <li><a href="{% url 'index' %}">{% trans 'HOME' %}</a></li>
                 <li><a href="{% url 'goods:ProductsList' %}">{% trans 'PRODUCTS' %}</a></li>
-                <li><a href="{% url 'other:CompanyIntroduction' %}">{% trans 'ABOUT' %}</a></li>
-                <li><a href="{% url 'other:News' %}">{% trans 'NEWS' %}</a></li>
-                <li><a href="{% url 'other:contact' %}">{% trans 'CONTACT' %}</a></li>
+                <li><a href="{% url 'company:CompanyIntroduction' %}">{% trans 'ABOUT' %}</a></li>
+                <li><a href="{% url 'company:News' %}">{% trans 'NEWS' %}</a></li>
+                <li><a href="{% url 'company:contact' %}">{% trans 'CONTACT' %}</a></li>
                 <li>
                     <form action="{% url 'set_language' %}" method="post" id="change_form">
                         {% csrf_token %}
@@ -94,15 +94,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'other:CompanyIntroduction' %}"><h3>{% trans 'ABOUT' %}</h3></a>
+                    <a href="{% url 'company:CompanyIntroduction' %}"><h3>{% trans 'ABOUT' %}</h3></a>
                 </li>
                 <li>
-                    <a href="{% url 'other:News' %}">
+                    <a href="{% url 'company:News' %}">
                         <h3>{% trans 'NEWS' %}</h3>
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'other:contact' %}">
+                    <a href="{% url 'company:contact' %}">
                         <h3>{% trans 'CONTACT' %}</h3>
                     </a>
                 </li>
@@ -188,8 +188,8 @@
 			                {{ com_info.name }}
                         </span>
                         <br><br>
-                        <span style="font-size:16px;text-align: left;">{{ com_info.summary }}...
-                                    <a href="{% url 'other:CompanyIntroduction' %}"
+                        <span style="font-size:16px;text-align:left;display: inline;">{{ com_info.summary }}...
+                                    <a href="{% url 'company:CompanyIntroduction' %}"
                                        style="color: orange;">{% trans 'More' %}>></a>
                         </span>
                     </div>
@@ -281,7 +281,8 @@
                                             alt=""/></a>
                                 <div class="inner" style="padding: 0 2em">
                                     <header>
-                                        <h1>{{ goods.name }}</h1>
+                                        <span style="font-weight: bold;font-size: 20px;">{{ goods.name }}</span><br>
+{#                                        <h1>{{ goods.name }}</h1>#}
                                         <p>
                                             {{ goods.add_time.year }}.
                                             {{ goods.add_time.month }}.
@@ -297,17 +298,17 @@
                     {#                    </div>#}
                 </div>
             </div>
-            <div style="width: 100%;padding: 60px 60px 200px 60px;background-color: #303030;text-decoration: none;float: left">
+            <div style="width: 100%;padding: 40px 60px 100px 60px;background-color: #303030;text-decoration: none;float: left">
                 <footer id="footer" class="">
                     <div class="row">
                         <div class="col-3 col-6-medium col-12-small">
                             <!-- Links -->
                             <section class="widget links">
                                 <h3 style="color: white;">{% trans 'ABOUT US' %}</h3>
-                                <a href="{% url 'other:CompanyIntroduction' %}">{% trans 'Company Introduction' %}</a>
-                                <a href="{% url 'other:Factory' %}">{% trans 'Factory' %}</a>
-                                <a href="{% url 'other:Video' %}">{% trans 'Video' %}</a>
-                                <a href="{% url 'other:Customer' %}">{% trans 'Customer' %}</a>
+                                <a href="{% url 'company:CompanyIntroduction' %}">{% trans 'Company Introduction' %}</a>
+                                <a href="{% url 'company:Factory' %}">{% trans 'Factory' %}</a>
+                                <a href="{% url 'company:Video' %}">{% trans 'Video' %}</a>
+                                <a href="{% url 'company:Customer' %}">{% trans 'Customer' %}</a>
                             </section>
                         </div>
                         <div class="col-3 col-6-medium col-12-small">
