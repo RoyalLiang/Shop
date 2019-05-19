@@ -72,7 +72,6 @@ class GoodsImage(models.Model):
     title = models.CharField(max_length=100, verbose_name='图片title', blank=True, null=True, )
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
-
     class Meta:
         verbose_name = '商品轮播图'
         verbose_name_plural = verbose_name

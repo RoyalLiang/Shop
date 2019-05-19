@@ -7,8 +7,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="keywords"
-          content="{% block keywords %}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{% endblock %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
     <link rel="stylesheet" href="{% static 'Plugins/Bootstrap/css/bootstrap.css' %}">
     <style>
@@ -18,7 +17,10 @@
             background: url('../static/111.jpg');
         }
     </style>
-    {% block css %}{% endblock %}
+    {% block css %}
+{#        <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
+
+    {% endblock %}
 </head>
 {% block body %}
     <body class="is-preload">
@@ -265,39 +267,92 @@
                 {% endif %}
                 {#                <h3>{{ video.title }}</h3>#}
             </article>
-            <div id="features-wrapper" style="width: 100%;float: left;padding: 0 3em;margin-top: 70px;">
-                {#                <div class="container">#}
-                <div class="row" style="width: 100%;margin: 0">
-                    {% for goods in all_goods %}
-                        <div class="col-4 col-12-medium"
-                             style="border-radius: 25px;padding: 0;margin: 0 1.5%">
+            <div class="container" id="features-wrapper" style="width: 100%;float: left;padding: 0 3em;margin-top: 70px;">
 
-                            <!-- Box -->
-                            <section class="box feature" style="border-radius: 25px;">
-                                <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured">
-                                    <img
-                                            style="border-radius: 30px;padding: 0 10px; height: 230px;"
-                                            src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"
-                                            alt=""/></a>
-                                <div class="inner" style="padding: 0 2em">
-                                    <header>
-                                        <span style="font-weight: bold;font-size: 20px;">{{ goods.name }}</span><br>
-{#                                        <h1>{{ goods.name }}</h1>#}
-                                        <p>
-                                            {{ goods.add_time.year }}.
-                                            {{ goods.add_time.month }}.
-                                            {{ goods.add_time.day }}
-                                        </p>
-                                    </header>
-                                    <p>{{ goods.desc }}</p>
-                                    <br>
+                <div class="row">
+                    {% for goods in all_goods %}
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="item" style="background-color: rgb(246, 244, 236);">
+                                <div class="p-title">
+                                    <h3>{{ goods.goods_sn }}</h3>
+                                    <p>{{ goods.name }}</p>
                                 </div>
-                            </section>
+                                <div class="flexslider">
+                                    <div id="{{ goods.goods_sn }}" class="carousel slide" data-ride="carousel">
+                                        <!-- Indicators -->
+                                        <ol class="carousel-indicators">
+                                            {% for image in goods.goodsimage %}
+                                                {% if image.index == 0 %}
+                                                    <li data-target="#{{ goods.goods_sn }}"
+                                                        data-slide-to="{{ image.index }}" class="active"></li>
+                                                {% else %}
+                                                    <li data-target="#{{ goods.goods_sn }}"
+                                                        data-slide-to="{{ image.index }}"></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ol>
+                                        <!-- Wrapper for slides -->
+                                        <div class="carousel-inner" role="listbox">
+                                            {% for image in goods.goodsimage %}
+                                                {% if image.index == 0 %}
+                                                    <div class="item active">
+                                                        <a href="{% url 'goods:goods-detail' goods.id %}">
+                                                            <img src="{{ MEDIA_URL }}{{ image.image }}" alt=""
+                                                                 width="100%">
+                                                        </a>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="item">
+                                                        <a href="{% url 'goods:goods-detail' goods.id %}">
+                                                            <img src="{{ MEDIA_URL }}{{ image.image }}" alt=""
+                                                                 width="100%">
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     {% endfor %}
-                    {#                    </div>#}
                 </div>
+
+
+                {#                <div class="container">#}
+                {#                <div class="row" style="width: 100%;margin: 0">#}
+                {#                    {% for goods in all_goods %}#}
+                {#                        <div class="col-4 col-12-medium"#}
+                {#                             style="border-radius: 25px;padding: 0;margin: 0 1.5%">#}
+                {##}
+                {#                            <!-- Box -->#}
+                {#                            <section class="box feature" style="border-radius: 25px;">#}
+                {#                                <a href="{% url 'goods:goods-detail' goods.id %}" class="image featured">#}
+                {#                                    <img#}
+                {#                                            style="border-radius: 30px;padding: 0 10px; height: 230px;"#}
+                {#                                            src="{{ MEDIA_URL }}{{ goods.goods_front_img }}"#}
+                {#                                            alt=""/></a>#}
+                {#                                <div class="inner" style="padding: 0 2em">#}
+                {#                                    <header>#}
+                {#                                        <span style="font-weight: bold;font-size: 20px;">{{ goods.name }}</span><br>#}
+                {#                                        <h1>{{ goods.name }}</h1>#}
+                {#                                        <p>#}
+                {#                                            {{ goods.add_time.year }}.#}
+                {#                                            {{ goods.add_time.month }}.#}
+                {#                                            {{ goods.add_time.day }}#}
+                {#                                        </p>#}
+                {#                                    </header>#}
+                {#                                    <p>{{ goods.desc }}</p>#}
+                {#                                    <br>#}
+                {#                                </div>#}
+                {#                            </section>#}
+                {#                        </div>#}
+                {#                    {% endfor %}#}
+                {#                    </div>#}
+                {#                </div>#}
             </div>
+
+
             <div style="width: 100%;padding: 40px 60px 100px 60px;background-color: #303030;text-decoration: none;float: left">
                 <footer id="footer" class="">
                     <div class="row">
@@ -516,6 +571,7 @@
 
 {% endblock %}
 <script src="{% static 'Plugins/Bootstrap/js/bootstrap.js' %}"></script>
+{#<script src="{% static 'js/main_.js' %}"></script>#}
 
 </body>
 </html>
