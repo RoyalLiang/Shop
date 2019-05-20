@@ -75,7 +75,7 @@
         }
     </style>
     <div id="footer-wrapper"
-         style="width: 100%;padding: 40px 60px 100px 60px;background-color: #303030;text-decoration: none;">
+         style="width: 100%;padding: 40px 60px 40px 60px;background-color: #303030;text-decoration: none;">
         <footer id="footer" class="">
             <div class="row">
                 <div class="col-3 col-6-medium col-12-small">
@@ -132,13 +132,20 @@
                         <span style="color: white;">Website:&nbsp;
                             <a href="http://{{ com_info.web }}">{{ com_info.web }}</a>
                         </span>
-                        <span style="color: white;">Address:&nbsp;</span><p style="color: #7e7e7e;">{{ com_info.addr }}</p>
+                        <span style="color: white;">Address:&nbsp;</span>
+                        <p style="color: #7e7e7e;">{{ com_info.addr }}</p>
                     </section>
 
                 </div>
             </div>
 
         </footer>
+        <br><br><br>
+        <div style="text-align: center;color: white;padding: auto auto;">
+            <span class="copyright">
+                &copy; 2019-2029.Tianjin Eternal Science and Technology Development Co. LTD.All rights reserved.
+            </span>
+        </div>
     </div>
 
 {% endblock %}
@@ -150,13 +157,13 @@
 
 {% block js %}
     <script>
-    $(function () {
-        $('.change_language').change(function (e) {
+        $(function () {
+            $('.change_language').change(function (e) {
                 e.preventDefault();
                 $('#change_form').submit();
                 return false;
             });
-    })
+        })
     </script>
     <script src="{% static 'js/main_.js' %}"></script>
 {% endblock %}

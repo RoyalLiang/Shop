@@ -10,7 +10,7 @@
     <meta name="keywords" content="{% block keywords %}{% endblock %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
     <link rel="stylesheet" href="{% static 'Plugins/Bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {#    <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
     <style>
         .heard-photo {
             height: 300px;
@@ -19,7 +19,7 @@
         }
     </style>
     {% block css %}
-{#        <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
+        {#        <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
 
     {% endblock %}
 </head>
@@ -268,7 +268,8 @@
                 {% endif %}
                 {#                <h3>{{ video.title }}</h3>#}
             </article>
-            <div class="container" id="features-wrapper" style="width: 100%;float: left;padding: 0 3em;margin-top: 70px;">
+            <div class="wrap wrap-product" id="features-wrapper"
+                 style="width: 100%;float: left;padding: 0 3em;margin-top: 70px;">
 
                 <div class="row">
                     {% for goods in all_goods %}
@@ -354,7 +355,7 @@
             </div>
 
 
-            <div style="width: 100%;padding: 40px 60px 100px 60px;background-color: #303030;text-decoration: none;float: left">
+            <div style="width: 100%;padding: 40px 60px 40px 60px;background-color: #303030;text-decoration: none;float: left">
                 <footer id="footer" class="">
                     <div class="row">
                         <div class="col-3 col-6-medium col-12-small">
@@ -414,10 +415,21 @@
                             </section>
 
                         </div>
+                        {#                        <ul class="copyright">#}
+                        {#                            <li>&copy; Untitled. All rights reserved</li>#}
+                        {#                        </ul>#}
                     </div>
 
                 </footer>
+                <br><br><br>
+                <div style="text-align: center;color: white;padding: auto auto;">
+                    <span class="copyright">
+                        &copy; 2019-2029.Tianjin Eternal Science and Technology Development Co. LTD.All rights reserved.
+                    </span>
+                </div>
+
             </div>
+
         </div>
     {% endblock %}
     <!-- Sidebar -->

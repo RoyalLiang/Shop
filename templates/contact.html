@@ -9,14 +9,16 @@
             <header>
                 <div class="title">
                     <section>
-                        <h2>{% trans 'Company Info' %}</h2><br><br>
+                        <h2>{% trans 'Company Info' %}</h2><br>
                     </section>
-                    <h2 style="color: orange">{{ com_message.name }}</h2>
-                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Address' %}:&nbsp;&nbsp;{{ com_message.addr }}</span><br>
+                    <div style="color: orange;font-size: 24px;font-weight: bold;">{{ com_message.name }}</div>
+                    <br>
                     <span style="font-size: 20px;color: #3c3c3c">{% trans 'Tel' %}:&nbsp;&nbsp;{{ com_message.tel }}</span><br>
                     <span style="font-size: 20px;color: #3c3c3c">{% trans 'Email' %}:&nbsp;&nbsp;{{ com_message.email }}</span><br>
-                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Website' %}:&nbsp;&nbsp;<a
-                            href="https://www.baidu.com" style="text-decoration:none;">{{ com_message.web }}</a></span>
+                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Website' %}:&nbsp;&nbsp;
+                        <a href="https://www.baidu.com" style="text-decoration:none;">{{ com_message.web }}</a>
+                    </span><br>
+                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Address' %}:&nbsp;&nbsp;{{ com_message.addr }}</span>
                 </div>
                 <div class="meta">
                     <h3>{% trans 'Contact' %}</h3>
@@ -68,7 +70,7 @@
             }
         </style>
         <div id="footer-wrapper"
-             style="width: 100%;padding: 40px 60px 100px 60px;background-color: #303030;text-decoration: none;">
+             style="width: 100%;padding: 40px 60px 40px 60px;background-color: #303030;text-decoration: none;">
             <footer id="footer" class="">
                 <div class="row">
                     <div class="col-3 col-6-medium col-12-small">
@@ -125,13 +127,20 @@
                             <span style="color: white;">Website:&nbsp;
                             <a href="http://{{ com_message.web }}">{{ com_message.web }}</a>
                         </span>
-                        <span style="color: white;">Address:&nbsp;</span><p style="color: #7e7e7e;">{{ com_message.addr }}</p>
+                            <span style="color: white;">Address:&nbsp;</span>
+                            <p style="color: #7e7e7e;">{{ com_message.addr }}</p>
                         </section>
 
                     </div>
                 </div>
 
             </footer>
+            <br><br><br>
+            <div style="text-align: center;color: white;padding: auto auto;">
+                    <span class="copyright">
+                        &copy; 2019-2029.Tianjin Eternal Science and Technology Development Co. LTD.All rights reserved.
+                    </span>
+            </div>
         </div>
     </div>
 {% endblock %}
