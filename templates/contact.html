@@ -7,14 +7,14 @@
         <!-- Post -->
         <article class="post">
             <header>
-                <div class="title">
+                <div class="title" style="text-align: left">
                     <section>
                         <h2>{% trans 'Company Info' %}</h2><br>
                     </section>
                     <div style="color: orange;font-size: 24px;font-weight: bold;">{{ com_message.name }}</div>
                     <br>
                     <span style="font-size: 20px;color: #3c3c3c">{% trans 'Tel' %}:&nbsp;&nbsp;{{ com_message.tel }}</span><br>
-                    <span style="font-size: 20px;color: #3c3c3c">{% trans 'Email' %}:&nbsp;&nbsp;{{ com_message.email }}</span><br>
+                    <a href="mailto:{{ com_message.email }}"><span style="font-size: 20px;color: #3c3c3c">{% trans 'Email' %}:&nbsp;&nbsp;{{ com_message.email }}</span></a><br>
                     <span style="font-size: 20px;color: #3c3c3c">{% trans 'Website' %}:&nbsp;&nbsp;
                         <a href="https://www.baidu.com" style="text-decoration:none;">{{ com_message.web }}</a>
                     </span><br>
@@ -122,7 +122,7 @@
                             <a>{{ com_message.tel }}</a>
                         </span>
                             <span style="color: white;">Email:&nbsp;
-                            <a>{{ com_message.email }}</a>
+                             <a href="mailto:{{ com_message.email }}">{{ com_message.email }}</a>
                         </span>
                             <span style="color: white;">Website:&nbsp;
                             <a href="http://{{ com_message.web }}">{{ com_message.web }}</a>
@@ -146,7 +146,7 @@
 {% endblock %}
 {% block left-content %}{% endblock %}
 {% block js %}
-    <script src="{% static 'JS/main_.js' %}"></script>
+    <script src="{% static 'js/main_.js' %}"></script>
     <script>
         $(function () {
             $('.change_language').change(function (e) {
